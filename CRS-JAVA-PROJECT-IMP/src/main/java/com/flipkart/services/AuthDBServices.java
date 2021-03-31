@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class AuthDBServices {
+public class AuthDBServices implements AuthDBInterface{
 }

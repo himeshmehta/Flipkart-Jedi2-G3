@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class StudentServices {
+public interface StudentInterface {
 }

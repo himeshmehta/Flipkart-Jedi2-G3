@@ -1,2 +1,4 @@
-package com.flipkart.services;public interface AdminInterface {
+package com.flipkart.services;
+
+public interface AdminInterface {
 }
