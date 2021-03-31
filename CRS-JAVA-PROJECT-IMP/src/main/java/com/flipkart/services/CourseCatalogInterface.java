@@ -1,2 +1,4 @@
-package com.flipkart.services;public interface CourseCatalogInterface {
+package com.flipkart.services;
+
+public interface CourseCatalogInterface {
 }

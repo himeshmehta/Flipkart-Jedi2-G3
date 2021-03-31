@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class NotificationSystemServices {
+public interface NotificationInterface {
 }
