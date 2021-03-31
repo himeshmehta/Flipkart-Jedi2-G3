@@ -1,2 +1,4 @@
-package com.flipkart.services;public interface AuthDBInterface {
+package com.flipkart.services;
+
+public interface AuthDBInterface {
 }

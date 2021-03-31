@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class PaymentServices {
+public class PaymentServices implements PaymentInterface{
 }

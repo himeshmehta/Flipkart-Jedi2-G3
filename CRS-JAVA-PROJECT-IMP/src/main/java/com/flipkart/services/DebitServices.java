@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class DebitServices {
+public class DebitServices implements DebitInterface{
 }

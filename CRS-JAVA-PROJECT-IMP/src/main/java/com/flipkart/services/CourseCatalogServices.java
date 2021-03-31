@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class CourseCatalogeServices {
+public class CourseCatalogServices implements CourseCatalogInterface{
 }

@@ -1,4 +1,4 @@
 package com.flipkart.services;
 
-public class OfflineServices {
+public class OfflineServices implements OfflineInterface{
 }
