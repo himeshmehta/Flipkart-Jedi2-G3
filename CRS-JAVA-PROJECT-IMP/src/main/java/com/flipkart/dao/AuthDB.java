@@ -18,4 +18,9 @@ public class AuthDB {
     public static Boolean removeExistingUser(User user){
         return Boolean.TRUE;
     }
+
+    public static Boolean approveStudent(String studentId){
+
+        return Boolean.TRUE;
+    }
 }

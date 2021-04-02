@@ -4,16 +4,7 @@ import java.util.List;
 
 public class Professor {
 
-       private String id;
-       private List<Course> teachingCourses;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private List<Course> teachingCourses;
 
     public List<Course> getTeachingCourses() {
         return teachingCourses;
