@@ -4,49 +4,31 @@ import java.util.*;
 
 public class Student {
 
-        private String courseName;
-        private String courseId;
-        private String professorId;
-    private Boolean isAvailable;
-    private List<Student> studentList;
+        private String id;
+        private List<Course>mainCourseList;
+        private List<String>alternateCourseList;
 
-    public String getCourseName() {
-        return courseName;
+    public String getId() {
+        return id;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-    public String getCourseId() {
-        return courseId;
-    }
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-
-
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getProfessorId() {
-        return professorId;
+    public List<Course> getMainCourseList() {
+        return mainCourseList;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
+    public void setMainCourseList(List<Course> mainCourseList) {
+        this.mainCourseList = mainCourseList;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+    public List<String> getAlternateCourseList() {
+        return alternateCourseList;
     }
 
-    public void setProfessorId(String professorId) {
-        this.professorId = professorId;
-    }
-
-    public Boolean getAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(Boolean available) {
-        isAvailable = available;
+    public void setAlternateCourseList(List<String> alternateCourseList) {
+        this.alternateCourseList = alternateCourseList;
     }
 }
