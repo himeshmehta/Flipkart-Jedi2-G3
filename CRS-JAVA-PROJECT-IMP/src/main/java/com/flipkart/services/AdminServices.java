@@ -1,12 +1,9 @@
 package com.flipkart.services;
 
 import com.flipkart.Exception.ApprovalFailedException;
-import com.flipkart.bean.Notification;
 import com.flipkart.bean.User;
 import com.flipkart.dao.AuthDB;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class AdminServices implements AdminInterface{
     @Override
