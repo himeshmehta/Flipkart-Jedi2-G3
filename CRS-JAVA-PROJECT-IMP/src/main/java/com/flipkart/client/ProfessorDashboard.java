@@ -7,11 +7,15 @@ import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.ProfessorServices;
 
 import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Logger;
+
 
 public class ProfessorDashboard {
 
     private Professor professor;
     private ProfessorServices professorServices;
+    private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorDashboard.class));
 
     public ProfessorDashboard(Professor professor)
     {
@@ -43,4 +47,55 @@ public class ProfessorDashboard {
 
        }
     }
-}
+
+    public void helper()
+    {
+
+          Scanner inputReader = new Scanner(System.in);
+          Boolean result;
+            while (true) {
+                logger.info("Select operation to perform");
+                int operation = inputReader.nextInt();
+                if (operation == -1) break;
+
+                switch (operation) {
+                    case 1:
+
+                        String courseId = inputReader.next();
+
+
+                        Course course=selectCourseToTeach(courseId);
+                        result=course!=null?true:false;
+                        String message = result ? "Course fetched successfully" : "No Course found";
+                        logger.info(message);
+                        break;
+
+                    case 2:
+                         courseId = inputReader.next();
+
+                        List<Student> studentList=getEnrolledStudents(courseId);
+                        result=studentList.isEmpty()?false:true;
+                        message = result ? "List of Students fetched successfully" : "Something Wrong";
+                        logger.info(message);
+                        break;
+
+                    case 3:
+
+                        long marks=Long.parseLong(inputReader.next());
+                        String studentId=inputReader.next();
+                        courseId = inputReader.next();
+
+
+                        addGrades(courseId,marks,studentId);
+
+                        break;
+
+                    default:
+                        logger.info("No operations");
+                        break;
+
+                }
+            }
+        }
+    }
+
