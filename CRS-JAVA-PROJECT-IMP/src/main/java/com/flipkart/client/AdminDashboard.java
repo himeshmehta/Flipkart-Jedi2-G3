@@ -2,7 +2,6 @@ package com.flipkart.client;
 
 import com.flipkart.Exception.ApprovalFailedException;
 import com.flipkart.Exception.InvalidDataException;
-import com.flipkart.bean.Admin;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
 import com.flipkart.helper.UserValidator;
@@ -42,6 +41,7 @@ public class AdminDashboard {
         } catch (InvalidDataException | ApprovalFailedException e) {
             e.printStackTrace();
         }
+
 
         return isApproved;
     }

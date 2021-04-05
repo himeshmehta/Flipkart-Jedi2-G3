@@ -6,6 +6,15 @@ public class User {
     private String name;
     private String email;
     private Role role;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public Role getRole() {
         return role;
