@@ -3,23 +3,21 @@ package com.flipkart.client;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
-import com.flipkart.bean.User;
-import com.flipkart.constants.Role;
+import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.ProfessorServices;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class ProfessorDashboard {
 
     private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorDashboard.class));
-
-    private User professor;
+    private Professor professor;
     private ProfessorServices professorServices;
 
-    public ProfessorDashboard(User professor)
+    public ProfessorDashboard(Professor professor)
     {
         this.professor=professor;
     }
