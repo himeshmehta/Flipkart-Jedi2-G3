@@ -1,10 +1,11 @@
 package com.flipkart.services;
 
 import com.flipkart.Exception.AuthorizationException;
-import com.flipkart.Exception.InvalidInputException;
+import com.flipkart.Exception.CRSException;
+import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.User;
-import com.flipkart.constants.Role;
 import com.flipkart.dao.AuthDB;
+import com.flipkart.helper.UserValidator;
 
 import java.util.logging.Logger;
 
@@ -26,11 +27,15 @@ public class AuthDBServices implements AuthDBInterface{
     }
 
     @Override
-    public void selfRegistration(User user) throws InvalidInputException {
-        // This method is only applicable for student
-        if(!Role.STUDENT.equals(user.getRole())){
-            logger.info("Self Registration Invalid");
-            throw new InvalidInputException("Only student can self register.");
+    public Boolean selfRegisterStudent(String email, String name, String password, String confirmPassword) throws CRSException {
+        Boolean isSignedUp = false;
+        try{
+            UserValidator.selfRegistrationValidator(email,password,confirmPassword);
+            isSignedUp = authDBOperations.selfRegisterStudent(email,name,password);
+        } catch (InvalidDataException e) {
+            throw new CRSException(e.getMessage());
         }
+        return isSignedUp;
     }
+
 }
