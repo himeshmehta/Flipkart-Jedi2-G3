@@ -12,6 +12,7 @@ public class StudentDashboard {
     Student student;
     CourseRegistrationServices courseRegistrationServices;
     StudentDB studentDB;
+
     public StudentDashboard(Student student) {
         this.student = student;
         courseRegistrationServices = new CourseRegistrationServices();
