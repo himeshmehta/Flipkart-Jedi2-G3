@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.Exception.CourseRegistrationException;
+import com.flipkart.exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;

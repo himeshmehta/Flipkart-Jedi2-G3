@@ -8,6 +8,8 @@ import com.flipkart.dao.CourseDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * The type Professor service.
  */
@@ -15,6 +17,7 @@ import java.util.List;
 public class ProfessorServices implements ProfessorInterface{
 
       private CourseCatalogServices courseCatalogServices;
+      private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorServices.class));
       private CourseDao courseDao;
       public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDao courseDao)
       {
@@ -33,6 +36,7 @@ public class ProfessorServices implements ProfessorInterface{
       {
           List<Course> courseList=courseCatalogServices.viewCourseList();
           Course course=new Course();
+          logger.info("Fetching Course List");
           for(Course cs:courseList)
           {
               if(cs.getCourseId().equals(courseId))
@@ -53,6 +57,7 @@ public class ProfessorServices implements ProfessorInterface{
       {
                  List<Student> studentList=new ArrayList<Student>();
 
+                 logger.info("Fetching Enrolled Students List");
                  studentList=courseDao.getListOfStudents(courseId);
 
                  return studentList;

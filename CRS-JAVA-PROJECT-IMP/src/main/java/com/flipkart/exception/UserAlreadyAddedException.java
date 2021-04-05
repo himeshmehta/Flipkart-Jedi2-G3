@@ -1,2 +1,4 @@
-package com.flipkart.exception;public class UserAlreadyAddedException {
+package com.flipkart.exception;
+
+public class UserAlreadyAddedException extends Exception{
 }

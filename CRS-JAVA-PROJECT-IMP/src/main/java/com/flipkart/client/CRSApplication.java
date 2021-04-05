@@ -5,6 +5,8 @@ import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
 import com.flipkart.exception.AuthorizationException;
+import com.flipkart.exception.UserAlreadyAddedException;
+import com.flipkart.exception.UserNotPresetException;
 import com.flipkart.services.AuthDBServices;
 
 import java.util.List;
@@ -42,23 +44,33 @@ public class CRSApplication {
                             String name = inputReader.next();
                             String email = inputReader.next();
                             String passs = inputReader.next();
+                            Boolean result;
+                            String message;
+                            try {
+                                result = dashboard.addUser(email, passs, Role.STUDENT, name);
+                                message = result ? "User added successfully" : "User not added";
+                                logger.info(message);
+                                break;
+                            } catch (UserAlreadyAddedException e) {
 
-                            Boolean result = dashboard.addUser(email, passs, Role.STUDENT, name);
+                            }
 
-                            String message = result ? "User added successfully" : "User not added";
-                            logger.info(message);
-                            break;
+
 
                         case 2:
                             // remove user
                             name = inputReader.next();
                             email = inputReader.next();
 
-                            result = dashboard.removeUser(email, Role.STUDENT, name);
+                            try {
+                                result = dashboard.removeUser(email, Role.STUDENT, name);
 
-                            message = result ? "User removed successfully" : "User not removed";
-                            logger.info(message);
-                            break;
+                                message = result ? "User removed successfully" : "User not removed";
+                                logger.info(message);
+                                break;
+                            } catch (UserNotPresetException e) {
+
+                            }
 
                         case 3:
                             // add new course
