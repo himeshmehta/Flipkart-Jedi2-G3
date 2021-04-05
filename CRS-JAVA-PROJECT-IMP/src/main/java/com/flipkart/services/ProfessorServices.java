@@ -1,11 +1,15 @@
 package com.flipkart.services;
 
 import com.flipkart.bean.Course;
+import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * The type Professor service.
  */
@@ -13,8 +17,9 @@ import java.util.List;
 public class ProfessorServices implements ProfessorInterface{
 
       private CourseCatalogServices courseCatalogServices;
+      private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorServices.class));
       private CourseDB courseDB;
-      public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDB courseDB)
+      public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDB courseDao)
       {
             this.courseCatalogServices=courseCatalogServices;
             this.courseDB = courseDB;
@@ -31,6 +36,7 @@ public class ProfessorServices implements ProfessorInterface{
       {
           List<Course> courseList=courseCatalogServices.viewCourseList();
           Course course=new Course();
+          logger.info("Fetching Course List");
           for(Course cs:courseList)
           {
               if(cs.getCourseId().equals(courseId))
@@ -51,6 +57,7 @@ public class ProfessorServices implements ProfessorInterface{
       {
                  List<Student> studentList=new ArrayList<Student>();
 
+                 logger.info("Fetching Enrolled Students List");
                  studentList=courseDB.getListOfStudents(courseId);
 
                  return studentList;

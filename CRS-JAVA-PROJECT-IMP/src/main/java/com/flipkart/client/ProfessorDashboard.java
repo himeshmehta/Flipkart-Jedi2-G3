@@ -81,7 +81,7 @@ public class ProfessorDashboard {
 
                     case 3:
 
-                        Integer marks=inputReader.nextInt();
+                        long marks=Long.parseLong(inputReader.next());
                         String studentId=inputReader.next();
                         courseId = inputReader.next();
 

@@ -38,9 +38,7 @@ public class AdminDashboard {
             // userId will be same to email
             UserValidator.emailValidator(studentId);
             isApproved = adminService.approveStudent(studentId);
-        } catch (InvalidDataException e) {
-            e.printStackTrace();
-        } catch (ApprovalFailedException e) {
+        } catch (InvalidDataException | ApprovalFailedException e) {
             e.printStackTrace();
         }
 
