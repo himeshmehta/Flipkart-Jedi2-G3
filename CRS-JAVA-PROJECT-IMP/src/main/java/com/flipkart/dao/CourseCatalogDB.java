@@ -5,13 +5,13 @@ import com.flipkart.bean.Course;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseCatalogDB {
+public class CourseCatalogDB implements CourseCatalogDBInterface{
 
-    public static Boolean updateCourseCatalog(Course course) {
+    public  Boolean updateCourseCatalog(Course course) {
         return Boolean.TRUE;
     }
 
-    public static List<Course> viewCourses() {
+    public List<Course> viewCourses() {
         return new ArrayList<>();
     }
 }

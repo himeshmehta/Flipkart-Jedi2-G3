@@ -1,10 +1,8 @@
 package com.flipkart.services;
 
 import com.flipkart.bean.Course;
-import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Student;
-import com.flipkart.dao.CourseDao;
-
+import com.flipkart.dao.CourseDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +13,11 @@ import java.util.List;
 public class ProfessorServices implements ProfessorInterface{
 
       private CourseCatalogServices courseCatalogServices;
-      private CourseDao courseDao;
-      public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDao courseDao)
+      private CourseDB courseDB;
+      public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDB courseDB)
       {
             this.courseCatalogServices=courseCatalogServices;
-            this.courseDao=courseDao;
+            this.courseDB = courseDB;
 
       }
 
@@ -53,7 +51,7 @@ public class ProfessorServices implements ProfessorInterface{
       {
                  List<Student> studentList=new ArrayList<Student>();
 
-                 studentList=courseDao.getListOfStudents(courseId);
+                 studentList=courseDB.getListOfStudents(courseId);
 
                  return studentList;
       }

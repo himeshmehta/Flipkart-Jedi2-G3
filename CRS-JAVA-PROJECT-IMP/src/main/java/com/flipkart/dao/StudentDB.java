@@ -6,8 +6,8 @@ import com.flipkart.bean.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDB {
-    public static List<Course> registeredCourses(Student student) {
+public class StudentDB implements StudentDBInterface{
+    public List<Course> registeredCourses(Student student) {
         return new ArrayList<>();
     }
 }

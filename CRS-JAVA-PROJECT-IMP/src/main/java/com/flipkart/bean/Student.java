@@ -1,12 +1,18 @@
 package com.flipkart.bean;
 
+import com.flipkart.constants.Role;
+
 import java.util.*;
 
-public class Student {
+public class Student extends User{
 
-        private String id;
-        private List<Course>mainCourseList;
-        private List<String>alternateCourseList;
+    private String id;
+    private List<Course>mainCourseList;
+    private List<String>alternateCourseList;
+
+    public Student(String name, String email, Role role) {
+        super(name, email, role);
+    }
 
     public String getId() {
         return id;

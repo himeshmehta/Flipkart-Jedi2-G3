@@ -1,0 +1,9 @@
+create table User {
+    email VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT_NULL,
+    approved Boolean() NOT NULL,
+    `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+    Role enum()...
+    PRIMARY key(email)
+};

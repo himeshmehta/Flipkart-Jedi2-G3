@@ -1,8 +1,11 @@
 package com.flipkart.client;
 
+import com.flipkart.Exception.ApprovalFailedException;
+import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
+import com.flipkart.helper.UserValidator;
 import com.flipkart.services.AdminServices;
 
 public class AdminDashboard {
@@ -28,6 +31,21 @@ public class AdminDashboard {
 
     public Boolean addNewCourse(String courseId,String courseName){
         return Boolean.TRUE;
+    }
+
+    public Boolean approveStudent(String studentId) {
+        Boolean isApproved = Boolean.FALSE; // Initially assume that operation is not successful
+        try {
+            // userId will be same to email
+            UserValidator.emailValidator(studentId);
+            isApproved = adminService.approveStudent(studentId);
+        } catch (InvalidDataException e) {
+            e.printStackTrace();
+        } catch (ApprovalFailedException e) {
+            e.printStackTrace();
+        }
+
+        return isApproved;
     }
 
 }

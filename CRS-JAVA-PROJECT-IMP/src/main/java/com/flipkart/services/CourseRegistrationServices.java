@@ -7,20 +7,25 @@ import com.flipkart.dao.CourseDB;
 
 
 public class CourseRegistrationServices implements CourseRegistrationInterface{
+    private CourseDB courseDBOperations;
+
+    public CourseRegistrationServices(){
+        this.courseDBOperations = new CourseDB();
+    }
 
     @Override
     public Boolean registerCourse(Student student, Course course) throws CourseRegistrationException {
-        return CourseDB.registerStudent(student,course);
+        return courseDBOperations.registerStudent(student,course);
     }
 
     @Override
     public Boolean removeCourse(Student student, Course course) throws CourseRegistrationException {
-        return CourseDB.removeStudent(student,course);
+        return courseDBOperations.removeStudent(student,course);
     }
 
     @Override
     public Boolean addCourse(Student student, Course course) throws CourseRegistrationException {
-        return CourseDB.addStudent(student,course);
+        return courseDBOperations.addStudent(student,course);
     }
 
     @Override
