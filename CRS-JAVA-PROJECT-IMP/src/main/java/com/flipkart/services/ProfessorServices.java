@@ -19,7 +19,7 @@ public class ProfessorServices implements ProfessorInterface{
       private CourseCatalogServices courseCatalogServices;
       private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorServices.class));
       private CourseDB courseDB;
-      public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDao courseDao)
+      public ProfessorServices(CourseCatalogServices courseCatalogServices,CourseDB courseDao)
       {
             this.courseCatalogServices=courseCatalogServices;
             this.courseDB = courseDB;

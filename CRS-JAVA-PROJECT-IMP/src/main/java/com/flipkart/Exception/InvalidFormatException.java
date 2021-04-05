@@ -1,4 +1,4 @@
-package com.flipkart.exception;
+package com.flipkart.Exception;
 
 public class InvalidFormatException extends Exception{
 

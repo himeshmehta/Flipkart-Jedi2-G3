@@ -37,10 +37,12 @@ public class AdminServices implements AdminInterface{
                 // create an object of notification service
                 NotificationServices notificationServices = new NotificationServices();
                 notificationServices.approvalNotifier(studentId);
+                logger.info("Student Already approved");
                 return Boolean.TRUE;
             }
             else {
                 String message = "Approval failed for Student " + studentId;
+                logger.info("Approving Student");
                 throw new ApprovalFailedException(message);
             }
     }

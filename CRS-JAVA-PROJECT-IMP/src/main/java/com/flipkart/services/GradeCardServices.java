@@ -6,29 +6,26 @@ import com.flipkart.bean.GradeCard;
 import com.flipkart.dao.GradeCardDB;
 import com.flipkart.helper.CourseValidator;
 
+import java.util.logging.Logger;
+
 public class GradeCardServices implements GradeCardInterface{
 
     public GradeCardDB gradeCardDB;
     public GradeCardServices(){
         this.gradeCardDB = new GradeCardDB();
     }
+    private static final Logger logger = Logger.getLogger(String.valueOf(GradeCardServices.class));
     @Override
     public GradeCard viewGradeCard(String studentId) {
         GradeCard gradeCard = gradeCardDB.viewGradeCard(studentId);
+        logger.info("Fetching GradeCard");
         return gradeCard;
     }
 
     @Override
     public void addGrade(String professorId, String courseId, Integer grade,String studentId) throws Exception {
-        /**
-         * This method is used to add grades .
-         * @Param professorId :- id of professor who want to add grades
-         * @Param courseId :- id of course.
-         * @Param grade :- It is an Int value which represent grade. 0 <= grade <= 100.
-         * @Param studentId :- id of student.
-         * @return Nothing
-         */
 
+        logger.info("Adding Grades");
         try {
             if (grade < 0 || grade > 100){
                 String message = grade <0 ? "Grade can not be negative." : "Grade can not be more than 100.";

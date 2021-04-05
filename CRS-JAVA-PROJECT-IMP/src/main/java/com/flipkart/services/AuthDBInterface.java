@@ -15,5 +15,13 @@ public interface AuthDBInterface  {
 
      **/
     public User authenticateUser(String userId, String password) throws AuthorizationException;
+    /**
+     *
+     This method is used to self registration.
+     @Param - user
+     @Throws - InvalidInputException
+     @returns - Nothing
+
+     **/
     public void selfRegistration(User user) throws InvalidInputException;
 }

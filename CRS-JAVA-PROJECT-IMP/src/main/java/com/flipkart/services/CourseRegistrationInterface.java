@@ -1,6 +1,7 @@
 package com.flipkart.services;
 
-import com.flipkart.exception.CourseRegistrationException;
+import com.flipkart.Exception.CourseRegistrationException;
+import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 
@@ -8,18 +9,38 @@ public interface CourseRegistrationInterface {
 
     /**
      *
-     This method is used to authenticate the User from the Database.
-     @Param - userId , password
-     @Throws - AuthorizationException
-     @returns - User
-
+     This method is used to register for the Course.
+     @Param - student , course
+     @Throws - CourseRegistrationException
+     @returns - Boolean
      **/
     Boolean registerCourse(Student student, Course course) throws CourseRegistrationException;
 
+    /**
+     *
+     This method is used to remove the Course.
+     @Param - student , course
+     @Throws - CourseRegistrationException
+     @returns - Boolean
+     **/
     Boolean removeCourse(Student student, Course course) throws CourseRegistrationException;
 
+    /**
+     *
+     This method is used to add the the Course.
+     @Param - student , course
+     @Throws - CourseRegistrationException
+     @returns - Boolean
+     **/
     Boolean addCourse(Student student, Course course) throws CourseRegistrationException;
 
+    /**
+     *
+     This method is used to make the payment for the Course.
+     @Param - None
+     @Throws - Nothing
+     @returns - Boolean
+     **/
     Boolean makePayment();
 
 }

@@ -18,7 +18,7 @@ public interface CourseCatalogInterface {
 
     /**
      *
-     This method is used to authenticate the User from the Database.
+     This method is used to get the List of Courses.
      @Param - None
      @Throws - Nothing
      @returns - List of Courses from CourseCatalog

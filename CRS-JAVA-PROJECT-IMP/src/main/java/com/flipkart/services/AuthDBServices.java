@@ -29,6 +29,7 @@ public class AuthDBServices implements AuthDBInterface{
     public void selfRegistration(User user) throws InvalidInputException {
         // This method is only applicable for student
         if(!Role.STUDENT.equals(user.getRole())){
+            logger.info("Self Registration Invalid");
             throw new InvalidInputException("Only student can self register.");
         }
     }

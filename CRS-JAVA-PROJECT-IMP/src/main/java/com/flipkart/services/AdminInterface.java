@@ -16,7 +16,7 @@ public interface AdminInterface {
 
     public Boolean approveStudent(String studentId) throws ApprovalFailedException;
      **/
-    public Boolean addUser(User user, String password) throws UserAlreadyAddedException;
+    public Boolean addUser(User user, String password);
 
     /**
      *
@@ -26,5 +26,15 @@ public interface AdminInterface {
      @returns - Boolean
 
      **/
-    public Boolean removeUser(User user) throws UserNotPresetException;
+    public Boolean removeUser(User user);
+
+    /**
+     *
+     This method is used to approve the Student.
+     @Param - studentId
+     @Throws - ApprovalFailedException
+     @returns - Boolean
+
+     **/
+    public Boolean approveStudent(final String studentId) throws ApprovalFailedException;
 }

@@ -24,19 +24,20 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
         }
 
     @Override
-    public Boolean removeCourse(Student student, Course course) throws CourseRegistrationException {
+    public Boolean removeCourse(Student student, Course course) throws CourseRegistrationException{
         logger.info("Removing the course");
         return courseDBOperations.removeStudent(student,course);
         }
 
     @Override
-    public Boolean addCourse(Student student, Course course) throws CourseRegistrationException {
+    public Boolean addCourse(Student student, Course course) throws CourseRegistrationException{
         logger.info("Adding the course");
         return courseDBOperations.addStudent(student,course);
         }
 
     @Override
     public Boolean makePayment() {
+        logger.info("Taking to the Payment gateway");
         return null;
     }
 }

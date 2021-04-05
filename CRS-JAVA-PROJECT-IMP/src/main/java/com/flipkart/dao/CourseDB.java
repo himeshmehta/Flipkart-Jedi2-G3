@@ -1,6 +1,7 @@
 package com.flipkart.dao;
 
-import com.flipkart.exception.CourseRegistrationException;
+import com.flipkart.Exception.CourseRegistrationException;
+import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
@@ -10,14 +11,14 @@ import java.util.List;
 
 public class CourseDB implements CourseDBInterface{
     public  Boolean registerStudent(Student student , Course course) throws CourseRegistrationException {
+        throw new CourseRegistrationException("Unable to registre");
+    }
+
+    public  Boolean removeStudent (Student student , Course course){
         return Boolean.TRUE;
     }
 
-    public  Boolean removeStudent (Student student , Course course) throws CourseRegistrationException {
-        return Boolean.TRUE;
-    }
-
-    public  Boolean addStudent (Student student , Course course) throws CourseRegistrationException {
+    public  Boolean addStudent (Student student , Course course){
         return Boolean.TRUE;
     }
 
