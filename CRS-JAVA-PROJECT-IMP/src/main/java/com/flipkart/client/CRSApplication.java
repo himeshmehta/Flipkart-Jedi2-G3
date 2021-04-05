@@ -62,8 +62,9 @@ public class CRSApplication {
                             // add new course
                             String courseID = inputReader.next();
                             String courseName = inputReader.next();
+                            Long fee = inputReader.nextLong();
 
-                            result = dashboard.addNewCourse(courseID, courseName);
+                            result = dashboard.addNewCourse(courseID, courseName,fee);
 
                             message = result ? "Course added successfully" : "Course not added";
                             logger.info(message);

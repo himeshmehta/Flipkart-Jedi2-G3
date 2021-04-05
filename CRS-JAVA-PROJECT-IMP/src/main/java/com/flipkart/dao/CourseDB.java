@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CourseDB implements CourseDBInterface{
     public  Boolean registerStudent(Student student , Course course) throws CourseRegistrationException {
-        throw new CourseRegistrationException("Unable to registre");
+        throw new CourseRegistrationException("Unable to register");
     }
 
     public  Boolean removeStudent (Student student , Course course){

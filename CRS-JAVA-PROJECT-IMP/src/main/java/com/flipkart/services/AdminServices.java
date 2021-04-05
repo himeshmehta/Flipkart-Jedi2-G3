@@ -26,7 +26,7 @@ public class AdminServices implements AdminInterface{
     @Override
     public Boolean removeUser(User user) {
         Boolean isUserRemoved = authDBOperations.removeExistingUser(user);
-        logger.info("Removing User to the DB");
+        logger.info("Removing User from the DB");
         return isUserRemoved;
     }
 

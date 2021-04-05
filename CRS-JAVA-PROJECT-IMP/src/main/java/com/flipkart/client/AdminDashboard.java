@@ -28,7 +28,7 @@ public class AdminDashboard {
         return isUserRemoved;
     }
 
-    public Boolean addNewCourse(String courseId,String courseName){
+    public Boolean addNewCourse(String courseId , String courseName , Long fee){
         return Boolean.TRUE;
     }
 
