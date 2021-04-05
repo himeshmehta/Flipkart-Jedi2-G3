@@ -1,12 +1,8 @@
-package com.flipkart.exception;
+package com.flipkart.Exception;
 
-public class PaymentException extends  Exception{
+public class PaymentException extends Exception{
 
-
-       public PaymentException(String s)
-       {
-           super(s);
-       }
-
-
+    public PaymentException(String message){
+        super(message);
+    }
 }

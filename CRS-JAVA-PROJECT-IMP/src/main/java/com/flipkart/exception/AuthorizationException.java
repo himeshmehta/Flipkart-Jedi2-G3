@@ -1,11 +1,8 @@
-package com.flipkart.exception;
+package com.flipkart.Exception;
 
-public class AuthorizationException  extends Exception{
+public class AuthorizationException extends Exception{
 
-
-      public AuthorizationException(String s)
-      {
-          super(s);
-      }
-
+    public AuthorizationException(String message){
+        super(message);
+    }
 }
