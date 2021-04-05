@@ -39,63 +39,62 @@ public class ProfessorDashboard {
 
     public void addGrades(String courseId,Integer marks,String studentId)
     {
-       try {
-           GradeCardServices gradeCardServices = new GradeCardServices();
-           // add grades
-           gradeCardServices.addGrade(professor.getUserId(),courseId,marks,studentId);
-       } catch (Exception ex){
+        try {
+            GradeCardServices gradeCardServices = new GradeCardServices();
+            // add grades
+            gradeCardServices.addGrade(professor.getUserId(),courseId,marks,studentId);
+        } catch (Exception ex){
 
-       }
+        }
     }
 
     public void helper()
     {
 
-          Scanner inputReader = new Scanner(System.in);
-          Boolean result;
-            while (true) {
-                logger.info("Select operation to perform");
-                int operation = inputReader.nextInt();
-                if (operation == -1) break;
+        Scanner inputReader = new Scanner(System.in);
+        Boolean result;
+        while (true) {
+            logger.info("Select operation to perform");
+            int operation = inputReader.nextInt();
+            if (operation == -1) break;
 
-                switch (operation) {
-                    case 1:
+            switch (operation) {
+                case 1:
 
-                        String courseId = inputReader.next();
-
-
-                        Course course=selectCourseToTeach(courseId);
-                        result=course!=null?true:false;
-                        String message = result ? "Course fetched successfully" : "No Course found";
-                        logger.info(message);
-                        break;
-
-                    case 2:
-                         courseId = inputReader.next();
-
-                        List<Student> studentList=getEnrolledStudents(courseId);
-                        result=studentList.isEmpty()?false:true;
-                        message = result ? "List of Students fetched successfully" : "Something Wrong";
-                        logger.info(message);
-                        break;
-
-                    case 3:
-
-                        int marks=Integer.parseInt(inputReader.next());
-                        String studentId=inputReader.next();
-                        courseId = inputReader.next();
+                    String courseId = inputReader.next();
 
 
-                        addGrades(courseId, (int) marks,studentId);
+                    Course course=selectCourseToTeach(courseId);
+                    result=course!=null?true:false;
+                    String message = result ? "Course fetched successfully" : "No Course found";
+                    logger.info(message);
+                    break;
 
-                        break;
+                case 2:
+                    courseId = inputReader.next();
 
-                    default:
-                        logger.info("No operations");
-                        break;
+                    List<Student> studentList=getEnrolledStudents(courseId);
+                    result=studentList.isEmpty()?false:true;
+                    message = result ? "List of Students fetched successfully" : "Something Wrong";
+                    logger.info(message);
+                    break;
 
-                }
+                case 3:
+
+                    int marks=Integer.parseInt(inputReader.next());
+                    String studentId=inputReader.next();
+                    courseId = inputReader.next();
+
+
+                    addGrades(courseId, (int) marks,studentId);
+
+                    break;
+
+                default:
+                    logger.info("No operations");
+                    break;
+
             }
         }
     }
-
+}

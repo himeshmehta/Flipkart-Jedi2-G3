@@ -1,7 +1,6 @@
 package com.flipkart.helper;
 
 import com.flipkart.Exception.InvalidDataException;
-import com.flipkart.Exception.InvalidPasswordException;
 
 public class UserValidator {
 
@@ -14,9 +13,17 @@ public class UserValidator {
         }
     }
 
-    public static void passwordValidator(String password) throws InvalidPasswordException{
-        if (password.length() < 8 || password.length() > 16) {
-            throw new InvalidPasswordException("Password length should be between 8 and 16");
+    public static void selfRegistrationValidator(String email,String password,String confirmPassword) throws InvalidDataException {
+        emailValidator(email);
+        passwordStrengthValidator(password);
+        if(confirmPassword  == null || !confirmPassword.equals(password)){
+            throw new InvalidDataException("Your confirm password do not match with actual password");
+        }
+    }
+
+    public static void passwordStrengthValidator(String password) throws InvalidDataException {
+        if(password == null || password.length() < 8){
+            throw new InvalidDataException("Invalid password. Password should contain minimum 8 digits.");
         }
     }
 }

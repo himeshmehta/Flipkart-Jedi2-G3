@@ -38,4 +38,14 @@ public interface AuthDBInterface {
      * @return Boolean
      */
     public Boolean approveStudent(String studentId);
+
+    /**
+     * This method is used for self registration of student and populate user table.
+     * @Param email :- email of new student
+     * @Param name :- name of new student
+     * @Param password :- name of new student
+     * @Throws Nothing
+     * @returns Boolean
+     */
+    public Boolean selfRegisterStudent(String email, String name,String password);
 }
