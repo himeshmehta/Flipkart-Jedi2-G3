@@ -8,12 +8,19 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class CourseCatalogServices implements CourseCatalogInterface{
+
+    private CourseCatalogDB catalogOperations;
+
+    public CourseCatalogServices(){
+        this.catalogOperations = new CourseCatalogDB();
+    }
+
     private static final Logger logger = Logger.getLogger(String.valueOf(CourseCatalogServices.class));
 
     @Override
     public Boolean updateCourseList(Course newCourse) {
-        Boolean result = CourseCatalogDB.updateCourseCatalog(newCourse);
         logger.info("Updating Course List");
+        Boolean result = catalogOperations.updateCourseCatalog(newCourse);
         return result;
     }
 

@@ -11,10 +11,11 @@ import java.util.List;
 public class StudentDashboard {
     Student student;
     CourseRegistrationServices courseRegistrationServices;
-
+    StudentDB studentDB;
     public StudentDashboard(Student student) {
         this.student = student;
         courseRegistrationServices = new CourseRegistrationServices();
+        this.studentDB = new StudentDB();
     }
 
     public Boolean registerCourse(Course course) {
@@ -45,6 +46,6 @@ public class StudentDashboard {
     }
 
     public List<Course> getRegisteredCourses() {
-        return StudentDB.registeredCourses(student);
+        return studentDB.registeredCourses(student);
     }
 }

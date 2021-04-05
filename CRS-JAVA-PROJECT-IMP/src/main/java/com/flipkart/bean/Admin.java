@@ -2,15 +2,22 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.Role;
 
-public class Admin {
+import javax.jws.soap.SOAPBinding;
 
-      private String id;
+public class Admin extends User {
 
-    public String getId() {
-        return id;
+    private String adminId;
+
+    public String getAdminId() {
+        return adminId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
+
+    public Admin(String name, String email, Role role, String adminId) {
+        super(name, email, role);
+        this.adminId = adminId;
     }
 }

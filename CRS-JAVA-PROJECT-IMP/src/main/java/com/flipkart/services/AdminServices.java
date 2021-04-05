@@ -1,27 +1,47 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.ApprovalFailedException;
 import com.flipkart.bean.User;
 import com.flipkart.dao.AuthDB;
-import com.flipkart.exception.UserAlreadyAddedException;
-import com.flipkart.exception.UserNotPresetException;
 
 import java.util.logging.Logger;
 
+
 public class AdminServices implements AdminInterface{
+    private AuthDB authDBOperations;
+    public AdminServices(){
+        this.authDBOperations = new AuthDB();
+    }
+
 
     private static final Logger logger = Logger.getLogger(String.valueOf(AdminServices.class));
 
     @Override
-    public Boolean addUser(User user,String password) throws UserAlreadyAddedException {
-        Boolean isUserAdded = AuthDB.addNewUser(user,password);
+    public Boolean addUser(User user,String password) {
+        Boolean isUserAdded = authDBOperations.addNewUser(user,password);
         logger.info("Adding User to the DB");
         return isUserAdded;
     }
 
     @Override
-    public Boolean removeUser(User user) throws UserNotPresetException {
-        Boolean isUserRemoved = AuthDB.removeExistingUser(user);
+    public Boolean removeUser(User user) {
+        Boolean isUserRemoved = authDBOperations.removeExistingUser(user);
         logger.info("Removing User to the DB");
         return isUserRemoved;
+    }
+
+    @Override
+    public Boolean approveStudent(final String studentId) throws ApprovalFailedException {
+            Boolean isStudentApproved = authDBOperations.approveStudent(studentId);
+            if(isStudentApproved){
+                // create an object of notification service
+                NotificationServices notificationServices = new NotificationServices();
+                notificationServices.approvalNotifier(studentId);
+                return Boolean.TRUE;
+            }
+            else {
+                String message = "Approval failed for Student " + studentId;
+                throw new ApprovalFailedException(message);
+            }
     }
 }

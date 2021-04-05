@@ -1,8 +1,7 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.ApprovalFailedException;
 import com.flipkart.bean.User;
-import com.flipkart.exception.UserAlreadyAddedException;
-import com.flipkart.exception.UserNotPresetException;
 
 public interface AdminInterface {
 
@@ -13,6 +12,9 @@ public interface AdminInterface {
      @Throws - UserAlreadyAddedException
      @returns - Boolean
 
+    public Boolean removeUser(User user);
+
+    public Boolean approveStudent(String studentId) throws ApprovalFailedException;
      **/
     public Boolean addUser(User user, String password) throws UserAlreadyAddedException;
 
