@@ -2,7 +2,7 @@ package com.flipkart.bean;
 import java.util.*;
 public class Course {
 
-   private  String CourseName;
+   private String CourseName;
    private String CourseId;
    private String ProfessorId ;
    private Boolean IsAvailable;
