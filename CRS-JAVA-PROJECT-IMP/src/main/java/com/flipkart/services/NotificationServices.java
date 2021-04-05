@@ -7,10 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class NotificationServices implements NotificationInterface{
 
     private NotificationDB notificationDB ;
+
+    private static final Logger logger = Logger.getLogger(String.valueOf(NotificationServices.class));
 
     public NotificationServices(){
         this.notificationDB = new NotificationDB();
@@ -19,17 +22,17 @@ public class NotificationServices implements NotificationInterface{
     @Override
     public void sendNotificationToUser(final Notification notification, final String userId){
         // send the notification to users
+        logger.info("Sending Notification to the User");
        try{
            notificationDB.sendNotificationToUser(notification,userId);
        } catch(Exception ex) {
-
-        }
+       }
 
     }
 
     @Override
     public void sendNotificationToUsers(final Notification notification, final List<String> userIDs){
-
+        logger.info("Sending Notification to the Users");
     }
 
     public void paymentNotifier(String refId,long amount,String userId){

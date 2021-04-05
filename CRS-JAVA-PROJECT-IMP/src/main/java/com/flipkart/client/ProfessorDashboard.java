@@ -81,12 +81,12 @@ public class ProfessorDashboard {
 
                     case 3:
 
-                        long marks=Long.parseLong(inputReader.next());
+                        int marks=Integer.parseInt(inputReader.next());
                         String studentId=inputReader.next();
                         courseId = inputReader.next();
 
 
-                        addGrades(courseId,marks,studentId);
+                        addGrades(courseId, (int) marks,studentId);
 
                         break;
 
