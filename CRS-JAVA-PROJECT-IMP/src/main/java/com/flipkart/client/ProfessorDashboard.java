@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 
 public class ProfessorDashboard {
 
-
     private Professor professor;
     private ProfessorServices professorServices;
     private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorDashboard.class));
