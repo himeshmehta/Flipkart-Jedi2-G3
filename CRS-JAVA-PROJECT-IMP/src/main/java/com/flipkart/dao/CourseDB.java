@@ -8,32 +8,38 @@ import com.flipkart.bean.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDB {
-    public static Boolean registerStudent(Student student , Course course) throws CourseRegistrationException {
+public class CourseDB implements CourseDBInterface{
+    public  Boolean registerStudent(Student student , Course course) throws CourseRegistrationException {
         return Boolean.TRUE;
     }
 
-    public static Boolean removeStudent (Student student , Course course) throws CourseRegistrationException {
+    public  Boolean removeStudent (Student student , Course course) throws CourseRegistrationException {
         return Boolean.TRUE;
     }
 
-    public static Boolean addStudent (Student student , Course course) throws CourseRegistrationException {
+    public  Boolean addStudent (Student student , Course course) throws CourseRegistrationException {
         return Boolean.TRUE;
     }
 
-    public static List<Student> getListOfRegisteredStudents (Course course) {
+    public  List<Student> getListOfRegisteredStudents (Course course) {
         return new ArrayList<>();
     }
 
-    public static Boolean setProfessor(Course course , Professor professor) {
+    public  Boolean setProfessor(Course course , Professor professor) {
         return Boolean.TRUE;
     }
 
-    public static Boolean setAvailability(Course course) {
+    public  Boolean setAvailability(Course course) {
         return Boolean.TRUE;
     }
 
-    public static Course getCourseDetails(String courseID){
+    public  Course getCourseDetails(String courseID){
         return null;
+    }
+
+    public List<Student> getListOfStudents(String courseId) {
+        List<Student> studentList = new ArrayList<Student>();
+
+        return studentList;
     }
 }

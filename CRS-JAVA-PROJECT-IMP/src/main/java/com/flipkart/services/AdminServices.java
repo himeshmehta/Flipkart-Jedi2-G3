@@ -6,21 +6,26 @@ import com.flipkart.dao.AuthDB;
 
 
 public class AdminServices implements AdminInterface{
+    private AuthDB authDBOperations;
+    public AdminServices(){
+        this.authDBOperations = new AuthDB();
+    }
+
     @Override
     public Boolean addUser(User user,String password) {
-        Boolean isUserAdded = AuthDB.addNewUser(user,password);
+        Boolean isUserAdded = authDBOperations.addNewUser(user,password);
         return isUserAdded;
     }
 
     @Override
     public Boolean removeUser(User user) {
-        Boolean isUserRemoved = AuthDB.removeExistingUser(user);
+        Boolean isUserRemoved = authDBOperations.removeExistingUser(user);
         return isUserRemoved;
     }
 
     @Override
     public Boolean approveStudent(final String studentId) throws ApprovalFailedException {
-            Boolean isStudentApproved = AuthDB.approveStudent(studentId);
+            Boolean isStudentApproved = authDBOperations.approveStudent(studentId);
             if(isStudentApproved){
                 // create an object of notification service
                 NotificationServices notificationServices = new NotificationServices();

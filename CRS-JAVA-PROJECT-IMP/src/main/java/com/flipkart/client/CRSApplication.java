@@ -1,13 +1,10 @@
 package com.flipkart.client;
 
-import com.flipkart.bean.Course;
-import com.flipkart.bean.Student;
+import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
-import com.flipkart.exception.AuthorizationException;
 import com.flipkart.services.AuthDBServices;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 

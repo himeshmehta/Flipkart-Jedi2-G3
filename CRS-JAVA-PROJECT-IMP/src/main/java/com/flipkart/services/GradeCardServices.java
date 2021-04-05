@@ -5,15 +5,16 @@ import com.flipkart.Exception.InvalidInputException;
 import com.flipkart.bean.GradeCard;
 import com.flipkart.dao.GradeCardDB;
 import com.flipkart.helper.CourseValidator;
-import com.flipkart.helper.ProfessorValidator;
-import com.flipkart.helper.StudentValidator;
 
 public class GradeCardServices implements GradeCardInterface{
 
     public GradeCardDB gradeCardDB;
+    public GradeCardServices(){
+        this.gradeCardDB = new GradeCardDB();
+    }
     @Override
     public GradeCard viewGradeCard(String studentId) {
-        GradeCard gradeCard = GradeCardDB.viewGradeCard(studentId);
+        GradeCard gradeCard = gradeCardDB.viewGradeCard(studentId);
         return gradeCard;
     }
 
@@ -24,7 +25,7 @@ public class GradeCardServices implements GradeCardInterface{
          * @Param professorId :- id of professor who want to add grades
          * @Param courseId :- id of course.
          * @Param grade :- It is an Int value which represent grade. 0 <= grade <= 100.
-         * @Param studentId :- id of student for grade need to add.
+         * @Param studentId :- id of student.
          * @return Nothing
          */
 
@@ -35,7 +36,7 @@ public class GradeCardServices implements GradeCardInterface{
             }
             // validate : can only add grade if courseId is being taught  by professor
             CourseValidator.studentAndProfValidation(courseId,professorId, studentId);
-            GradeCardDB.addGrade(professorId,courseId,grade,studentId);
+            gradeCardDB.addGrade(professorId,courseId,grade,studentId);
         } catch (InvalidInputException e) {
             throw new Exception(e.getMessage());
         }

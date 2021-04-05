@@ -2,7 +2,6 @@ package com.flipkart.services;
 
 import com.flipkart.bean.Notification;
 import com.flipkart.dao.NotificationDB;
-import com.sun.tools.corba.se.idl.constExpr.Not;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,17 +10,17 @@ import java.util.UUID;
 
 public class NotificationServices implements NotificationInterface{
 
-
+    private NotificationDB notificationDB ;
 
     public NotificationServices(){
-
+        this.notificationDB = new NotificationDB();
     }
 
     @Override
     public void sendNotificationToUser(final Notification notification, final String userId){
         // send the notification to users
        try{
-           NotificationDB.sendNotificationToUSer(notification,userId);
+           notificationDB.sendNotificationToUser(notification,userId);
        } catch(Exception ex) {
 
         }

@@ -7,8 +7,10 @@ import com.flipkart.dao.CourseDB;
 
 public class CourseValidator {
 
+    private static CourseDB courseDB = new CourseDB();
+
     public static void studentAndProfValidation(String courseId,String professorId, String studentId) throws InvalidInputException {
-        Course courseDetails = CourseDB.getCourseDetails(courseId);
+        Course courseDetails = courseDB.getCourseDetails(courseId);
 
         // Course should be teach by professor
         if(!courseDetails.getAvailable()){
