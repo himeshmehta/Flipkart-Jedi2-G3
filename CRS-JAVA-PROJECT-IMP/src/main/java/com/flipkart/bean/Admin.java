@@ -2,8 +2,6 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.Role;
 
-import javax.jws.soap.SOAPBinding;
-
 public class Admin extends User {
 
     private String adminId;

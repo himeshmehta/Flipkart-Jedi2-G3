@@ -22,8 +22,8 @@ public class UserValidator {
     }
 
     public static void passwordStrengthValidator(String password) throws InvalidDataException {
-        if( password == null || (password != null && password.length() < 5)){
-            throw new InvalidDataException("Invalid password. Password should contain minimum 5 digits.");
+        if(password == null || password.length() < 8){
+            throw new InvalidDataException("Invalid password. Password should contain minimum 8 digits.");
         }
     }
 }
