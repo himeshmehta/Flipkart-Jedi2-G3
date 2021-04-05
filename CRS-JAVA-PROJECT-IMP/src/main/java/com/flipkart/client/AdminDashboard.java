@@ -41,8 +41,9 @@ public class AdminDashboard {
         } catch (InvalidDataException e) {
             e.printStackTrace();
         } catch (ApprovalFailedException e) {
-            throw  new Exception(e.getMessage()) ;
+            e.printStackTrace();
         }
+
 
         return isApproved;
     }
