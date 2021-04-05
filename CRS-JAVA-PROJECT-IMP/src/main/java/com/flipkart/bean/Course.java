@@ -7,6 +7,15 @@ public class Course {
    private String ProfessorId ;
    private Boolean IsAvailable;
    private List<Student> StudentList ;
+   private Long fee;
+
+    public Long getFee() {
+        return fee;
+    }
+
+    public void setFee(Long fee) {
+        this.fee = fee;
+    }
 
     public String getCourseName() {
         return CourseName;
