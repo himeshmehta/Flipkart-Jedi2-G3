@@ -14,7 +14,7 @@ public interface AuthDBInterface  {
      @returns - User
 
      **/
-    public User authenticateUser(String userId, String password) throws AuthorizationException;
+    public User authenticateUser(int userId, String password) throws AuthorizationException;
 
     /**
      * This method is used by student for self registration. Once registration is complete then student must wait till he/she get approval from admin.

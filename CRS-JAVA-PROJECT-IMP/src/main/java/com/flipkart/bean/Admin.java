@@ -4,26 +4,11 @@ import com.flipkart.constants.Role;
 
 public class Admin extends User {
 
-    private String adminId;
-
-    /**
-     * Gets the admin id
-     * @return admin id
-     */
-    public String getAdminId() {
-        return adminId;
+    public Admin(String name, String email, Role role, int userId) {
+        super(name, email, role,userId);
     }
 
-    /**
-     * Sets the admin id
-     * @param adminId admin id
-     */
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-
-    public Admin(String name, String email, Role role, String adminId) {
-        super(name, email, role);
-        this.adminId = adminId;
+    public Admin(User user){
+        super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
     }
 }

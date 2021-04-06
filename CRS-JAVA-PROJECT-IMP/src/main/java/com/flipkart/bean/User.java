@@ -9,13 +9,17 @@ public class User {
     private String name;
     private String email;
     private Role role;
-    private String userId;
+    private int userId;
+
+    public User() {
+
+    }
 
     /**
      *  Gets user id
      * @return the user id
      */
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -23,7 +27,7 @@ public class User {
      * Sets the user id
      * @param userId the user id
      */
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -49,7 +53,7 @@ public class User {
         this.role = role;
     }
 
-    public User(String name,String email,Role role,String userId){
+    public User(String name,String email,Role role,int userId){
         this.email = email;
         this.name = name;
         this.role = role;

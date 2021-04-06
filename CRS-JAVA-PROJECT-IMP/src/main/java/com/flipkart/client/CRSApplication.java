@@ -33,8 +33,7 @@ public class CRSApplication {
             inputReader.close();
         } catch(CRSException e){
             inputReader.close();
-            logger.info("Error");
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
     }
 }

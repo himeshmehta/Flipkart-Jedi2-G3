@@ -15,7 +15,7 @@ class CreateTableScript {
         try {
             connection = DBUtil.getConnection();
             System.out.println(1);
-
+            DropTables(connection,stmt);
             // user table
             String table = CreateTable.userTable;
             stmt = connection.prepareStatement(table);
@@ -44,6 +44,19 @@ class CreateTableScript {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    private static void DropTables(Connection conn,PreparedStatement stmt) throws SQLException {
+        String drop = "DROP TABLE IF EXISTS ";
+        String[] tables ={"user", "student","admin","professor"};
+
+        for(String table : tables){
+            String t = drop + table;
+            stmt = conn.prepareStatement(t);
+            stmt.executeUpdate();
+            stmt.close();
+        }
+
     }
 }
 

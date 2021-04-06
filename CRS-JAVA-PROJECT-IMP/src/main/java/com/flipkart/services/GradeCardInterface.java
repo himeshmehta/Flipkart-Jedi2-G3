@@ -1,6 +1,5 @@
 package com.flipkart.services;
 
-import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.GradeCard;
 
 public interface GradeCardInterface {
@@ -20,5 +19,5 @@ public interface GradeCardInterface {
      @Throws - Nothing
      @returns - Boolean
      **/
-    public void addGrade(String professorId,String courseId, Integer grade,String studentId) throws Exception;
+    public void addGrade(int professorId,String courseId, Integer grade,String studentId) throws Exception;
 }

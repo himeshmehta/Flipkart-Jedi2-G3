@@ -15,6 +15,7 @@ public class SQLQueriesConstants {
     public static final String GET_COURSE_FOR_STUDENT = "select courseid from registeredcourses where studentid = ?";
     public static final String DROP_COURSE_FOR_STUDENT = "delete from registeredcourses where courseid = ? and studentid = ?";
     public static final String MAKE_PAYMENT_QUERY = "insert into payments (studentid, feespaid, paymentdate, paymentmethod) values(?, ?, ?, ?)";
+    public static final String SELF_REGISTER_QUERY = "insert into user (email, name, password, isApproved, role) values(?,?,?,?,?)";
 
     // Professor related Queries
     public static final String GET_PROFESSOR_DETAILS = "select * from professor where id = ?";
@@ -32,8 +33,10 @@ public class SQLQueriesConstants {
     public static final String VERIFY_USERNAME_AND_USERID = "select count(*) as c from user where username = ? OR userid = ?";
     public static final String GET_USER_DETAILS = "select userid from user where username = ?";
 
+    // Student table Query
+    public static final String ADD_STUDENT = "insert into student (email,name) values(?,?)";
 
-
-
+    // Authenticate Query
+    public static final String AUTHORISE_USER = "select * from user where userId = ?";
 
 }

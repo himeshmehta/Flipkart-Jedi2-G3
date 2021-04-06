@@ -10,7 +10,7 @@ public class GradeCardDB implements GradeCardDBInterface{
     }
 
     // TODO :- Complete the logic of adding grades
-    public  void addGrade(String profId,String courseId, Integer grade,String studentId){
+    public  void addGrade(int profId,String courseId, Integer grade,String studentId){
 
     }
 }

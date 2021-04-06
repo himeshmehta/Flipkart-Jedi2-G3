@@ -11,10 +11,13 @@ public class Professor extends User{
 
     private List<Course> teachingCourses;
 
-    public Professor(String name, String email, Role role) {
-        super(name, email, role);
+    public Professor(String name, String email, Role role,int userId) {
+        super(name, email, role, userId);
     }
 
+    public Professor(User user){
+        super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
+    }
     /**
      * Gets the list of courses taught by professor
      * @return list of courses
