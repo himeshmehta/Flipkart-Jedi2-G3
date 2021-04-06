@@ -1,6 +1,8 @@
 package com.flipkart.services;
 
 import com.flipkart.Exception.ApprovalFailedException;
+import com.flipkart.Exception.CRSException;
+import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.User;
 
 public interface AdminInterface {
@@ -16,17 +18,17 @@ public interface AdminInterface {
 
     public Boolean approveStudent(String studentId) throws ApprovalFailedException;
      **/
-    public Boolean addUser(User user, String password);
+    public Boolean addUser(User user, String password) throws CRSException, InvalidDataException;
 
     /**
      *
      This method is used to removes the User to the Database.
-     @Param - User
+     @Param - UserId
      @Throws - UserNotPresetException
      @returns - Boolean
 
      **/
-    public Boolean removeUser(User user);
+    public void removeUser(int userId) throws CRSException;
 
     /**
      *
@@ -36,5 +38,5 @@ public interface AdminInterface {
      @returns - Boolean
 
      **/
-    public Boolean approveStudent(final String studentId) throws ApprovalFailedException;
+    public void approveStudent(final int studentId) throws ApprovalFailedException, CRSException;
 }

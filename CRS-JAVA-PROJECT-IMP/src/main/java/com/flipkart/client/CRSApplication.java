@@ -1,7 +1,6 @@
 package com.flipkart.client;
 
 import com.flipkart.Exception.CRSException;
-import com.flipkart.bean.User;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -17,11 +16,9 @@ public class CRSApplication {
             System.out.println("Do you want to login or signup?");
             String loginOrSignup = inputReader.nextLine();
 
-            User user = null;
-            switch(loginOrSignup){
+            switch(loginOrSignup.toLowerCase()){
                 case "login":
-                    user = LoginSignupDashboard.LoginUser();
-                    System.out.println(user.getRole());
+                    LoginSignupDashboard.LoginUser();
                     break;
                 case "signup":
                     LoginSignupDashboard.SignUpUser();

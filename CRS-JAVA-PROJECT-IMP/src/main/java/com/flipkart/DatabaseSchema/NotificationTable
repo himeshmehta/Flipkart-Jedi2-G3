@@ -1,7 +1,6 @@
-create table Notification {
-    notification_id VARCHAR(100) NOT NULL,
+create table notification (
+    notification_id INT PRIMARY KEY AUTO_INCREMENT,
     description VARCHAR(255) NOT NULL,
-    receiver_id VARCHAR(100) NOT_NULL,
-    `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
-    PRIMARY key(notification_id)
-};
+    receiver_id INT NOT NULL,
+    time_column TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

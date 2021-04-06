@@ -8,9 +8,9 @@ public class Payment {
     private String referenceId;
     private long amount;
     private String paymentDescription;
-    private String userId;
+    private int userId;
 
-    public Payment(String refId, Long amount, String paymentDescription,String userId) {
+    public Payment(String refId, Long amount, String paymentDescription,int userId) {
         this.referenceId = refId;
         this.amount = amount;
         this.paymentDescription = paymentDescription;
@@ -21,7 +21,7 @@ public class Payment {
      * Gets the user id
      * @return the user id
      */
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -29,7 +29,7 @@ public class Payment {
      * Sets the user id
      * @param userId the user id
      */
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

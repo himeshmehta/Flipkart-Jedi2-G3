@@ -13,42 +13,49 @@ import java.util.Scanner;
 public class LoginSignupDashboard {
     private static AuthDBServices authServices = new AuthDBServices();
 
-    public static User LoginUser() throws CRSException {
+    public static void LoginUser() throws CRSException {
         User user = null;
-        Scanner inputReader = null;
-        try{
-            inputReader = new Scanner(System.in);
-            System.out.println("Enter your userId");
-            int userId = inputReader.nextInt();
-            System.out.println("Enter your password");
-            String password = inputReader.next();
+        Scanner inputReader = new Scanner(System.in);
 
-            // Authenticate user
-            user = authServices.authenticateUser(userId,password);
+        while(true){
+            try{
+                System.out.println("Enter your userId");
+                int userId = inputReader.nextInt();
+                System.out.println("Enter your password");
+                String password = inputReader.next();
 
-            Role roleOfUser = user.getRole();
-            // Now go to different dashboard according to different roles
+                // Authenticate user
+                user = authServices.authenticateUser(userId,password);
 
-            switch (roleOfUser){
-                case ADMIN:
-                    new AdminDashboard(new Admin(user)).helper();
-                    break;
-                case STUDENT:
-                    new StudentDashboard(new Student(user)).helper();
-                    break;
-                case PROFESSOR:
-                    new ProfessorDashboard(new Professor(user)).helper();
-                    break;
-                default:
-                    throw new CRSException("You can not log in here.");
+                Role roleOfUser = user.getRole();
+                // Now go to different dashboard according to different roles
+
+                switch (roleOfUser){
+                    case ADMIN:
+                        new AdminDashboard(new Admin(user)).helper();
+                        break;
+                    case STUDENT:
+                        new StudentDashboard(new Student(user)).helper();
+                        break;
+                    case PROFESSOR:
+                        new ProfessorDashboard(new Professor(user)).helper();
+                        break;
+                    default:
+                        throw new CRSException("You can not log in here.");
+                }
+            } catch (Exception e) {
+                System.out.println("ERROR --> " + e.getMessage());
             }
-            inputReader.close();
-        } catch (Exception e) {
-            inputReader.close();
-            throw new CRSException(e.getMessage());
-        }
 
-        return user;
+            // Ask is user need to log in again
+            System.out.println("Do you want to login again? Enter YES or NO.");
+            String yesOrNo = inputReader.next();
+
+            if("NO".equals(yesOrNo.toLowerCase())){
+                System.out.println("Exiting from Login dashboard");
+                break;
+            }
+        }
     }
 
     public static void SignUpUser() throws CRSException {

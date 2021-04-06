@@ -1,5 +1,7 @@
 package com.flipkart.dao;
 
+import com.flipkart.Exception.CRSException;
+import com.flipkart.Exception.NotificationException;
 import com.flipkart.bean.Notification;
 
 public interface NotificationDBInterface {
@@ -12,5 +14,5 @@ public interface NotificationDBInterface {
      * @Throws Nothing
      * @return Nothing
      */
-    public  Boolean sendNotificationToUser(Notification notification, String userId);
+    public  void sendNotificationToUser(Notification notification, int userId) throws NotificationException, CRSException;
 }

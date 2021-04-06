@@ -1,5 +1,7 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.CRSException;
+import com.flipkart.Exception.NotificationException;
 import com.flipkart.Exception.PaymentException;
 import com.flipkart.bean.Offline;
 import com.flipkart.bean.Online;
@@ -18,7 +20,7 @@ public class PaymentServices implements PaymentInterface{
     private static final Logger logger = Logger.getLogger(String.valueOf(PaymentServices.class));
 
     @Override
-    public void makeOnlinePayment(String paymentDescription, long amount, String card_number, String name_on_card, String cvv, PaymentMode onlinePaymentMode, String userId) {
+    public void makeOnlinePayment(String paymentDescription, long amount, String card_number, String name_on_card, String cvv, PaymentMode onlinePaymentMode, int userId) throws CRSException {
         try {
             // first validate all fields related to payment
             PaymentValidator.onlinePaymentValidator(amount,name_on_card,card_number,cvv);
@@ -31,13 +33,13 @@ public class PaymentServices implements PaymentInterface{
             // Notify student once payment is confirm(payment is inserted into data)
             notificationServices.paymentNotifier(refId, amount, userId);
 
-        } catch (PaymentException e) {
-            e.printStackTrace();
+        } catch (PaymentException | NotificationException e) {
+            throw new CRSException(e.getMessage());
         }
     }
 
     @Override
-    public void makeOfflinePayment(String paymentDescription, long amount, Bank bank, String userId) {
+    public void makeOfflinePayment(String paymentDescription, long amount, Bank bank, int userId) throws CRSException {
         try {
             logger.info("Offline Payment Initiated");
           if(amount < 0 ) throw new PaymentException("Amount can not be negative");
@@ -48,8 +50,8 @@ public class PaymentServices implements PaymentInterface{
           // Notify student once payment is confirm(payment is inserted into data)
 
           notificationServices.paymentNotifier(refID, amount, userId);
-        } catch (PaymentException e) {
-            e.printStackTrace();
+        } catch (PaymentException | NotificationException e) {
+            throw new CRSException(e.getMessage());
         }
     }
 }

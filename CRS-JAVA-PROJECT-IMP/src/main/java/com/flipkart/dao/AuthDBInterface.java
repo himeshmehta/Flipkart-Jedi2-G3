@@ -1,6 +1,8 @@
 package com.flipkart.dao;
 
 import com.flipkart.Exception.AuthorizationException;
+import com.flipkart.Exception.CRSException;
+import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.User;
 
 public interface AuthDBInterface {
@@ -21,15 +23,15 @@ public interface AuthDBInterface {
      * @Throws AuthorizationException
      * @return Boolean
      */
-    public Boolean addNewUser(User user,String password);
+    public Boolean addNewUser(User user,String password) throws CRSException;
 
     /**
      * This method is used by admin to remove existing user(student or professor).
-     * @Param user :- User object.
+     * @Param userId :- id of user.
      * @Throws AuthorizationException
      * @return Boolean
      */
-    public Boolean removeExistingUser(User user);
+    public void removeExistingUser(int userId) throws CRSException;
 
     /**
      * This method is used by admin to approve registration of student.
@@ -37,7 +39,7 @@ public interface AuthDBInterface {
      * @Throws AuthorizationException
      * @return Boolean
      */
-    public Boolean approveStudent(String studentId);
+    public void approveStudent(int studentId) throws CRSException;
 
     /**
      * This method is used for self registration of student and populate user table.
@@ -48,4 +50,12 @@ public interface AuthDBInterface {
      * @returns Boolean
      */
     public Boolean selfRegisterStudent(String email, String name,String password);
+
+    /**
+     * This method is used to get user details except password.
+     * @Param userId :- userId.
+     * @Throws AuthorizationException
+     * @return Boolean
+     */
+    public User getUserDetails(int userId) throws InvalidDataException, CRSException;
 }
