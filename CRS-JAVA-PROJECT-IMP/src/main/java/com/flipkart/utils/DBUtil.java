@@ -17,7 +17,6 @@ public class DBUtil {
      @Param - None
      @Throws - Nothing
      @returns - Connection with the server
-
      **/
 
     public static Connection getConnection() {
