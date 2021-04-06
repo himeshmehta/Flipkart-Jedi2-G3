@@ -2,6 +2,7 @@ package com.flipkart.client;
 
 import com.flipkart.Exception.ApprovalFailedException;
 import com.flipkart.Exception.InvalidDataException;
+import com.flipkart.bean.Admin;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
 import com.flipkart.helper.UserValidator;
@@ -11,10 +12,10 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class AdminDashboard {
-    User admin;
+    Admin admin;
     AdminServices adminService;
     private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
-    public AdminDashboard(User admin){
+    public AdminDashboard(Admin admin){
         this.admin = admin;
         adminService = new AdminServices();
     }
