@@ -7,8 +7,8 @@ import java.util.*;
 public class Course {
 
    private String CourseName;
-   private String CourseId;
-   private String ProfessorId ;
+   private int CourseId;
+   private int ProfessorId ;
    private Boolean IsAvailable;
    private List<Student> StudentList ;
    private Long fee;
@@ -49,7 +49,7 @@ public class Course {
      * Gets the course id
      * @return
      */
-    public String getCourseId() {
+    public int getCourseId() {
         return CourseId;
     }
 
@@ -57,7 +57,7 @@ public class Course {
      * Sets the course id
      * @param courseId
      */
-    public void setCourseId(String courseId) {
+    public void setCourseId(int courseId) {
         CourseId = courseId;
     }
 
@@ -65,7 +65,7 @@ public class Course {
      * Gets the professor id
      * @return
      */
-    public String getProfessorId() {
+    public int getProfessorId() {
         return ProfessorId;
     }
 
@@ -73,7 +73,7 @@ public class Course {
      * Sets the professor id
      * @param professorId
      */
-    public void setProfessorId(String professorId) {
+    public void setProfessorId(int professorId) {
         ProfessorId = professorId;
     }
 

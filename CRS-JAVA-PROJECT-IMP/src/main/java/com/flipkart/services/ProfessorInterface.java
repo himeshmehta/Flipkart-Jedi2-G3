@@ -14,7 +14,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - Course
      **/
-    public Course selectCourseToTeach(String courseId);
+    public Course selectCourseToTeach(Integer courseId);
 
     /**
      *
@@ -23,7 +23,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - Nothing
      **/
-    public void addGrades(String courseId,long marks,String studentId);
+    public void addGrades(Integer courseId,long marks,Integer studentId);
 
     /**
      *
@@ -32,7 +32,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - List of Students
      **/
-    public List<Student> getEnrolledStudents(String courseId);
+    public List<Student> getEnrolledStudents(Integer courseId);
 
 
 }

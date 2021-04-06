@@ -32,14 +32,14 @@ public class ProfessorServices implements ProfessorInterface{
      * @param courseId The course which is taught by professor
      */
 
-      public  Course selectCourseToTeach(String courseId)
+      public  Course selectCourseToTeach(Integer courseId)
       {
           List<Course> courseList=courseCatalogServices.viewCourseList();
           Course course=new Course();
           logger.info("Fetching Course List");
           for(Course cs:courseList)
           {
-              if(cs.getCourseId().equals(courseId))
+              if(cs.getCourseId()==courseId)
               {
                   course=cs;
               }
@@ -53,7 +53,7 @@ public class ProfessorServices implements ProfessorInterface{
      * @param courseId The course for list of students needed
      */
 
-      public List<Student> getEnrolledStudents(String courseId)
+      public List<Student> getEnrolledStudents(Integer courseId)
       {
                  List<Student> studentList=new ArrayList<Student>();
 
@@ -71,7 +71,7 @@ public class ProfessorServices implements ProfessorInterface{
      * @param courseId The course for which the student is being graded
      */
 
-    public void addGrades(String courseId,long marks,String studentId)
+    public void addGrades(Integer courseId,long marks,Integer studentId)
     {
               //todo
     }

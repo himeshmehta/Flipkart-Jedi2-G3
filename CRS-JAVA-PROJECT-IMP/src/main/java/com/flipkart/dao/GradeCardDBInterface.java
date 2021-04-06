@@ -9,7 +9,7 @@ public interface GradeCardDBInterface {
      * @Throws Nothing
      * @return GradeCard object
      */
-    public  GradeCard viewGradeCard(String studentId);
+    public  GradeCard viewGradeCard(Integer studentId);
 
     /**
      * This method is used by professor to add grade for a course in grade card of student.
@@ -20,5 +20,5 @@ public interface GradeCardDBInterface {
      * @Throws Nothing
      * @return Nothing
      */
-    public  void addGrade(int profId,String courseId, Integer grade,String studentId);
+    public  void addGrade(Integer profId,Integer courseId, Integer grade,Integer studentId);
 }

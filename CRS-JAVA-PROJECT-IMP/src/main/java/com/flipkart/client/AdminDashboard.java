@@ -32,7 +32,7 @@ public class AdminDashboard {
         return isUserRemoved;
     }
 
-    public Boolean addNewCourse(String courseId , String courseName , Long fee){
+    public Boolean addNewCourse(int courseId , String courseName , Long fee){
         return Boolean.TRUE;
     }
 
@@ -56,15 +56,20 @@ public class AdminDashboard {
         Boolean result;
 
             while (true) {
-                logger.info("Select operation to perform");
+                System.out.println("Select operation to perform");
+                System.out.println("1. Add User");
+                System.out.println("2. Remove User");
+                System.out.println("3. Add New Course");
                 int operation = inputReader.nextInt();
                 if (operation == -1) break;
 
                 switch (operation) {
                     case 1:
-
+                        System.out.println("Enter name");
                         String name = inputReader.next();
+                        System.out.println("Enter email");
                         String email = inputReader.next();
+                        System.out.println("Enter Password");
                         String passs = inputReader.next();
 
                         result = addUser(email, passs, Role.STUDENT, name);
@@ -75,7 +80,9 @@ public class AdminDashboard {
 
                     case 2:
 
+                        System.out.println("Enter name");
                         name = inputReader.next();
+                        System.out.println("Enter email");
                         email = inputReader.next();
 
                         result = removeUser(email, Role.STUDENT, name);
@@ -86,7 +93,9 @@ public class AdminDashboard {
 
                     case 3:
 
-                        String courseId = inputReader.next();
+                        System.out.println("Enter Course ID");
+                        int courseId = inputReader.nextInt();
+                        System.out.println("Enter Course Name");
                         String courseName = inputReader.next();
                         long fee=inputReader.nextLong();
 

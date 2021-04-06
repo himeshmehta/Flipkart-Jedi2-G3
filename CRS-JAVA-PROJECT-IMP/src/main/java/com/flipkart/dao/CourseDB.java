@@ -34,11 +34,11 @@ public class CourseDB implements CourseDBInterface{
         return Boolean.TRUE;
     }
 
-    public  Course getCourseDetails(String courseID){
+    public  Course getCourseDetails(Integer courseID){
         return null;
     }
 
-    public List<Student> getListOfStudents(String courseId) {
+    public List<Student> getListOfStudents(Integer courseId) {
         List<Student> studentList = new ArrayList<Student>();
 
         return studentList;

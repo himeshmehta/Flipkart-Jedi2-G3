@@ -16,14 +16,14 @@ public class GradeCardServices implements GradeCardInterface{
     }
     private static final Logger logger = Logger.getLogger(String.valueOf(GradeCardServices.class));
     @Override
-    public GradeCard viewGradeCard(String studentId) {
+    public GradeCard viewGradeCard(Integer studentId) {
         GradeCard gradeCard = gradeCardDB.viewGradeCard(studentId);
         logger.info("Fetching GradeCard");
         return gradeCard;
     }
 
     @Override
-    public void addGrade(int professorId, String courseId, Integer grade,String studentId) throws Exception {
+    public void addGrade(Integer professorId, Integer courseId, Integer grade,Integer studentId) throws Exception {
 
         logger.info("Adding Grades");
         try {

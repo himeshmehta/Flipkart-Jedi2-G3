@@ -4,13 +4,13 @@ import com.flipkart.bean.GradeCard;
 
 public class GradeCardDB implements GradeCardDBInterface{
 
-    public  GradeCard viewGradeCard(String studentId){
+    public  GradeCard viewGradeCard(Integer studentId){
         // logic to get grade-card
         return null;
     }
 
     // TODO :- Complete the logic of adding grades
-    public  void addGrade(int profId,String courseId, Integer grade,String studentId){
+    public  void addGrade(Integer profId,Integer courseId, Integer grade,Integer studentId){
 
     }
 }

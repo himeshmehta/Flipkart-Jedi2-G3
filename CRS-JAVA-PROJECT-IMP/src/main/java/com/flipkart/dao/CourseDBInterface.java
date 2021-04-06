@@ -67,7 +67,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Course getCourseDetails(String courseID);
+    public  Course getCourseDetails(Integer courseID);
 
     /**
      * This method is used to get the list of student.
@@ -75,5 +75,5 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return List<Student> :- List of student registered for this course.
      */
-    public  List<Student> getListOfStudents(String courseId);
+    public  List<Student> getListOfStudents(Integer courseId);
 }
