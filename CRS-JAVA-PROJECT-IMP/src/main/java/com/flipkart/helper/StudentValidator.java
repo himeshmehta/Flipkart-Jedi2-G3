@@ -9,11 +9,11 @@ import java.util.List;
 public class StudentValidator {
 
     private static CourseCatalog courseCatalog = new CourseCatalog();
-    public static void studentCourseValidator(String studentId,String courseId) throws InvalidCourseSelectionException{
+    public static void studentCourseValidator(String studentId,int courseId) throws InvalidCourseSelectionException{
         List<Course> availableCourses = courseCatalog.getAvailableCourses();
         boolean isAvailable = false;
         for (Course course : availableCourses) {
-            if (course.getCourseId().equals(courseId)) {
+            if (course.getCourseId()==courseId) {
                 isAvailable = true;
                 break;
             }

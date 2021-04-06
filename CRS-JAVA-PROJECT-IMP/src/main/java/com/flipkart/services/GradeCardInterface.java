@@ -10,7 +10,7 @@ public interface GradeCardInterface {
      @Throws - Nothing
      @returns - GradeCard
      **/
-    public GradeCard viewGradeCard(String studentId);
+    public GradeCard viewGradeCard(Integer studentId);
 
     /**
      *
@@ -19,5 +19,5 @@ public interface GradeCardInterface {
      @Throws - Nothing
      @returns - Boolean
      **/
-    public void addGrade(int professorId,String courseId, Integer grade,String studentId) throws Exception;
+    public void addGrade(Integer professorId,Integer courseId, Integer grade,Integer studentId) throws Exception;
 }

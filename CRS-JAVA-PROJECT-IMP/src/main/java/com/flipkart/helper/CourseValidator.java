@@ -9,7 +9,7 @@ public class CourseValidator {
 
     private static CourseDB courseDB = new CourseDB();
 
-    public static void studentAndProfValidation(String courseId,int professorId, String studentId) throws InvalidInputException {
+    public static void studentAndProfValidation(Integer courseId,Integer professorId, Integer studentId) throws InvalidInputException {
         Course courseDetails = courseDB.getCourseDetails(courseId);
 
         // Course should be teach by professor

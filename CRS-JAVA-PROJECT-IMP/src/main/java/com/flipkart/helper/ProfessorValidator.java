@@ -9,10 +9,10 @@ public class ProfessorValidator {
 
     private static CourseDB courseDB = new CourseDB();
 
-    public static void professorCourseValidator(String professorId,String courseId) throws InvalidCourseSelectionException{
+    public static void professorCourseValidator(String professorId,Integer courseId) throws InvalidCourseSelectionException{
         Course course = courseDB.getCourseDetails(courseId);
-        String courseProfessorId = course.getProfessorId();
-        if (courseProfessorId.length() > 0 && !courseProfessorId.equals(professorId)) {
+        Integer courseProfessorId = course.getProfessorId();
+        if (courseProfessorId!=null && !courseProfessorId.equals(professorId)) {
             throw new InvalidCourseSelectionException("Unauthorized Operation attempted");
         }
     }

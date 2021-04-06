@@ -6,7 +6,7 @@ import com.flipkart.dao.CourseDB;
 
 public class AdminValidator {
     private static CourseDB courseDB = new CourseDB();
-    public static void AdminCourseValidator(String courseId) throws CourseAlreadyExistException{
+    public static void AdminCourseValidator(Integer courseId) throws CourseAlreadyExistException{
         Course course = courseDB.getCourseDetails(courseId);
         if (course != null) {
             throw new CourseAlreadyExistException("Course Already Added");
