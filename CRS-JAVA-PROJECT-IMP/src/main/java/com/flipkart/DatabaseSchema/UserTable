@@ -1,9 +1,9 @@
-create table User {
+create table if not exists User {
+    userId INT NOT NULL,
     email VARCHAR(100) NOT NULL,
     name VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT_NULL,
-    approved Boolean() NOT NULL,
-    `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
-    Role enum()...
-    PRIMARY key(email)
+    isApproved bit() NOT NULL,
+    Role enum('Student', 'Admin', 'Professor')
+    PRIMARY key(userId)
 };
