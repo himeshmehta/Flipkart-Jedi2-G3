@@ -1,11 +1,12 @@
 package com.flipkart.utils;
 
 
+import com.flipkart.constants.CreateTable;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-public class CreateTable {
+class CreateTableScript {
     public static void main(String[] args) {
 
         Connection connection = null;
@@ -14,22 +15,34 @@ public class CreateTable {
         try {
             connection = DBUtil.getConnection();
             System.out.println(1);
-            String createTable = "create table if not exists User (\n" +
-                    "userId VARCHAR(100) NOT NULL,\n" +
-                    "email VARCHAR(100) NOT NULL,\n" +
-                    "name VARCHAR(100) NOT NULL,\n" +
-                    "password VARCHAR(100) NOT NULL,\n" +
-                    "isApproved Boolean,\n" +
-                    "role enum('Student', 'Admin', 'Professor'),\n" +
-                    "PRIMARY KEY (userId)\n" +
-                    ");";
 
-            stmt = connection.prepareStatement(createTable);
+            // user table
+            String table = CreateTable.userTable;
+            stmt = connection.prepareStatement(table);
             System.out.println(2);
             int rs = stmt.executeUpdate();
             System.out.println(3);
             System.out.println(rs);
             stmt.close();
+
+            table = CreateTable.studentTable;
+            stmt = connection.prepareStatement(table);
+            rs = stmt.executeUpdate();
+            System.out.println(rs);
+            stmt.close();
+
+            table = CreateTable.adminTable;
+            stmt = connection.prepareStatement(table);
+            rs = stmt.executeUpdate();
+            System.out.println(rs);
+            stmt.close();
+
+            table = CreateTable.profTable;
+            stmt = connection.prepareStatement(table);
+            rs = stmt.executeUpdate();
+            System.out.println(rs);
+            stmt.close();
+
             connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

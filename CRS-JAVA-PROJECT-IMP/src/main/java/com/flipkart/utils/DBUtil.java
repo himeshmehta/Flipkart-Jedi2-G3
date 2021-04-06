@@ -28,7 +28,7 @@ public class DBUtil {
             try {
                 Properties prop = new Properties();
                 System.out.println('a');
-                InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("/Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS-JAVA-PROJECT-IMP/src/config.properties");
+                InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
                 System.out.println(inputStream);
                 prop.load(inputStream);
                 System.out.println('c');
