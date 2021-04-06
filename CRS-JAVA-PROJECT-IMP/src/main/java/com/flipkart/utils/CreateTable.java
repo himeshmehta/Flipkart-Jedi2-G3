@@ -15,7 +15,7 @@ class CreateTableScript {
         try {
             connection = DBUtil.getConnection();
             System.out.println(1);
-            DropTables(connection,stmt);
+            // DropTables(connection,stmt);
             // user table
             String table = CreateTable.userTable;
             stmt = connection.prepareStatement(table);
@@ -36,6 +36,11 @@ class CreateTableScript {
             stmt.close();
 
             table = CreateTable.profTable;
+            stmt = connection.prepareStatement(table);
+            rs = stmt.executeUpdate();
+            stmt.close();
+
+            table = CreateTable.notificationTable;
             stmt = connection.prepareStatement(table);
             rs = stmt.executeUpdate();
             stmt.close();

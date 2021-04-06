@@ -30,7 +30,7 @@ public class AuthDBServices implements AuthDBInterface{
     public Boolean selfRegisterStudent(String email, String name, String password, String confirmPassword) throws CRSException {
         Boolean isSignedUp = false;
         try{
-            UserValidator.selfRegistrationValidator(email,password,confirmPassword);
+            UserValidator.selfRegisterValidator(email,password,confirmPassword);
             isSignedUp = authDBOperations.selfRegisterStudent(email,name,password);
         } catch (InvalidDataException e) {
             throw new CRSException(e.getMessage());

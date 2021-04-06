@@ -1,11 +1,14 @@
 package com.flipkart.client;
 
-import com.flipkart.Exception.ApprovalFailedException;
+import com.flipkart.Exception.CRSException;
+import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
 import com.flipkart.services.AdminServices;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -20,13 +23,25 @@ public class AdminDashboard {
 
     public Boolean addUser(String email, String password, Role role, String name){
         User newUser = new User(name,email,role);
-        Boolean isUserAdded = adminService.addUser(newUser,password);
+        Boolean isUserAdded = Boolean.FALSE;
+        try {
+            isUserAdded = adminService.addUser(newUser,password);
+        } catch (CRSException | InvalidDataException e) {
+            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
+        }
         return isUserAdded;
     }
 
-    public Boolean removeUser(String email,Role role, String name){
-        User newUser = new User(name,email,role);
-        Boolean isUserRemoved = adminService.removeUser(newUser);
+    public  Boolean removeUser(int userId){
+        Boolean isUserRemoved = Boolean.FALSE;
+        try {
+            adminService.removeUser(userId);
+            isUserRemoved = Boolean.TRUE;
+        } catch (CRSException e) {
+            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
+        }
         return isUserRemoved;
     }
 
@@ -34,16 +49,33 @@ public class AdminDashboard {
         return Boolean.TRUE;
     }
 
-    public Boolean approveStudent(String studentId) {
-        Boolean isApproved = Boolean.FALSE; // Initially assume that operation is not successful
+    public void getListOfSelfRegisteredStudent(){
         try {
-            isApproved = adminService.approveStudent(studentId);
-        } catch ( ApprovalFailedException e) {
-            e.printStackTrace();
+            List<Integer> userIds = adminService.getNotApprovedStudents();
+            if(userIds != null && userIds.size() > 0){
+                System.out.println("Following students are not approved.");
+            } else{
+                System.out.println("All students are approved.");
+            }
+            String users = "";
+            for(int userId : userIds){
+                users = users + String.valueOf(userId) + ' ';
+            }
+            System.out.println(users);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
+    }
 
-
-        return isApproved;
+    public void approveListOfStudent(List<Integer> userIds) {
+        for(int studentId : userIds){
+            try{
+                adminService.approveStudent(studentId);
+                System.out.println("Student with id " + String.valueOf(studentId) + " approved and notification sent.");
+            } catch(CRSException e){
+                System.out.println("Student with id " + String.valueOf(studentId) + " not approved.");
+            }
+        }
     }
 
     public void helper()
@@ -51,40 +83,56 @@ public class AdminDashboard {
         Scanner inputReader = new Scanner(System.in);
         Boolean result;
 
-            while (true) {
+        while (true) {
+            try{
                 System.out.println("Select operation to perform");
                 System.out.println("1. Add User");
                 System.out.println("2. Remove User");
                 System.out.println("3. Add New Course");
+                System.out.println("4. Approve Student");
+                System.out.println("5. Exit");
                 int operation = inputReader.nextInt();
-                if (operation == -1) break;
+                if (operation == 5) break;
 
                 switch (operation) {
                     case 1:
-                        System.out.println("Enter name");
+                        System.out.println("Enter name of new user");
                         String name = inputReader.next();
-                        System.out.println("Enter email");
+
+                        System.out.println("Enter email of new user");
                         String email = inputReader.next();
-                        System.out.println("Enter Password");
+
+                        System.out.println("Enter Password for new user");
                         String passs = inputReader.next();
 
-                        result = addUser(email, passs, Role.STUDENT, name);
+                        System.out.println("Enter role for new user\n 1 --> Student \n 2 --> Admin \n 3 --> Professor");
+                        int role = inputReader.nextInt();
+                        Role rUser = null;
+                        switch (role){
+                            case 1:
+                                rUser = Role.STUDENT;
+                                break;
+                            case 2:
+                                rUser = Role.ADMIN;
+                                break;
+                            case 3:
+                                rUser = Role.PROFESSOR;
+                                break;
+                        }
+                        result = addUser(email, passs, rUser, name);
 
                         String message = result ? "User added successfully" : "User not added";
-                        logger.info(message);
+                        System.out.println(message);
                         break;
 
                     case 2:
+                        System.out.println("Enter user id of the user.");
+                        int userId = inputReader.nextInt();
 
-                        System.out.println("Enter name");
-                        name = inputReader.next();
-                        System.out.println("Enter email");
-                        email = inputReader.next();
-
-                        result = removeUser(email, Role.STUDENT, name);
+                        result = removeUser(userId);
 
                         message = result ? "User removed successfully" : "User not removed";
-                        logger.info(message);
+                        System.out.println(message);
                         break;
 
                     case 3:
@@ -98,16 +146,32 @@ public class AdminDashboard {
                         result = addNewCourse(courseId, courseName,fee);
 
                         message = result ? "Course added successfully" : "Course not added";
-                        logger.info(message);
+                        System.out.println(message);
                         break;
 
+                    case 4:
+                        // show not approved list
+                        getListOfSelfRegisteredStudent();
+                        List<Integer> ids = new ArrayList<>();
+                        System.out.println("Enter student ids in a new line.Enter -1 to stop.");
+                        int id = inputReader.nextInt();
+                        while(id != -1){
+                            ids.add(id);
+                            id = inputReader.nextInt();
+                        }
+                        if(!ids.isEmpty()) approveListOfStudent(ids);
+                        break;
                     default:
                         logger.info("No operations");
                         break;
 
                 }
-                inputReader.close();
+            } catch(Exception e){
+                System.out.println( "ERROR --> "+ e.getMessage());
             }
+
+        }
+        inputReader.close();
         }
     }
 

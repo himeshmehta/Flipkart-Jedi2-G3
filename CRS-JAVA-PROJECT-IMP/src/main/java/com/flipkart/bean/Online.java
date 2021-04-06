@@ -12,7 +12,7 @@ public class Online extends Payment{
     private String CVV;
     private PaymentMode mode;
 
-    public Online(String refId, Long amount, String paymentDescription, String card_number,String name_on_card,String CVV,PaymentMode mode,String userId) {
+    public Online(String refId, Long amount, String paymentDescription, String card_number,String name_on_card,String CVV,PaymentMode mode,int userId) {
         super(refId, amount, paymentDescription,userId);
         this.card_number = card_number;
         this.CVV = CVV;

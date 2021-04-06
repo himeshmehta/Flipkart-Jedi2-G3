@@ -13,7 +13,7 @@ public class UserValidator {
         }
     }
 
-    public static void selfRegistrationValidator(String email,String password,String confirmPassword) throws InvalidDataException {
+    public static void selfRegisterValidator(String email, String password, String confirmPassword) throws InvalidDataException {
         emailValidator(email);
         passwordStrengthValidator(password);
         if(confirmPassword  == null || !confirmPassword.equals(password)){
@@ -22,8 +22,13 @@ public class UserValidator {
     }
 
     public static void passwordStrengthValidator(String password) throws InvalidDataException {
-        if(password == null || password.length() < 8){
-            throw new InvalidDataException("Invalid password. Password should contain minimum 8 digits.");
+        if(password == null || password.length() < 5){
+            throw new InvalidDataException("Weak password. Password should contain minimum 8 digits.");
         }
+    }
+
+    public static void newUsedValidator(String email,String password) throws InvalidDataException {
+        emailValidator(email);
+        passwordStrengthValidator(password);
     }
 }

@@ -11,7 +11,7 @@ public class Offline extends Payment{
     private Bank bank;
     private PaymentMode mode;
 
-    public Offline(String refId,Long amount, String paymentDescription,Bank bank,String userId){
+    public Offline(String refId,Long amount, String paymentDescription,Bank bank,int userId){
         super(refId,amount,paymentDescription,userId);
         this.bank = bank;
         this.mode = PaymentMode.OFFLINE;
