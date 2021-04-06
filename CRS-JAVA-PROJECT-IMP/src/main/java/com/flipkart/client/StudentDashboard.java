@@ -69,18 +69,21 @@ public class StudentDashboard {
 
         switch (operation) {
             case 1 :
+                logger.info("Enter the Course ID");
                 courseId = scanner.nextInt();
                 response = registerCourse(courseId);
                 message = response ? "Registration Successful" : "Registration failed";
                 logger.info(message);
                 break;
             case 2 :
+                logger.info("Enter the Course ID");
                 courseId = scanner.nextInt();
                 response = removeCourse(courseId);
                 message = response ? "Course removed Successfully" : "Course removal failed";
                 logger.info(message);
                 break;
             case 3 :
+                logger.info("Enter the Course ID");
                 courseId = scanner.nextInt();
                 response = addCourse(courseId);
                 message = response ? "Course added Successfully" : "Course addition failed";
@@ -88,6 +91,7 @@ public class StudentDashboard {
                 break;
             case 4 :
                 List<Course> courseList = getRegisteredCourses();
+                logger.info("Enrolled Courses : ");
                 for (Course course : courseList) {
                     message = course.getCourseId() + " " + course.getCourseName() + " " + course.getFee() + " " + course.getProfessorId();
                     logger.info(message);
