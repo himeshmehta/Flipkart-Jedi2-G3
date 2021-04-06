@@ -16,7 +16,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean registerStudent(Student student , Course course) throws CourseRegistrationException;
+    public  Boolean registerStudent(Student student , Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used for revert the registration of course.
@@ -25,7 +25,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean removeStudent (Student student , Course course) throws CourseRegistrationException;
+    public  Boolean removeStudent (Student student , Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used for adding a student to course.
@@ -34,7 +34,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean addStudent (Student student , Course course) throws CourseRegistrationException;
+    public  Boolean addStudent (Student student , Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used to get list of registered student for a course.

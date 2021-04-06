@@ -3,6 +3,7 @@ package com.flipkart.client;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.constants.Role;
 import com.flipkart.services.AuthDBServices;
@@ -31,13 +32,13 @@ public class LoginSignupDashboard {
 
             switch (roleOfUser){
                 case ADMIN:
-                    new AdminDashboard((Admin)(user)).helper();
+                    new AdminDashboard((Admin) (user)).helper();
                     break;
                 case STUDENT:
-                    // TODO : complete here
+                    new StudentDashboard((Student) (user)).helper();
                     break;
                 case PROFESSOR:
-                    new ProfessorDashboard((Professor)(user)).helper();
+                    new ProfessorDashboard((Professor) (user)).helper();
                     break;
                 default:
                     throw new CRSException("You can not log in here.");

@@ -14,7 +14,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    Boolean registerCourse(Student student, Course course) throws CourseRegistrationException;
+    Boolean registerCourse(Student student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
@@ -23,7 +23,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    Boolean removeCourse(Student student, Course course) throws CourseRegistrationException;
+    Boolean removeCourse(Student student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
@@ -32,7 +32,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    Boolean addCourse(Student student, Course course) throws CourseRegistrationException;
+    Boolean addCourse(Student student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
