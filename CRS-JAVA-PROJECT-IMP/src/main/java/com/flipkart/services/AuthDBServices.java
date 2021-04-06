@@ -19,7 +19,7 @@ public class AuthDBServices implements AuthDBInterface{
     private static final Logger logger = Logger.getLogger(String.valueOf(AuthDBServices.class));
 
     @Override
-    public User authenticateUser(String userId, String password) throws AuthorizationException {
+    public User authenticateUser(int userId, String password) throws AuthorizationException {
 
         User user = authDBOperations.AuthenticateUser(userId,password);
         logger.info("Authenticating User");

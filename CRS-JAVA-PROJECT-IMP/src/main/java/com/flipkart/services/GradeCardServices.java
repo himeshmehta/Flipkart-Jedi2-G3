@@ -23,7 +23,7 @@ public class GradeCardServices implements GradeCardInterface{
     }
 
     @Override
-    public void addGrade(String professorId, String courseId, Integer grade,String studentId) throws Exception {
+    public void addGrade(int professorId, String courseId, Integer grade,String studentId) throws Exception {
 
         logger.info("Adding Grades");
         try {

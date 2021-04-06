@@ -12,7 +12,7 @@ public interface AuthDBInterface {
      * @Throws AuthorizationException
      * @return User object
      */
-    public User AuthenticateUser(String userId, String password) throws AuthorizationException;
+    public User AuthenticateUser(int userId, String password) throws AuthorizationException;
 
     /**
      * This method is used by admin to add new user(student or professor).

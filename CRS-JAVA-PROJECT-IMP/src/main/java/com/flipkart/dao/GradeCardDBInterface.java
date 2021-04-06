@@ -20,5 +20,5 @@ public interface GradeCardDBInterface {
      * @Throws Nothing
      * @return Nothing
      */
-    public  void addGrade(String profId,String courseId, Integer grade,String studentId);
+    public  void addGrade(int profId,String courseId, Integer grade,String studentId);
 }

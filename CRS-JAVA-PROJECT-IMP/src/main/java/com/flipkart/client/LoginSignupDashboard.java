@@ -18,20 +18,20 @@ public class LoginSignupDashboard {
         try{
             inputReader = new Scanner(System.in);
             System.out.println("Enter your userId");
-            String userId = inputReader.nextLine();
+            int userId = inputReader.nextInt();
             System.out.println("Enter your password");
-            String password = inputReader.nextLine();
+            String password = inputReader.next();
 
             // Authenticate user
             user = authServices.authenticateUser(userId,password);
 
             Role roleOfUser = user.getRole();
-
+            System.out.println(roleOfUser.toString() + " In login user function");
             // Now go to different dashboard according to different roles
 
             switch (roleOfUser){
                 case ADMIN:
-                    new AdminDashboard((Admin)(user)).helper();
+                    new AdminDashboard(new Admin(user)).helper();
                     break;
                 case STUDENT:
                     // TODO : complete here

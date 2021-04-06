@@ -9,16 +9,16 @@ public class CourseValidator {
 
     private static CourseDB courseDB = new CourseDB();
 
-    public static void studentAndProfValidation(String courseId,String professorId, String studentId) throws InvalidInputException {
+    public static void studentAndProfValidation(String courseId,int professorId, String studentId) throws InvalidInputException {
         Course courseDetails = courseDB.getCourseDetails(courseId);
 
         // Course should be teach by professor
         if(!courseDetails.getAvailable()){
             throw new InvalidInputException("Course " + courseId + " is not available.");
         }
-        if(!professorId.equals(courseDetails.getProfessorId())){
-            throw new InvalidInputException("Professor "+ professorId + " is not eligible to add grade for course "+courseId  );
-        }
+//        if(!professorId.equals(courseDetails.getProfessorId())){
+//            throw new InvalidInputException("Professor "+ professorId + " is not eligible to add grade for course "+courseId  );
+//        }
 
         boolean isCourseRegisteredByStudent = false;
         for(Student student:courseDetails.getStudentList()){
