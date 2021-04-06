@@ -28,19 +28,16 @@ class CreateTableScript {
             table = CreateTable.studentTable;
             stmt = connection.prepareStatement(table);
             rs = stmt.executeUpdate();
-            System.out.println(rs);
             stmt.close();
 
             table = CreateTable.adminTable;
             stmt = connection.prepareStatement(table);
             rs = stmt.executeUpdate();
-            System.out.println(rs);
             stmt.close();
 
             table = CreateTable.profTable;
             stmt = connection.prepareStatement(table);
             rs = stmt.executeUpdate();
-            System.out.println(rs);
             stmt.close();
 
             connection.close();
