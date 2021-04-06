@@ -49,15 +49,17 @@ public class AuthDB implements AuthDBInterface{
                 user.setEmail(rs.getString("email"));
                 user.setName(rs.getString("name"));
                 String role = rs.getString("role");
-                System.out.println(role + " in DB ");
+
                 switch (role){
                     case "Student":
                         user.setRole(Role.STUDENT);
+                        break;
                     case "Admin":
                         user.setRole(Role.ADMIN);
                         break;
                     case "Professor":
                         user.setRole(Role.PROFESSOR);
+                        break;
                 }
             }
 
