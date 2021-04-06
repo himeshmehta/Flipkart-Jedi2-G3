@@ -55,48 +55,73 @@ public class StudentDashboard {
 
     public void helper() {
 
-        logger.info("Select Operation to perform");
-        logger.info("1. Register for the Course");
-        logger.info("2. Remove a Course");
-        logger.info("3. Add a Course");
-        logger.info("4. View Registered Courses");
 
         Scanner scanner = new Scanner(System.in);
         Integer courseId;
         Boolean response;
         String message;
-        int operation = scanner.nextInt();
 
-        switch (operation) {
-            case 1 :
-                logger.info("Enter the Course ID");
-                courseId = scanner.nextInt();
-                response = registerCourse(courseId);
-                message = response ? "Registration Successful" : "Registration failed";
-                logger.info(message);
-                break;
-            case 2 :
-                logger.info("Enter the Course ID");
-                courseId = scanner.nextInt();
-                response = removeCourse(courseId);
-                message = response ? "Course removed Successfully" : "Course removal failed";
-                logger.info(message);
-                break;
-            case 3 :
-                logger.info("Enter the Course ID");
-                courseId = scanner.nextInt();
-                response = addCourse(courseId);
-                message = response ? "Course added Successfully" : "Course addition failed";
-                logger.info(message);
-                break;
-            case 4 :
-                List<Course> courseList = getRegisteredCourses();
-                logger.info("Enrolled Courses : ");
-                for (Course course : courseList) {
-                    message = course.getCourseId() + " " + course.getCourseName() + " " + course.getFee() + " " + course.getProfessorId();
-                    logger.info(message);
+        while(true) {
+            showMenu();
+            int operation = scanner.nextInt();
+
+            try {
+                switch (operation) {
+                    case 1:
+                        logger.info("Enter the Course ID");
+                        courseId = scanner.nextInt();
+                        response = registerCourse(courseId);
+                        message = response ? "Registration Successful" : "Registration failed";
+                        logger.info(message);
+                        break;
+                    case 2:
+                        logger.info("Enter the Course ID");
+                        courseId = scanner.nextInt();
+                        response = removeCourse(courseId);
+                        message = response ? "Course removed Successfully" : "Course removal failed";
+                        logger.info(message);
+                        break;
+                    case 3:
+                        logger.info("Enter the Course ID");
+                        courseId = scanner.nextInt();
+                        response = addCourse(courseId);
+                        message = response ? "Course added Successfully" : "Course addition failed";
+                        logger.info(message);
+                        break;
+                    case 4:
+                        List<Course> courseList = getRegisteredCourses();
+                        logger.info("Enrolled Courses : ");
+                        for (Course course : courseList) {
+                            message = course.getCourseId() + " " + course.getCourseName() + " " + course.getFee() + " " + course.getProfessorId();
+                            logger.info(message);
+                        }
+                    default:
+                        break;
                 }
-        }
 
+                if(operation == 5){
+                    // Exit from student dashboard
+                    break;
+                }
+            } catch (Exception ex){
+                logger.info(ex.getMessage());
+                System.out.println("An error occurred in last operation, Do you want to continue? Enter YES or NO." );
+                String yesOrNo = scanner.next();
+                if ("NO".equals(yesOrNo)){
+                    break;
+                }
+            }
+        }
+    }
+
+    private void showMenu() {
+        System.out.println("Menu for student dashboard :- ");
+        System.out.println("1. Register for Course.");
+        System.out.println("2. Remove course.");
+        System.out.println("3. Add course to select study.");
+        System.out.println("4. Get list of enrolled courses.");
+        System.out.println("5. Exit");
+        System.out.println("\n\n");
+        System.out.println("Enter operation id");
     }
 }

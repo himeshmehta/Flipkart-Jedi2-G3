@@ -27,7 +27,6 @@ public class LoginSignupDashboard {
             user = authServices.authenticateUser(userId,password);
 
             Role roleOfUser = user.getRole();
-            System.out.println(roleOfUser.toString() + " In login user function");
             // Now go to different dashboard according to different roles
 
             switch (roleOfUser){
@@ -35,10 +34,10 @@ public class LoginSignupDashboard {
                     new AdminDashboard(new Admin(user)).helper();
                     break;
                 case STUDENT:
-                    new StudentDashboard((Student) (user)).helper();
+                    new StudentDashboard(new Student(user)).helper();
                     break;
                 case PROFESSOR:
-                    new ProfessorDashboard((Professor) (user)).helper();
+                    new ProfessorDashboard(new Professor(user)).helper();
                     break;
                 default:
                     throw new CRSException("You can not log in here.");
@@ -97,7 +96,7 @@ public class LoginSignupDashboard {
                 throw new CRSException("SignUp is not completed");
             }
             else {
-                System.out.println("Sign up is completed. You can only login once admin approve your request.");
+                System.out.println("Sign up is completed. You can only login once admin approve your registration request.");
             }
             inputReader.close();
         } catch (Exception e) {
