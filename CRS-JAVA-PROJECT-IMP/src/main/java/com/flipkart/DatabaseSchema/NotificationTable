@@ -1,7 +1,0 @@
-create table Notification {
-    notification_id VARCHAR(100) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    receiver_id VARCHAR(100) NOT_NULL,
-    `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
-    PRIMARY key(notification_id)
-};
