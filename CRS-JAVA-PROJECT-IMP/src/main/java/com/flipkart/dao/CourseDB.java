@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDB implements CourseDBInterface{
-    public  Boolean registerStudent(Student student , Course course) throws CourseRegistrationException {
+    public  Boolean registerStudent(Student student , Integer courseId) throws CourseRegistrationException {
         throw new CourseRegistrationException("Unable to register");
     }
 
-    public  Boolean removeStudent (Student student , Course course){
+    public  Boolean removeStudent (Student student , Integer courseId){
         return Boolean.TRUE;
     }
 
-    public  Boolean addStudent (Student student , Course course){
+    public  Boolean addStudent (Student student , Integer courseId){
         return Boolean.TRUE;
     }
 

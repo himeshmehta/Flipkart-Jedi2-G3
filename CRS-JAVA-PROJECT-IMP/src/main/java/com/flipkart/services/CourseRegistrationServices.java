@@ -18,21 +18,21 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
     private static final Logger logger = Logger.getLogger(String.valueOf(CourseRegistrationServices.class));
 
     @Override
-    public Boolean registerCourse(Student student, Course course) throws CourseRegistrationException {
+    public Boolean registerCourse(Student student, Integer courseId) throws CourseRegistrationException {
         logger.info("Registering for the course");
-        return courseDBOperations.registerStudent(student,course);
+        return courseDBOperations.registerStudent(student,courseId);
         }
 
     @Override
-    public Boolean removeCourse(Student student, Course course) throws CourseRegistrationException{
+    public Boolean removeCourse(Student student, Integer courseId) throws CourseRegistrationException{
         logger.info("Removing the course");
-        return courseDBOperations.removeStudent(student,course);
+        return courseDBOperations.removeStudent(student,courseId);
         }
 
     @Override
-    public Boolean addCourse(Student student, Course course) throws CourseRegistrationException{
+    public Boolean addCourse(Student student, Integer courseId) throws CourseRegistrationException{
         logger.info("Adding the course");
-        return courseDBOperations.addStudent(student,course);
+        return courseDBOperations.addStudent(student,courseId);
         }
 
     @Override

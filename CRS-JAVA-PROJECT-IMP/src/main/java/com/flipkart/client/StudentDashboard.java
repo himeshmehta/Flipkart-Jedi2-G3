@@ -3,7 +3,6 @@ package com.flipkart.client;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
-import com.flipkart.constants.Role;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.services.CourseRegistrationServices;
 
@@ -23,27 +22,27 @@ public class StudentDashboard {
         this.studentDB = new StudentDB();
     }
 
-    public Boolean registerCourse(Course course) {
+    public Boolean registerCourse(Integer courseId) {
         try {
-            return courseRegistrationServices.registerCourse(student, course);
+            return courseRegistrationServices.registerCourse(student, courseId);
         } catch (CourseRegistrationException ex) {
             ex.printStackTrace();
             return Boolean.FALSE;
         }
     }
 
-    public Boolean addCourse(Course course) {
+    public Boolean addCourse(Integer courseId) {
         try {
-            return courseRegistrationServices.addCourse(student, course);
+            return courseRegistrationServices.addCourse(student, courseId);
         } catch (CourseRegistrationException ex) {
             ex.printStackTrace();
             return Boolean.FALSE;
         }
     }
 
-    public Boolean removeCourse(Course course) {
+    public Boolean removeCourse(Integer courseId) {
         try {
-            return courseRegistrationServices.removeCourse(student, course);
+            return courseRegistrationServices.removeCourse(student, courseId);
         } catch (CourseRegistrationException ex) {
             ex.printStackTrace();
             return Boolean.FALSE;
@@ -54,6 +53,46 @@ public class StudentDashboard {
         return studentDB.registeredCourses(student);
     }
 
+    public void helper() {
 
+        logger.info("Select Operation to perform");
+        logger.info("1. Register for the Course");
+        logger.info("2. Remove a Course");
+        logger.info("3. Add a Course");
+        logger.info("4. View Registered Courses");
 
+        Scanner scanner = new Scanner(System.in);
+        Integer courseId;
+        Boolean response;
+        String message;
+        int operation = scanner.nextInt();
+
+        switch (operation) {
+            case 1 :
+                courseId = scanner.nextInt();
+                response = registerCourse(courseId);
+                message = response ? "Registration Successful" : "Registration failed";
+                logger.info(message);
+                break;
+            case 2 :
+                courseId = scanner.nextInt();
+                response = removeCourse(courseId);
+                message = response ? "Course removed Successfully" : "Course removal failed";
+                logger.info(message);
+                break;
+            case 3 :
+                courseId = scanner.nextInt();
+                response = addCourse(courseId);
+                message = response ? "Course added Successfully" : "Course addition failed";
+                logger.info(message);
+                break;
+            case 4 :
+                List<Course> courseList = getRegisteredCourses();
+                for (Course course : courseList) {
+                    message = course.getCourseId() + " " + course.getCourseName() + " " + course.getFee() + " " + course.getProfessorId();
+                    logger.info(message);
+                }
+        }
+
+    }
 }
