@@ -29,13 +29,13 @@ public class LoginSignupDashboard {
 
             switch (roleOfUser){
                 case ADMIN:
-                    // TODO : complete here
+                    new AdminDashboard(user).helper();
                     break;
                 case STUDENT:
                     // TODO : complete here
                     break;
                 case PROFESSOR:
-                    // TODO : complete here
+                    new ProfessorDashboard(user).helper();
                     break;
                 default:
                     throw new CRSException("You can not log in here.");

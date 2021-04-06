@@ -7,10 +7,13 @@ import com.flipkart.constants.Role;
 import com.flipkart.helper.UserValidator;
 import com.flipkart.services.AdminServices;
 
+import java.util.Scanner;
+import java.util.logging.Logger;
+
 public class AdminDashboard {
     User admin;
     AdminServices adminService;
-
+    private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
     public AdminDashboard(User admin){
         this.admin = admin;
         adminService = new AdminServices();
@@ -46,4 +49,60 @@ public class AdminDashboard {
         return isApproved;
     }
 
-}
+    public void helper()
+    {
+        Scanner inputReader = new Scanner(System.in);
+        Boolean result;
+
+            while (true) {
+                logger.info("Select operation to perform");
+                int operation = inputReader.nextInt();
+                if (operation == -1) break;
+
+                switch (operation) {
+                    case 1:
+
+                        String name = inputReader.next();
+                        String email = inputReader.next();
+                        String passs = inputReader.next();
+
+                        result = addUser(email, passs, Role.STUDENT, name);
+
+                        String message = result ? "User added successfully" : "User not added";
+                        logger.info(message);
+                        break;
+
+                    case 2:
+
+                        name = inputReader.next();
+                        email = inputReader.next();
+
+                        result = removeUser(email, Role.STUDENT, name);
+
+                        message = result ? "User removed successfully" : "User not removed";
+                        logger.info(message);
+                        break;
+
+                    case 3:
+
+                        String courseId = inputReader.next();
+                        String courseName = inputReader.next();
+                        long fee=inputReader.nextLong();
+
+                        result = addNewCourse(courseId, courseName,fee);
+
+                        message = result ? "Course added successfully" : "Course not added";
+                        logger.info(message);
+                        break;
+
+                    default:
+                        logger.info("No operations");
+                        break;
+
+                }
+                inputReader.close();
+            }
+        }
+    }
+
+
