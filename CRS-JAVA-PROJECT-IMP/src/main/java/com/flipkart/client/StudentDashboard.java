@@ -6,6 +6,7 @@ import com.flipkart.bean.Student;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.services.CourseRegistrationServices;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -31,12 +32,12 @@ public class StudentDashboard {
         }
     }
 
-    public Boolean addCourse(Integer courseId) {
+    public List<Course> viewCourses() {
         try {
-            return courseRegistrationServices.addCourse(student, courseId);
+            return courseRegistrationServices.viewCourses(student);
         } catch (CourseRegistrationException ex) {
             ex.printStackTrace();
-            return Boolean.FALSE;
+            return new ArrayList<>();
         }
     }
 
@@ -82,11 +83,17 @@ public class StudentDashboard {
                         logger.info(message);
                         break;
                     case 3:
-                        logger.info("Enter the Course ID");
-                        courseId = scanner.nextInt();
-                        response = addCourse(courseId);
-                        message = response ? "Course added Successfully" : "Course addition failed";
+//                        logger.info("Enter the Course ID");
+//                        courseId = scanner.nextInt();
+                        List<Course> list = viewCourses();
+                        message = "Fetching Course";
                         logger.info(message);
+                        System.out.println("ID Name Fee ProfID");
+                        for (Course course : list) {
+                            message = course.getCourseId() + "  " + course.getCourseName() + "   " + course.getFee() + " " + course.getProfessorId();
+                            System.out.println(message);
+                        }
+                        System.out.println();
                         break;
                     case 4:
                         List<Course> courseList = getRegisteredCourses();
@@ -120,7 +127,7 @@ public class StudentDashboard {
         System.out.println("Menu for student dashboard :- ");
         System.out.println("1. Register for Course.");
         System.out.println("2. Remove course.");
-        System.out.println("3. Add course to select study.");
+        System.out.println("3. View Courses");
         System.out.println("4. Get list of enrolled courses.");
         System.out.println("5. Exit");
         System.out.println("\n\n");

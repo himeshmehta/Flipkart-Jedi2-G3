@@ -4,6 +4,7 @@ public class SQLQueriesConstants {
 
     // for Courses
     public static final String GET_COURSE_DETAILS = "select * from course where courseId = ?";
+    public static final String GET_COURSE_TABLE = "select * from course";
 
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";

@@ -34,7 +34,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean addStudent (Student student , Integer courseId) throws CourseRegistrationException;
+    public  List<Course> viewCourses (Student student ) throws CourseRegistrationException;
 
     /**
      * This method is used to get list of registered student for a course.
