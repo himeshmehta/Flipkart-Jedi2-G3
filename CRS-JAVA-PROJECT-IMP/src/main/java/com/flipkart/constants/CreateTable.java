@@ -33,30 +33,31 @@ public class CreateTable {
             "notificationId INT PRIMARY KEY AUTO_INCREMENT,\n" +
             "description VARCHAR(255) NOT NULL,\n" +
             "receiverId INT,\n" +
-            "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n" +
-            "FOREIGN KEY (receiverId) REFERENCES user(userId)\n" +
+            "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n" +
             ");";
 
     public static String courseTable = "create table if not exists course(\n" +
             "courseId INT PRIMARY KEY AUTO_INCREMENT,\n" +
-            "courseName VARCHAR(20) NOT NULL,\n" +
+            "coursename VARCHAR(20) NOT NULL,\n" +
             "description VARCHAR(100) NOT NULL,\n" +
-            "professorId INT NOT NULL,\n" +
+            "userId INT,\n" +
             "isValid Boolean,\n" +
             "fee INT NOT NULL,\n" +
-            "FOREIGN KEY (professorId) REFERENCES user(userId)\n" +
+            "FOREIGN KEY (userId) REFERENCES user(userId)\n" +
             ");";
 
     public static String paymentTable = "create table if not exists payment(\n" +
-            "referenceId INT PRIMARY KEY AUTO_INCREMENT,\n" +
-            "description VARCHAR(100),\n" +
+            "referenceId VARCHAR(50) PRIMARY KEY,\n" +
+            "description VARCHAR(255),\n" +
             "amount INT NOT NULL,\n" +
+            "studentId INT DEFAULT NULL,\n"+
             "method enum('DEBIT','CREDIT','OFFLINE') NOT NULL\n" +
             ");";
 
-    public static String courseRegistration = "create table if not exists courseRegistration(\n" +
+    public static String courseRegistration = "create table if not exists registeredcourses(\n" +
             "studentId INT NOT NULL,\n" +
             "courseId INT NOT NULL,\n" +
+            "isFeePaid Boolean NOT NULL DEFAULT 0,\n"+
             "PRIMARY KEY (studentId, courseId)\n" +
             ");";
 

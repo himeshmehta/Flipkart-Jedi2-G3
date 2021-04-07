@@ -32,7 +32,7 @@ public class LoginSignupDashboard {
 
                 switch (roleOfUser){
                     case ADMIN:
-                        new AdminDashboard(new Admin(user)).helper();
+                        new AdminDashboard(new Admin(user)).helper(inputReader);
                         break;
                     case STUDENT:
                         new StudentDashboard(new Student(user)).helper();
@@ -40,22 +40,21 @@ public class LoginSignupDashboard {
                     case PROFESSOR:
                         new ProfessorDashboard(new Professor(user)).helper();
                         break;
-                    default:
-                        throw new CRSException("You can not log in here.");
                 }
             } catch (Exception e) {
                 System.out.println("ERROR --> " + e.getMessage());
             }
 
-            // Ask is user need to log in again
+            // Ask if user want to log in again
             System.out.println("Do you want to login again? Enter YES or NO.");
             String yesOrNo = inputReader.next();
 
-            if("NO".equals(yesOrNo.toLowerCase())){
+            if("NO".equals(yesOrNo)){
                 System.out.println("Exiting from Login dashboard");
                 break;
             }
         }
+        inputReader.close();
     }
 
     public static void SignUpUser() throws CRSException {

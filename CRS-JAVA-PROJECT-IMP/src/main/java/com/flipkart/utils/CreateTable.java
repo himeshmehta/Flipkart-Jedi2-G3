@@ -21,11 +21,9 @@ class CreateTableScript {
             List<String> createTableQueries = CreateTable.getQueries();
 
             for(String s : createTableQueries){
+                if ( s != CreateTable.paymentTable ) continue;
                 stmt = connection.prepareStatement(s);
-                System.out.println(2);
-                int rs = stmt.executeUpdate();
-                System.out.println(3);
-                System.out.println(rs);
+                stmt.executeUpdate();
                 stmt.close();
             }
 //            // user table
@@ -65,9 +63,10 @@ class CreateTableScript {
 
     private static void DropTables(Connection conn,PreparedStatement stmt) throws SQLException {
         String drop = "DROP TABLE IF EXISTS ";
-        String[] tables ={"gradeCard","courseRegistration","course","notification","user","student","admin","professor","payment"};
+        String[] tables ={"gradeCard","registeredcourses","course","notification","user","student","admin","professor","payment"};
 
         for(String table : tables){
+            if ( table != "payment" ) continue;
             System.out.println("deleting " + table);
             String t = drop + table;
             stmt = conn.prepareStatement(t);

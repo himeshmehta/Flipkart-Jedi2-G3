@@ -5,6 +5,8 @@ import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.User;
 
+import java.util.List;
+
 public interface AdminInterface {
 
     /**
@@ -39,4 +41,8 @@ public interface AdminInterface {
 
      **/
     public void approveStudent(final int studentId) throws ApprovalFailedException, CRSException;
+
+    public List<Integer> getNotApprovedStudents() throws CRSException;
+
+    public void addNewCourse(String description,String courseName, long fee) throws CRSException;
 }

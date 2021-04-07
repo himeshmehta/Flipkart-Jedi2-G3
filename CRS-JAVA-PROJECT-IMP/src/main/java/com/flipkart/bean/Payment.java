@@ -1,20 +1,24 @@
 package com.flipkart.bean;
 
+import com.flipkart.constants.PaymentMode;
+
 /**
  * The type payment
  */
 public class Payment {
 
     private String referenceId;
-    private long amount;
+    private int amount;
     private String paymentDescription;
     private int userId;
+    private PaymentMode mode;
 
-    public Payment(String refId, Long amount, String paymentDescription,int userId) {
+    public Payment(String refId, int amount, String paymentDescription, int userId, PaymentMode mode) {
         this.referenceId = refId;
         this.amount = amount;
         this.paymentDescription = paymentDescription;
         this.userId = userId;
+        this.mode = mode;
     }
 
     /**
@@ -69,7 +73,7 @@ public class Payment {
      * Gets the amount
      * @return
      */
-    public long getAmount() {
+    public int getAmount() {
         return amount;
     }
 
@@ -77,7 +81,15 @@ public class Payment {
      * Sets the amount
      * @param amount
      */
-    public void setAmount(long amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public PaymentMode getMode() {
+        return mode;
+    }
+
+    public void setMode(PaymentMode mode) {
+        this.mode = mode;
     }
 }

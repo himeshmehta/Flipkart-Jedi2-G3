@@ -1,11 +1,14 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 
@@ -37,8 +40,15 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
         }
 
     @Override
-    public Boolean makePayment() {
-        logger.info("Taking to the Payment gateway");
-        return null;
+    public HashMap<Integer, Integer> getNotPaidCourseList(int studentId) throws CRSException {
+        logger.info("Getting not paid registered courses");
+        return courseDBOperations.getNotpaidCourseList(studentId);
     }
+
+    @Override
+    public void setPaidFee(int studentId, Set<Integer> selectedCourses) throws CRSException {
+        logger.info("Setting isPaidFee to TRUE");
+        courseDBOperations.setPaidFeeToTRUE(studentId, selectedCourses);
+    }
+
 }
