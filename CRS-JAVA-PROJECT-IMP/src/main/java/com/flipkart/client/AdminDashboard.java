@@ -92,7 +92,6 @@ public class AdminDashboard {
                 System.out.println("4. Approve Student");
                 System.out.println("5. Exit");
                 int operation = inputReader.nextInt();
-                if (operation == 5) break;
 
                 switch (operation) {
                     case 1:
@@ -137,7 +136,7 @@ public class AdminDashboard {
 
                     case 3:
 
-                        System.out.println("Enter Course ID");
+                        System.out.println("Enter Course Description");
                         int courseId = inputReader.nextInt();
                         System.out.println("Enter Course Name");
                         String courseName = inputReader.next();
@@ -161,11 +160,15 @@ public class AdminDashboard {
                         }
                         if(!ids.isEmpty()) approveListOfStudent(ids);
                         break;
+                    case 5:
+                        System.out.println("Exiting from Admin dashboard.");
+                        break;
                     default:
                         logger.info("No operations");
                         break;
 
                 }
+                if (operation == 5) break;
             } catch(Exception e){
                 System.out.println( "ERROR --> "+ e.getMessage());
             }

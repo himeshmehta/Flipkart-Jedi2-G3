@@ -47,7 +47,7 @@ public class LoginSignupDashboard {
                 System.out.println("ERROR --> " + e.getMessage());
             }
 
-            // Ask is user need to log in again
+            // Ask if user want to log in again
             System.out.println("Do you want to login again? Enter YES or NO.");
             String yesOrNo = inputReader.next();
 
