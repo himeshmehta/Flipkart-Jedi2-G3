@@ -63,7 +63,7 @@ public class CreateTable {
     public static String gradeCard = "create table if not exists gradeCard(\n" +
             "studentId INT NOT NULL,\n" +
             "courseId INT NOT NULL,\n" +
-            "grade INT,\n" +
+            "grade INT ,\n" +
             "PRIMARY KEY (studentId, courseId),\n" +
             "FOREIGN KEY (studentId) REFERENCES user(userId),\n" +
             "FOREIGN KEY (courseId) REFERENCES course(courseId)\n" +

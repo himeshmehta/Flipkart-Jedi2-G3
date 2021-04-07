@@ -4,6 +4,9 @@ public class SQLQueriesConstants {
 
     // for Courses
     public static final String GET_COURSE_DETAILS = "select * from course where courseId = ?";
+    public static final String GET_COURSE_TABLE = "select * from course";
+    public static final String GET_COURSE_PROFESSOR = "select userId from course where courseId = ?";
+    public static final String SET_PROFESSOR = "update course set userId = ? where courseId = ?";
 
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
@@ -23,7 +26,7 @@ public class SQLQueriesConstants {
     // Professor related Queries
     public static final String GET_PROFESSOR_DETAILS = "select * from professor where id = ?";
     public static final String GRADE_STUDENT = "update registeredcourses set grade = ? where studentid = ? and courseid = ?";
-
+    public static final String GET_PROFESSOR_COURSES = "select * from course where userId = ?";
 
 
     // Admin related Queries

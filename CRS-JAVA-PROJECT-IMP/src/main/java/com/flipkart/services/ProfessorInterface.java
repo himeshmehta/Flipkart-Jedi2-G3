@@ -1,6 +1,7 @@
 package com.flipkart.services;
 
 import com.flipkart.bean.Course;
+import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
 import java.util.List;
@@ -10,11 +11,29 @@ public interface ProfessorInterface {
     /**
      *
      This method selects the course which will be taught by the Professor.
+     @Param - Nothing
+     @Throws - Nothing
+     @returns - List of Courses
+     **/
+    public List<Course> viewCourses();
+
+    /**
+     *
+     This method selects the course which will be taught by the Professor.
+     @Param - professor
+     @Throws - Nothing
+     @returns - List of Courses
+     **/
+    public List<Course> viewEnrolledCourses(Professor professor);
+
+    /**
+     *
+     This method selects the course which will be taught by the Professor.
      @Param - courseId
      @Throws - Nothing
      @returns - Course
      **/
-    public Course selectCourseToTeach(Integer courseId);
+    public Boolean selectCourseToTeach(Integer courseId , Professor professor);
 
     /**
      *

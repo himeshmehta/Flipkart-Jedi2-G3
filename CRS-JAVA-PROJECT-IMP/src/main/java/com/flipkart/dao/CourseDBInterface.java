@@ -28,14 +28,20 @@ public interface CourseDBInterface {
     public  Boolean removeStudent (Student student , Integer courseId) throws CourseRegistrationException;
 
     /**
-     * This method is used for adding a student to course.
-     * @Param course :- Course object.
-     * @Param student :- Student object.
+     * This method is used for viewing course.
+     * @Param  Nothing
      * @Throws CourseRegistrationException
-     * @return Boolean
+     * @return List of Courses
      */
-    public  Boolean addStudent (Student student , Integer courseId) throws CourseRegistrationException;
+    public  List<Course> viewCourses () throws CourseRegistrationException;
 
+    /**
+     * This method is used for viewing enrolled course.
+     * @Param  Professor
+     * @Throws Nothing
+     * @return List of Courses
+     */
+    public List<Course> viewEnrolledCourses(Professor professor);
     /**
      * This method is used to get list of registered student for a course.
      * @Param course :- Course object.
@@ -51,7 +57,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean setProfessor(Course course , Professor professor);
+    public  Boolean setProfessor(Integer courseId , Professor professor);
 
     /**
      * This method is used to set the availability of course.
