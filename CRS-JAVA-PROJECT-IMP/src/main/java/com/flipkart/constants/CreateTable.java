@@ -33,8 +33,7 @@ public class CreateTable {
             "notificationId INT PRIMARY KEY AUTO_INCREMENT,\n" +
             "description VARCHAR(255) NOT NULL,\n" +
             "receiverId INT,\n" +
-            "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n" +
-            "FOREIGN KEY (receiverId) REFERENCES user(userId)\n" +
+            "time TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n" +
             ");";
 
     public static String courseTable = "create table if not exists course(\n" +
