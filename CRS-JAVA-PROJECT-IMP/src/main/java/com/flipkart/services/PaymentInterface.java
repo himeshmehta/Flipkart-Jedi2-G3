@@ -1,9 +1,8 @@
 package com.flipkart.services;
 
-import com.flipkart.bean.Payment;
+import com.flipkart.Exception.CRSException;
 import com.flipkart.constants.Bank;
 import com.flipkart.constants.PaymentMode;
-import com.sun.istack.internal.NotNull;
 
 public interface PaymentInterface {
     /**
@@ -13,7 +12,7 @@ public interface PaymentInterface {
      @Throws - Nothing
      @returns - nothing
      **/
-    public void makeOnlinePayment(String paymentDescription, long amount, String card_number, String name_on_card, String cvv, PaymentMode mode, String userId);
+    public void makeOnlinePayment(String paymentDescription, long amount, String card_number, String name_on_card, String cvv, PaymentMode mode, int userId) throws CRSException;
     /**
      *
      This method makes the Online Payment.
@@ -21,5 +20,5 @@ public interface PaymentInterface {
      @Throws - Nothing
      @returns - nothing
      **/
-    public void makeOfflinePayment(String paymentDescription,long amount, Bank bank, String userId);
+    public void makeOfflinePayment(String paymentDescription,long amount, Bank bank, int userId) throws CRSException;
 }

@@ -1,5 +1,6 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.NotificationException;
 import com.flipkart.bean.Notification;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface NotificationInterface {
      @Throws - Nothing
      @returns - nothing
      **/
-    public void sendNotificationToUser(Notification notification, String userID);
+    public void sendNotificationToUser(Notification notification, int userID) throws NotificationException;
 
     /**
      *

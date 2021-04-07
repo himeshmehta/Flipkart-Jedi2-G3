@@ -1,5 +1,6 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.NotificationException;
 import com.flipkart.bean.Notification;
 import com.flipkart.dao.NotificationDB;
 
@@ -20,12 +21,13 @@ public class NotificationServices implements NotificationInterface{
     }
 
     @Override
-    public void sendNotificationToUser(final Notification notification, final String userId){
+    public void sendNotificationToUser(final Notification notification, final int userId) throws NotificationException {
         // send the notification to users
-        logger.info("Sending Notification to the User");
+        logger.info("Sending Notification to the User " + userId);
        try{
            notificationDB.sendNotificationToUser(notification,userId);
        } catch(Exception ex) {
+           throw new NotificationException(ex.getMessage());
        }
 
     }
@@ -35,7 +37,7 @@ public class NotificationServices implements NotificationInterface{
         logger.info("Sending Notification to the Users");
     }
 
-    public void paymentNotifier(String refId,long amount,String userId){
+    public void paymentNotifier(String refId,long amount,int userId) throws NotificationException {
         String description = "Payment of amount " + String.valueOf(amount) + " is completed. Reference id of transaction is " + refId;
         String notificationId =  "NOT" + UUID.randomUUID().toString();
         Notification notification = new Notification();
@@ -45,12 +47,10 @@ public class NotificationServices implements NotificationInterface{
         sendNotificationToUser(notification,userId);
     }
 
-    public void approvalNotifier(String studentId){
-        String description = "Hey, congrats ! Admin approved your request.You can login now.";
+    public void approvalNotifier(int studentId) throws NotificationException {
+        String description = "Admin approved your registration request.";
         String currentTimeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        String notificationId = "NOT" + UUID.randomUUID().toString();
         Notification notification = new Notification();
-        notification.setNotificationId(notificationId);
         notification.setTimeStamp(currentTimeStamp);
         notification.setDescription(description);
         sendNotificationToUser(notification,studentId);
