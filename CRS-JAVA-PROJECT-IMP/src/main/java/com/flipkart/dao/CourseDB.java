@@ -1,6 +1,6 @@
 package com.flipkart.dao;
 
-import com.flipkart.Exception.CourseRegistrationException;
+import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
@@ -13,7 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class CourseDB implements CourseDBInterface{
     private Connection conn = null;
@@ -139,5 +141,40 @@ public class CourseDB implements CourseDBInterface{
         List<Student> studentList = new ArrayList<Student>();
 
         return studentList;
+    }
+
+    @Override
+    public HashMap<Integer, Integer> getNotpaidCourseList(int studentId) throws CRSException {
+        HashMap<Integer,Integer> courseToFeeMap = new HashMap<>();
+        try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_NOT_PAID_COURSES);
+            sqlQuery.setInt(1,studentId);
+            ResultSet rs = sqlQuery.executeQuery();
+            Integer courseId, fee;
+            while(rs.next()){
+                courseId = rs.getInt("courseId");
+                fee = rs.getInt("fee");
+                courseToFeeMap.put(courseId,fee);
+            }
+            sqlQuery.close();
+        } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
+        }
+        return courseToFeeMap;
+    }
+
+    @Override
+    public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException {
+        try{
+            for(Integer courseId : selectedCourses){
+                sqlQuery = conn.prepareStatement(SQLQueriesConstants.PAID_FEE);
+                sqlQuery.setInt(1,studentId);
+                sqlQuery.setInt(2,courseId);
+                sqlQuery.executeUpdate();
+            }
+            sqlQuery.close();
+        } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
+        }
     }
 }

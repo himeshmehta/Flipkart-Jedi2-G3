@@ -10,14 +10,13 @@ public class Online extends Payment{
     private String card_number;
     private String name_on_card;
     private String CVV;
-    private PaymentMode mode;
 
-    public Online(String refId, Long amount, String paymentDescription, String card_number,String name_on_card,String CVV,PaymentMode mode,int userId) {
-        super(refId, amount, paymentDescription,userId);
+    public Online(String refId, int amount, String paymentDescription, String card_number,String name_on_card,String CVV,PaymentMode mode,int userId) {
+        super(refId, amount, paymentDescription,userId,mode);
         this.card_number = card_number;
         this.CVV = CVV;
         this.name_on_card = name_on_card;
-        this.mode = mode;
+
     }
 
     /**
@@ -68,19 +67,4 @@ public class Online extends Payment{
         this.CVV = CVV;
     }
 
-    /**
-     * Gets the payment mode
-     * @return
-     */
-    public PaymentMode getMode() {
-        return mode;
-    }
-
-    /**
-     * Sets the payment mode
-     * @param mode
-     */
-    public void setMode(PaymentMode mode) {
-        this.mode = mode;
-    }
 }

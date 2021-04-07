@@ -7,7 +7,6 @@ import com.flipkart.dao.NotificationDB;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 public class NotificationServices implements NotificationInterface{
@@ -39,9 +38,7 @@ public class NotificationServices implements NotificationInterface{
 
     public void paymentNotifier(String refId,long amount,int userId) throws NotificationException {
         String description = "Payment of amount " + String.valueOf(amount) + " is completed. Reference id of transaction is " + refId;
-        String notificationId =  "NOT" + UUID.randomUUID().toString();
         Notification notification = new Notification();
-        notification.setNotificationId(notificationId);
         notification.setDescription(description);
         notification.setTimeStamp(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
         sendNotificationToUser(notification,userId);

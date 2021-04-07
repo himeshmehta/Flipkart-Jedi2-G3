@@ -9,12 +9,10 @@ import com.flipkart.constants.PaymentMode;
  */
 public class Offline extends Payment{
     private Bank bank;
-    private PaymentMode mode;
 
-    public Offline(String refId,Long amount, String paymentDescription,Bank bank,int userId){
-        super(refId,amount,paymentDescription,userId);
+    public Offline(String refId,int amount, String paymentDescription,Bank bank,int userId){
+        super(refId,amount,paymentDescription,userId, PaymentMode.OFFLINE);
         this.bank = bank;
-        this.mode = PaymentMode.OFFLINE;
     }
 
     /**
@@ -31,21 +29,5 @@ public class Offline extends Payment{
      */
     public void setBank(Bank bank) {
         this.bank = bank;
-    }
-
-    /**
-     * Gets the payment mode
-     * @return
-     */
-    public PaymentMode getMode() {
-        return mode;
-    }
-
-    /**
-     * Sets the payment mode
-     * @param mode
-     */
-    public void setMode(PaymentMode mode) {
-        this.mode = mode;
     }
 }

@@ -1,11 +1,14 @@
 package com.flipkart.dao;
 
+import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public interface CourseDBInterface {
 
@@ -82,4 +85,8 @@ public interface CourseDBInterface {
      * @return List<Student> :- List of student registered for this course.
      */
     public  List<Student> getListOfStudents(Integer courseId);
+
+    public HashMap<Integer,Integer> getNotpaidCourseList(int studemtId) throws CRSException;
+
+    public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException;
 }

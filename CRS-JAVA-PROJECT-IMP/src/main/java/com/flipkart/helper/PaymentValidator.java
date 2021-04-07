@@ -8,8 +8,8 @@ public class PaymentValidator {
         if (amount < 0){
             exceptionMessage = "Amount can not be negative.";
         }
-        else if( card_no == null || card_no.length() != 16) {
-            exceptionMessage = "Number on card should be 16 digit long.";
+        else if( card_no == null || card_no.length() < 4) {
+            exceptionMessage = "Number on card should be minimum 4 digit long.";
         }
         else if( cvv == null || cvv.length() != 3){
             exceptionMessage = "CVV must be 3 digits long.";

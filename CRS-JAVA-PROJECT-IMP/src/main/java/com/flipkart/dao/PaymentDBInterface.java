@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
-import com.flipkart.bean.Offline;
-import com.flipkart.bean.Online;
+import com.flipkart.Exception.PaymentException;
+import com.flipkart.bean.Payment;
 import com.sun.istack.internal.NotNull;
 
 public interface PaymentDBInterface {
@@ -11,13 +11,6 @@ public interface PaymentDBInterface {
      * @Throws Nothing
      * @return Nothing
      *  */
-    public  void completeOnlinePayment(@NotNull Online onlinePayment);
+    public  void completePayment(@NotNull Payment payment) throws PaymentException;
 
-    /**
-     * This method complete the offline payment.
-     * @Param offlinePayment :- an object of offline payment which contains all information regarding payment.
-     * @Throws Nothing
-     * @return Nothing
-     *  */
-    public  void completeOfflinePayment(@NotNull Offline offlinePayment);
 }

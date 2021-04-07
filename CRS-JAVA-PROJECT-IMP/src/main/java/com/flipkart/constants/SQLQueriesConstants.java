@@ -12,6 +12,7 @@ public class SQLQueriesConstants {
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
     public static final String GET_COURSE = "select * from coursecatalog where courseid = ?";
     public static final String ADD_NEW_COURSE = "insert into course(courseName,description,fee) values(?,?,?)";
+    public static final String GET_NOT_PAID_COURSES = "select courseId, fee from course where course.courseId in (select courseId from registeredcourses where studentId = ? and isFeePaid = 0)";
 
     // Student related Queries
     public static final String GET_STUDENT_DETAILS = "select * from student where id = ? ";
@@ -45,7 +46,7 @@ public class SQLQueriesConstants {
     // Student table Query
     public static final String ADD_STUDENT = "insert into student (email,name) values(?,?)";
     public static final String DELETE_STUDENT = "delete from student where email = ?";
-
+    public static final String PAID_FEE = "update registeredcourses set isFeePaid = 1 where studentId = ? and courseId = ?";
     // Professor table Query
     public static final String ADD_PROFESSOR = "insert into professor (email,name) values(?,?)";
     public static final String DELETE_PROFESSOR = "delete from professor where email = ?";
@@ -55,5 +56,8 @@ public class SQLQueriesConstants {
 
     // Notification table query
     public static String SEND_NOTIFICATION = "insert into notification (description, receiverId, time) values(?,?,?)";
+
+    // Payment table query
+    public static String ADD_PAYMENT = "insert into payment values(?,?,?,?,?)";
 
 }
