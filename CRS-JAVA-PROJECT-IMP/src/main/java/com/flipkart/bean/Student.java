@@ -12,6 +12,10 @@ public class Student extends User{
     private List<Course>mainCourseList;
     private List<String>alternateCourseList;
 
+    public Student(String name) {
+        super(name);
+    }
+
     public Student(String name, String email, Role role,int userId) {
         super(name, email, role, userId);
     }

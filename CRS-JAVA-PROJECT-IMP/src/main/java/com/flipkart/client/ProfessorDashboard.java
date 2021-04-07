@@ -99,6 +99,10 @@ public class ProfessorDashboard {
                     List<Student> studentList=getEnrolledStudents(courseId);
                     result=studentList.isEmpty()?false:true;
                     message = result ? "List of Students fetched successfully" : "Something Wrong";
+                    System.out.println("Names of enrolled Students");
+                    for (Student student : studentList) {
+                        System.out.println(student.getName());
+                    }
                     logger.info(message);
                     break;
 

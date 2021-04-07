@@ -137,6 +137,24 @@ public class CourseDB implements CourseDBInterface{
 
     public List<Student> getListOfStudents(Integer courseId) {
         List<Student> studentList = new ArrayList<Student>();
+        try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_STUDENT_FOR_COURSE);
+            sqlQuery.setInt(1,courseId);
+            ResultSet resultSet = sqlQuery.executeQuery();
+            while (resultSet.next()) {
+                sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USER_DETAIL);
+                sqlQuery.setInt(1,resultSet.getInt("studentId"));
+                ResultSet rs = sqlQuery.executeQuery();
+                if (rs.next()) {
+                    String name = rs.getString("name");
+                    Student student = new Student(name);
+                    studentList.add(student);
+                }
+            }
+            return studentList;
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
 
         return studentList;
     }
