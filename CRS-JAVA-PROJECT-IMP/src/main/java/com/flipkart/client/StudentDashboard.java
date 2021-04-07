@@ -90,11 +90,13 @@ public class StudentDashboard {
                         break;
                     case 4:
                         List<Course> courseList = getRegisteredCourses();
-                        logger.info("Enrolled Courses : ");
+                        System.out.println("Enrolled Courses : ");
+                        System.out.println("ID Name Fee ProfID");
                         for (Course course : courseList) {
-                            message = course.getCourseId() + " " + course.getCourseName() + " " + course.getFee() + " " + course.getProfessorId();
-                            logger.info(message);
+                            message = course.getCourseId() + "  " + course.getCourseName() + "   " + course.getFee() + " " + course.getProfessorId();
+                            System.out.println(message);
                         }
+                        System.out.println();
                     default:
                         break;
                 }

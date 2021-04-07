@@ -2,6 +2,9 @@ package com.flipkart.constants;
 
 public class SQLQueriesConstants {
 
+    // for Courses
+    public static final String GET_COURSE_DETAILS = "select * from course where courseId = ?";
+
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
     public static final String GET_COURSE = "select * from coursecatalog where courseid = ?";
@@ -12,7 +15,7 @@ public class SQLQueriesConstants {
     public static final String GET_COURSE_COUNT_FOR_STUDENT = "select count(*) as c from registeredcourses where studentid = ?";
     public static final String GET_STUDENT_COUNT_FOR_COURSE = "select count(*) as c from registeredcourses where courseid = ?";
     public static final String REGISTER_STUDENT_FOR_COURSE = "insert into registeredcourses(courseid, studentid) values (?,?)";
-    public static final String GET_COURSE_FOR_STUDENT = "select courseid from registeredcourses where studentid = ?";
+    public static final String GET_COURSE_FOR_STUDENT = "select courseId from registeredcourses where studentId = ?";
     public static final String DROP_COURSE_FOR_STUDENT = "delete from registeredcourses where courseid = ? and studentid = ?";
     public static final String MAKE_PAYMENT_QUERY = "insert into payments (studentid, feespaid, paymentdate, paymentmethod) values(?, ?, ?, ?)";
     public static final String SELF_REGISTER_QUERY = "insert into user (email, name, password, isApproved, role) values(?,?,?,?,?)";
