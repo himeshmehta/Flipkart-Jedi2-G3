@@ -60,10 +60,32 @@ public class CourseDB implements CourseDBInterface{
         return Boolean.FALSE;
     }
 
-    public  List<Course> viewCourses (Student student){
+    public  List<Course> viewCourses (){
         List<Course> courseList = new ArrayList<>();
         try{
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_TABLE);
+            ResultSet resultSet = sqlQuery.executeQuery();
+            while (resultSet.next()) {
+                Course course = new Course();
+                course.setCourseId(resultSet.getInt("courseId"));
+                course.setCourseName(resultSet.getString("coursename"));
+                course.setProfessorId(resultSet.getInt("userId"));
+                course.setFee(resultSet.getLong("fee"));
+                courseList.add(course);
+            }
+            sqlQuery.close();
+            return courseList;
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+        return courseList;
+    }
+
+    public List<Course> viewEnrolledCourses(Professor professor) {
+        List<Course> courseList = new ArrayList<>();
+        try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_PROFESSOR_COURSES);
+            sqlQuery.setInt(1,professor.getUserId());
             ResultSet resultSet = sqlQuery.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course();
@@ -85,8 +107,24 @@ public class CourseDB implements CourseDBInterface{
         return new ArrayList<>();
     }
 
-    public  Boolean setProfessor(Course course , Professor professor) {
-        return Boolean.TRUE;
+    public  Boolean setProfessor(Integer courseId , Professor professor) {
+        try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_PROFESSOR);
+            sqlQuery.setInt(1,courseId);
+            ResultSet resultSet = sqlQuery.executeQuery();
+            if (!resultSet.next() || resultSet.getInt("userId") != 0) throw new SQLException("Professor already added");
+            else {
+                sqlQuery = conn.prepareStatement(SQLQueriesConstants.SET_PROFESSOR);
+                sqlQuery.setInt(1,professor.getUserId());
+                sqlQuery.setInt(2,courseId);
+                sqlQuery.executeUpdate();
+            }
+            sqlQuery.close();
+            return Boolean.TRUE;
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+        return Boolean.FALSE;
     }
 
     public  Boolean setAvailability(Course course) {

@@ -27,24 +27,27 @@ public class StudentDB implements StudentDBInterface{
             sqlQuery.setInt(1,student.getUserId());
 
             ResultSet rs = sqlQuery.executeQuery();
-
+//            rs.next();
             while (rs.next()) {
-                sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_DETAILS);
-                Course course = new Course();
-                int courseId = rs.getInt(1);
-                sqlQuery.setInt(1,courseId);
-                ResultSet resultSet = sqlQuery.executeQuery();
-                while (resultSet.next()) {
-                    course.setCourseId(courseId);
-                    course.setCourseName(resultSet.getString("coursename"));
-                    course.setProfessorId(resultSet.getInt("userId"));
-                    course.setFee(resultSet.getLong("fee"));
+                try {
+                    sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_DETAILS);
+                    Course course = new Course();
+                    int courseId = rs.getInt(1);
+                    sqlQuery.setInt(1,courseId);
+                    ResultSet resultSet = sqlQuery.executeQuery();
+                    while (resultSet.next()) {
+                        course.setCourseId(courseId);
+                        course.setCourseName(resultSet.getString("coursename"));
+                        course.setProfessorId(resultSet.getInt("userId"));
+                        course.setFee(resultSet.getLong("fee"));
+                    }
+                    courseList.add(course);
+                    sqlQuery.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
-                courseList.add(course);
-                sqlQuery.close();
-                return courseList;
             }
-
+            return courseList;
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         }
