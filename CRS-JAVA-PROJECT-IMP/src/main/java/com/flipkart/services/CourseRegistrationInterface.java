@@ -34,7 +34,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    List<Course> viewCourses(Student student) throws CourseRegistrationException;
+    List<Course> viewCourses() throws CourseRegistrationException;
 
     /**
      *

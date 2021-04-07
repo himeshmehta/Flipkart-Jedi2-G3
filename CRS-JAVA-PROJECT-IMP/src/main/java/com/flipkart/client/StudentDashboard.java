@@ -34,7 +34,7 @@ public class StudentDashboard {
 
     public List<Course> viewCourses() {
         try {
-            return courseRegistrationServices.viewCourses(student);
+            return courseRegistrationServices.viewCourses();
         } catch (CourseRegistrationException ex) {
             ex.printStackTrace();
             return new ArrayList<>();

@@ -31,9 +31,9 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
         }
 
     @Override
-    public List<Course> viewCourses(Student student) throws CourseRegistrationException{
-        logger.info("Adding the course");
-        return courseDBOperations.viewCourses(student);
+    public List<Course> viewCourses() throws CourseRegistrationException{
+        logger.info("Viewing Courses");
+        return courseDBOperations.viewCourses();
         }
 
     @Override
