@@ -53,4 +53,11 @@ public class AdminServices implements AdminInterface{
         result = authDBOperations.getNotApprovedStudent();
         return result;
     }
+
+    @Override
+    public void addNewCourse(String description, String courseName, long fee) throws CRSException {
+
+        logger.info("Adding new course");
+        authDBOperations.addNewCourse(description,courseName,fee);
+    }
 }

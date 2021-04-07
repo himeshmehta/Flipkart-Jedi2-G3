@@ -22,10 +22,7 @@ class CreateTableScript {
 
             for(String s : createTableQueries){
                 stmt = connection.prepareStatement(s);
-                System.out.println(2);
-                int rs = stmt.executeUpdate();
-                System.out.println(3);
-                System.out.println(rs);
+                stmt.executeUpdate();
                 stmt.close();
             }
 //            // user table

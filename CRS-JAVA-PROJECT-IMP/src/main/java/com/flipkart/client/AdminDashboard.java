@@ -45,8 +45,16 @@ public class AdminDashboard {
         return isUserRemoved;
     }
 
-    public Boolean addNewCourse(int courseId , String courseName , Long fee){
-        return Boolean.TRUE;
+    public Boolean addNewCourse(String description , String courseName , Long fee){
+        Boolean newCourseAdded = Boolean.FALSE;
+        try {
+            adminService.addNewCourse(description,courseName,fee);
+            newCourseAdded = Boolean.TRUE;
+        } catch (Exception ex){
+            logger.info(ex.getMessage());
+            System.out.println(ex.getMessage());
+        }
+        return newCourseAdded;
     }
 
     public void getListOfSelfRegisteredStudent(){
@@ -78,19 +86,14 @@ public class AdminDashboard {
         }
     }
 
-    public void helper()
+    public void helper(Scanner inputReader)
     {
-        Scanner inputReader = new Scanner(System.in);
+        // Scanner inputReader = new Scanner(System.in);
         Boolean result;
 
         while (true) {
             try{
-                System.out.println("Select operation to perform");
-                System.out.println("1. Add User");
-                System.out.println("2. Remove User");
-                System.out.println("3. Add New Course");
-                System.out.println("4. Approve Student");
-                System.out.println("5. Exit");
+                showMenu();
                 int operation = inputReader.nextInt();
 
                 switch (operation) {
@@ -137,14 +140,17 @@ public class AdminDashboard {
                     case 3:
 
                         System.out.println("Enter Course Description");
-                        int courseId = inputReader.nextInt();
+                        String description = inputReader.next();
+
                         System.out.println("Enter Course Name");
                         String courseName = inputReader.next();
+
+                        System.out.println("Enter fee for the course");
                         long fee=inputReader.nextLong();
 
-                        result = addNewCourse(courseId, courseName,fee);
+                         Boolean newCourseAdded = addNewCourse(description, courseName,fee);
 
-                        message = result ? "Course added successfully" : "Course not added";
+                        message = newCourseAdded == Boolean.FALSE ? "Course not added" : "Course added successfully";
                         System.out.println(message);
                         break;
 
@@ -172,10 +178,17 @@ public class AdminDashboard {
             } catch(Exception e){
                 System.out.println( "ERROR --> "+ e.getMessage());
             }
-
-        }
-        inputReader.close();
         }
     }
+
+    private void showMenu() {
+        System.out.println("Select operation to perform");
+        System.out.println("1. Add User");
+        System.out.println("2. Remove User");
+        System.out.println("3. Add New Course");
+        System.out.println("4. Approve Student");
+        System.out.println("5. Exit");
+    }
+}
 
 

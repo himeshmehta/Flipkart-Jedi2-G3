@@ -237,6 +237,20 @@ public class AuthDB implements AuthDBInterface{
         return user;
     }
 
+    @Override
+    public void addNewCourse(String description, String courseName, Long courseFee) throws CRSException {
+        try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE);
+            sqlQuery.setString(1,courseName);
+            sqlQuery.setString(2,description);
+            sqlQuery.setLong(3,courseFee);
+            int rs = sqlQuery.executeUpdate();
+            sqlQuery.close();
+        } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
+        }
+    }
+
     private Role getRoleFromText(String roleFromDB) {
         Role role = null;
         switch (roleFromDB) {

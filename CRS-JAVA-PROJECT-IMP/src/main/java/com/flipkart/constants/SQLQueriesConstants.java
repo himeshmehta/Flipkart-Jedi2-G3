@@ -8,6 +8,7 @@ public class SQLQueriesConstants {
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
     public static final String GET_COURSE = "select * from coursecatalog where courseid = ?";
+    public static final String ADD_NEW_COURSE = "insert into course(courseName,description,fee) values(?,?,?)";
 
     // Student related Queries
     public static final String GET_STUDENT_DETAILS = "select * from student where id = ? ";

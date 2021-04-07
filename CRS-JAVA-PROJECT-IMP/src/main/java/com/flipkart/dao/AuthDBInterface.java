@@ -58,4 +58,6 @@ public interface AuthDBInterface {
      * @return Boolean
      */
     public User getUserDetails(int userId) throws InvalidDataException, CRSException;
+
+    public void addNewCourse(String description, String courseName, Long courseFee) throws CRSException;
 }

@@ -41,7 +41,7 @@ public class CreateTable {
             "courseId INT PRIMARY KEY AUTO_INCREMENT,\n" +
             "courseName VARCHAR(20) NOT NULL,\n" +
             "description VARCHAR(100) NOT NULL,\n" +
-            "professorId INT NOT NULL,\n" +
+            "professorId INT,\n" +
             "isValid Boolean,\n" +
             "fee INT NOT NULL,\n" +
             "FOREIGN KEY (professorId) REFERENCES user(userId)\n" +
@@ -63,7 +63,7 @@ public class CreateTable {
     public static String gradeCard = "create table if not exists gradeCard(\n" +
             "studentId INT NOT NULL,\n" +
             "courseId INT NOT NULL,\n" +
-            "grade INT NOT NULL,\n" +
+            "grade INT,\n" +
             "PRIMARY KEY (studentId, courseId),\n" +
             "FOREIGN KEY (studentId) REFERENCES user(userId),\n" +
             "FOREIGN KEY (courseId) REFERENCES course(courseId)\n" +
