@@ -5,6 +5,7 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -30,9 +31,9 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
         }
 
     @Override
-    public Boolean addCourse(Student student, Integer courseId) throws CourseRegistrationException{
+    public List<Course> viewCourses(Student student) throws CourseRegistrationException{
         logger.info("Adding the course");
-        return courseDBOperations.addStudent(student,courseId);
+        return courseDBOperations.viewCourses(student);
         }
 
     @Override

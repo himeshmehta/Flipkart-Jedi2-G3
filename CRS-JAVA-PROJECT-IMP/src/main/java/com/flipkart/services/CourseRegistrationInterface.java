@@ -5,6 +5,8 @@ import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 
+import java.util.List;
+
 public interface CourseRegistrationInterface {
 
     /**
@@ -32,7 +34,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    Boolean addCourse(Student student, Integer courseId) throws CourseRegistrationException;
+    List<Course> viewCourses(Student student) throws CourseRegistrationException;
 
     /**
      *
