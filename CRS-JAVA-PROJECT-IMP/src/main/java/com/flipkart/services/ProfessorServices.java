@@ -2,6 +2,7 @@ package com.flipkart.services;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.GradeCard;
+import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
 
@@ -26,26 +27,25 @@ public class ProfessorServices implements ProfessorInterface{
 
       }
 
+      public List<Course> viewCourses() {
+          return courseDB.viewCourses();
+
+      }
+
+    public List<Course> viewEnrolledCourses(Professor professor) {
+        return courseDB.viewEnrolledCourses(professor);
+
+    }
+
     /**
      * Professor select the course he teach
 
      * @param courseId The course which is taught by professor
      */
 
-      public  Course selectCourseToTeach(Integer courseId)
+      public  Boolean selectCourseToTeach(Integer courseId , Professor professor)
       {
-          List<Course> courseList=courseCatalogServices.viewCourseList();
-          Course course=new Course();
-          logger.info("Fetching Course List");
-          for(Course cs:courseList)
-          {
-              if(cs.getCourseId()==courseId)
-              {
-                  course=cs;
-              }
-
-          }
-          return course;
+          return courseDB.setProfessor(courseId,professor);
       }
     /**
      * To get the list of students in particular course

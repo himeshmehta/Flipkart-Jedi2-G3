@@ -45,7 +45,6 @@ public class AuthDB implements AuthDBInterface{
                 Boolean isApproved = rs.getBoolean("isApproved");
                 String passInDB = rs.getString("password");
 
-                System.out.println(1);
                 if(isApproved == false){
                     throw new AuthorizationException("Your are not approved yet.");
                 }
