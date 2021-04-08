@@ -3,13 +3,14 @@ package com.flipkart.constants;
 public class SQLQueriesConstants {
 
     // for User
-    public static final String GET_USER_DETAIL = "select name from user where userId = ?";
+    public static final String GET_USER_DETAIL = "select * from user where userId = ?";
 
     // for Courses
     public static final String GET_COURSE_DETAILS = "select * from course where courseId = ?";
     public static final String GET_COURSE_TABLE = "select * from course";
     public static final String GET_COURSE_PROFESSOR = "select userId from course where courseId = ?";
     public static final String SET_PROFESSOR = "update course set userId = ? where courseId = ?";
+    public static final String IS_PROF_TEACHING_COURSE = "select * from course where courseId = ? and userId = ?";
 
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
@@ -27,10 +28,12 @@ public class SQLQueriesConstants {
     public static final String MAKE_PAYMENT_QUERY = "insert into payments (studentid, feespaid, paymentdate, paymentmethod) values(?, ?, ?, ?)";
     public static final String SELF_REGISTER_QUERY = "insert into user (email, name, password, isApproved, role) values(?,?,?,?,?)";
     public static final String GET_STUDENT_FOR_COURSE = "select studentId from registeredcourses where courseId = ?";
+    public static final String FETCH_INDIVIDUAL_COURSE_GRADE = "select grade from gradeCard where studentId = ? and courseId = ?";
+    public static final String FETCH_GRADE_CARD = "select * from gradeCard where studentId = ?";
 
     // Professor related Queries
     public static final String GET_PROFESSOR_DETAILS = "select * from professor where id = ?";
-    public static final String GRADE_STUDENT = "update registeredcourses set grade = ? where studentid = ? and courseid = ?";
+    // public static final String UPDATE_GRADE = "update gradeCard set grade = ? where studentId = ? and courseId = ?";
     public static final String GET_PROFESSOR_COURSES = "select * from course where userId = ?";
 
 
@@ -51,9 +54,12 @@ public class SQLQueriesConstants {
     public static final String ADD_STUDENT = "insert into student (email,name) values(?,?)";
     public static final String DELETE_STUDENT = "delete from student where email = ?";
     public static final String PAID_FEE = "update registeredcourses set isFeePaid = 1 where studentId = ? and courseId = ?";
+
     // Professor table Query
     public static final String ADD_PROFESSOR = "insert into professor (email,name) values(?,?)";
     public static final String DELETE_PROFESSOR = "delete from professor where email = ?";
+    public static final String ADD_GRADES = "insert into gradeCard values(?,?,?)";
+    public static final String UPDATE_GRADES = "update gradeCard set grades = ? where studentId = ? and courseId = ?";
 
     // Authenticate Query
     public static final String AUTHORISE_USER = "select * from user where userId = ?";

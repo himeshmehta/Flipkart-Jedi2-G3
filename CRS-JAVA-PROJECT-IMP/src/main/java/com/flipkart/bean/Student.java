@@ -12,9 +12,9 @@ public class Student extends User{
     private List<Course>mainCourseList;
     private List<String>alternateCourseList;
 
-    public Student(String name) {
-        super(name);
-    }
+//    public Student(String name) {
+//        super(name);
+//    }
 
     public Student(String name, String email, Role role,int userId) {
         super(name, email, role, userId);
@@ -23,6 +23,11 @@ public class Student extends User{
     public Student(User user){
         super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
     }
+
+    public Student() {
+        super();
+    }
+
     /**
      * Gets the main course List
      * @return main course List
