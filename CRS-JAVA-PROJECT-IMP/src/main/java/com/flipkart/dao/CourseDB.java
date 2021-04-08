@@ -2,6 +2,7 @@ package com.flipkart.dao;
 
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
+import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
@@ -149,7 +150,10 @@ public class CourseDB implements CourseDBInterface{
                 ResultSet rs = sqlQuery.executeQuery();
                 if (rs.next()) {
                     String name = rs.getString("name");
-                    Student student = new Student(name);
+                    int studentId = rs.getInt("userId");
+                    Student student = new Student();
+                    student.setName(name);
+                    student.setUserId(studentId);
                     studentList.add(student);
                 }
             }
@@ -192,6 +196,23 @@ public class CourseDB implements CourseDBInterface{
             }
             sqlQuery.close();
         } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException {
+        try {
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.IS_PROF_TEACHING_COURSE);
+            sqlQuery.setInt(1,courseId);
+            sqlQuery.setInt(2,profId);
+
+            ResultSet rs = sqlQuery.executeQuery();
+            if(rs.next()) return Boolean.TRUE;
+            else{
+                throw new InvalidDataException("You are not assign to course "  + courseId);
+            }
+        } catch (SQLException | InvalidDataException ex) {
             throw new CRSException(ex.getMessage());
         }
     }

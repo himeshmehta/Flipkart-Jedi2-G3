@@ -89,4 +89,6 @@ public interface CourseDBInterface {
     public HashMap<Integer,Integer> getNotpaidCourseList(int studemtId) throws CRSException;
 
     public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException;
+
+    Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
 }

@@ -7,8 +7,12 @@ import java.util.*;
 public class GradeCard {
 
     private Student studentDetails;
-    private Map<String,Integer>courseMarks;
+    private Map<Integer,Integer>courseMarks;
 
+    public GradeCard(Map<Integer,Integer> courseMarks){
+        this.courseMarks = courseMarks;
+        this.studentDetails = new Student();
+    }
     /**
      * Gets the student details
      * @return
@@ -29,7 +33,7 @@ public class GradeCard {
      * Gets the list of mark for respective courses
      * @return
      */
-    public Map<String, Integer> getCourseMarks() {
+    public Map<Integer, Integer> getCourseMarks() {
         return courseMarks;
     }
 
@@ -37,7 +41,7 @@ public class GradeCard {
      * Sets the list of marks for courses
      * @param courseMarks
      */
-    public void setCourseMarks(Map<String, Integer> courseMarks) {
+    public void setCourseMarks(Map<Integer, Integer> courseMarks) {
         this.courseMarks = courseMarks;
     }
 }

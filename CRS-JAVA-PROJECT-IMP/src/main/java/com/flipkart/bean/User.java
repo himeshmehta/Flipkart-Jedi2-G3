@@ -15,9 +15,6 @@ public class User {
 
     }
 
-    public User(String name) {
-        this.name = name;
-    }
     /**
      *  Gets user id
      * @return the user id

@@ -2,11 +2,13 @@ package com.flipkart.client;
 
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
+import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Student;
 import com.flipkart.constants.Bank;
 import com.flipkart.constants.PaymentMode;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.services.CourseRegistrationServices;
+import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.PaymentServices;
 
 import java.util.*;
@@ -17,6 +19,7 @@ public class StudentDashboard {
     CourseRegistrationServices courseRegistrationServices;
     PaymentServices paymentServices;
     StudentDB studentDB;
+    GradeCardServices gradeCardServices;
     private static final Logger logger = Logger.getLogger(String.valueOf(StudentDashboard.class));
 
     public StudentDashboard(Student student) {
@@ -24,6 +27,7 @@ public class StudentDashboard {
         courseRegistrationServices = new CourseRegistrationServices();
         this.studentDB = new StudentDB();
         this.paymentServices = new PaymentServices();
+        this.gradeCardServices = new GradeCardServices();
     }
 
     public Boolean registerCourse(Integer courseId) {
@@ -216,11 +220,13 @@ public class StudentDashboard {
                     case 5:
                         getPaymentRemainingCourse(student.getUserId(),scanner);
                         break;
+                    case 6:
+                        viewGradeCard(student.getUserId());
                     default:
                         break;
                 }
 
-                if(operation == 6){
+                if(operation == 7){
                     // Exit from student dashboard
                     break;
                 }
@@ -235,6 +241,27 @@ public class StudentDashboard {
         }
     }
 
+    private void viewGradeCard(int studentId) {
+        try {
+            GradeCard gradeCard = gradeCardServices.viewGradeCard(studentId);
+            Map<Integer,Integer> courseToMark = gradeCard.getCourseMarks();
+
+            if(courseToMark == null || courseToMark.isEmpty()){
+                System.out.println(" Grade card not available");
+                return;
+            }
+            System.out.println("###-- GRADE CARD --###\n");
+            System.out.println("courseId   Marks");
+            for(Integer courseId : courseToMark.keySet()){
+                System.out.println(courseId + "          " + courseToMark.get(courseId));
+            }
+            System.out.println("\n");
+        } catch(Exception ex){
+            System.out.println("Grade card not fetched successfully");
+            System.out.println(ex.getMessage());
+        }
+    }
+
     private void showMenu() {
         System.out.println("Menu for student dashboard :- ");
         System.out.println("1. Register for Course.");
@@ -242,7 +269,8 @@ public class StudentDashboard {
         System.out.println("3. View Courses");
         System.out.println("4. Get list of enrolled courses.");
         System.out.println("5. Pay Fee.");
-        System.out.println("6. Exit");
+        System.out.println("6. View Grade card");
+        System.out.println("7. Exit");
         System.out.println("\n\n");
         System.out.println("Enter operation id");
     }
