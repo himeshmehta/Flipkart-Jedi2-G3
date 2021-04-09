@@ -10,11 +10,11 @@ import com.flipkart.utils.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class NotificationDB implements NotificationDBInterface{
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
+    private static final Logger logger = Logger.getLogger(AdminDashboard.class);
     private Connection conn = null;
     private PreparedStatement sqlQuery;
 
