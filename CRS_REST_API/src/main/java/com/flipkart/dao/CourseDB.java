@@ -9,10 +9,7 @@ import com.flipkart.bean.Student;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -216,4 +213,24 @@ public class CourseDB implements CourseDBInterface{
             throw new CRSException(ex.getMessage());
         }
     }
+
+    @Override
+    public int getFee(Set<Integer> courseIds) throws CRSException {
+        int amount =0;
+        try {
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.FETCH_FEE);
+            for(int courseId : courseIds){
+                sqlQuery.setInt(1,courseId);
+                ResultSet rs = sqlQuery.executeQuery();
+                rs.next();
+                amount += rs.getInt("fee");
+            }
+
+        } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
+        }
+        return amount;
+    }
+
+
 }

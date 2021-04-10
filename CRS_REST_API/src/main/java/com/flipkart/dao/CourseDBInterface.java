@@ -91,4 +91,6 @@ public interface CourseDBInterface {
     public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException;
 
     Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
+
+    int getFee(Set<Integer> courseIds) throws CRSException;
 }

@@ -3,5 +3,9 @@ package com.flipkart.constants;
 public enum Bank {
     SBI,
     HDFC,
-    OTHER
+    OTHER;
+
+    public String getBank() {
+        return this.name();
+    }
 }

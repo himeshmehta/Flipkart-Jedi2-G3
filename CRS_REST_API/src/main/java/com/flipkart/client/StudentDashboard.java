@@ -115,7 +115,7 @@ public class StudentDashboard {
                 }
                 Bank bankName = getBankNameFromIndex(bankIndex);
                 String description = "payment for registered courses through " + bankName.toString() + " bank.";
-                paymentServices.makeOfflinePayment(description,totalAmount,bankName,studentId,payingCoursesId);
+                paymentServices.makeOfflinePayment(description,bankName,studentId,payingCoursesId);
 
             } else {
                 System.out.println("Enter card number");
@@ -128,7 +128,7 @@ public class StudentDashboard {
                 String cvv = inputReader.next();
 
                 String description = "Payment for registered courses through online with " + mode.toString() + " card.";
-                paymentServices.makeOnlinePayment(description,totalAmount,card_number,name_on_card,cvv,mode,studentId,payingCoursesId);
+                paymentServices.makeOnlinePayment(description,card_number,name_on_card,cvv,mode,studentId,payingCoursesId);
             }
             System.out.println("Payment was successful.");
         } catch (Exception e) {

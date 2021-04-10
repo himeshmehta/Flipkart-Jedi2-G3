@@ -3,6 +3,10 @@ package com.flipkart.constants;
 public enum Role {
     STUDENT,
     PROFESSOR,
-    ADMIN
+    ADMIN;
+
+    public String getRole() {
+        return this.name();
+    }
 
 }

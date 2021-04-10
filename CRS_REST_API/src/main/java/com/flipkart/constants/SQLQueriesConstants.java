@@ -11,6 +11,7 @@ public class SQLQueriesConstants {
     public static final String GET_COURSE_PROFESSOR = "select userId from course where courseId = ?";
     public static final String SET_PROFESSOR = "update course set userId = ? where courseId = ?";
     public static final String IS_PROF_TEACHING_COURSE = "select * from course where courseId = ? and userId = ?";
+    public static final String FETCH_FEE = "select fee from course where courseId = ?";
 
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
