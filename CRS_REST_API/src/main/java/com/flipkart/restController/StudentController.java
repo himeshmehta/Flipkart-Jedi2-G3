@@ -6,6 +6,7 @@ import com.flipkart.Exception.GradeCardNotFoundException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Student;
+import com.flipkart.bean.User;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.requestPojo.PaymentRequest;
 import com.flipkart.services.CourseRegistrationServices;
@@ -30,10 +31,14 @@ public class StudentController {
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewAllCourses() throws CourseRegistrationException {
-        System.out.println("In professor");
-        List<Course> courses = new ArrayList<>();
-        courses = courseRegistrationServices.viewCourses();
-        return Response.status(200).entity(courses).build();
+        try {
+            System.out.println("In professor");
+            List<Course> courses = new ArrayList<>();
+            courses = courseRegistrationServices.viewCourses();
+            return Response.status(200).entity(courses).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
     }
 
 
@@ -41,27 +46,64 @@ public class StudentController {
     @Path("/viewEnrolledCourses/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewEnrolledCourses(@PathParam("studentId") int studentId) {
-        List<Course> courses = new ArrayList<>();
-        Student student = new Student();
-        student.setUserId(studentId);
-        courses = studentDB.registeredCourses(student);
-        return Response.status(200).entity(courses).build();
+        try {
+            List<Course> courses = new ArrayList<>();
+            Student student = new Student();
+            student.setUserId(studentId);
+            courses = studentDB.registeredCourses(student);
+            return Response.status(200).entity(courses).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
     }
 
     @GET
     @Path("/gradeCard/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewGradeCard(@PathParam("studentId") int studentId) throws GradeCardNotFoundException {
-        GradeCard gradeCard = gradeCardServices.viewGradeCard(studentId);
-        return Response.status(200).entity(gradeCard).build();
+        try {
+            GradeCard gradeCard = gradeCardServices.viewGradeCard(studentId);
+            return Response.status(200).entity(gradeCard).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
     }
 
     @GET
     @Path("/feeRemaining/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewNotPaidCourses(@PathParam("studentId") int studentId) throws CRSException {
-        HashMap<Integer,Integer> courseToFee = courseRegistrationServices.getNotPaidCourseList(studentId);
-        return Response.status(200).entity(courseToFee).build();
+        try {
+            HashMap<Integer,Integer> courseToFee = courseRegistrationServices.getNotPaidCourseList(studentId);
+            return Response.status(200).entity(courseToFee).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
+    }
+
+    @POST
+    @Path("/registerStudent/{courseId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes("application/json")
+    public Response registerCourse(User student , @PathParam ("courseId") int courseId){
+        try {
+            courseRegistrationServices.registerCourse(student, courseId);
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Course Registration Failed, Please Try Again ! ").build();
+        }
+        return Response.status(200).entity( "Registration Successful").build();
+    }
+
+    @DELETE
+    @Path("/removeCourse/{courseId}")
+    @Consumes("application/json")
+    public Response removeCourse(User student , @PathParam("courseId") int courseId) {
+        try {
+            courseRegistrationServices.removeCourse(student, courseId);
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Course Removal Failed, Please Try Again ! ").build();
+        }
+        return Response.status(200).entity("Removal Successful").build();
     }
 
     @PUT
@@ -69,8 +111,12 @@ public class StudentController {
     @Consumes("application/json")
     @Produces(MediaType.APPLICATION_JSON)
     public Response completePayment(PaymentRequest request) throws CRSException {
-        String message  = paymentServices.completePayment(request);
-        return Response.status(200).entity(message).build();
+        try {
+            String message  = paymentServices.completePayment(request);
+            return Response.status(200).entity(message).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Payment Failed, Please Try Again ! ").build();
+        }
     }
 
 }

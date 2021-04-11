@@ -6,6 +6,7 @@ import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
+import com.flipkart.bean.User;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
@@ -22,7 +23,7 @@ public class CourseDB implements CourseDBInterface{
         conn = DBUtil.getConnection();
         sqlQuery = null;
     }
-    public  Boolean registerStudent(Student student , Integer courseId) throws CourseRegistrationException {
+    public  Boolean registerStudent(User student , Integer courseId) throws CourseRegistrationException {
         try {
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_DETAILS);
             sqlQuery.setInt(1,courseId);
@@ -43,7 +44,7 @@ public class CourseDB implements CourseDBInterface{
         return Boolean.FALSE;
     }
 
-    public  Boolean removeStudent (Student student , Integer courseId){
+    public  Boolean removeStudent (User student , Integer courseId){
         try{
             // add details in student table
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.DROP_COURSE_FOR_STUDENT);

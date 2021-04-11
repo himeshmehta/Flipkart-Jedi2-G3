@@ -5,6 +5,7 @@ import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
+import com.flipkart.bean.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean registerStudent(Student student , Integer courseId) throws CourseRegistrationException;
+    public  Boolean registerStudent(User student , Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used for revert the registration of course.
@@ -28,7 +29,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean removeStudent (Student student , Integer courseId) throws CourseRegistrationException;
+    public  Boolean removeStudent (User student , Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used for viewing course.
