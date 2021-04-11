@@ -6,8 +6,8 @@ import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.User;
 import com.flipkart.dao.AuthDB;
 import com.flipkart.helper.UserValidator;
+import org.apache.log4j.Logger;
 
-import java.util.logging.Logger;
 
 public class AuthDBServices implements AuthDBInterface{
 
@@ -16,7 +16,7 @@ public class AuthDBServices implements AuthDBInterface{
     public AuthDBServices(){
         this.authDBOperations = new AuthDB();
     }
-    private static final Logger logger = Logger.getLogger(String.valueOf(AuthDBServices.class));
+    private static final Logger logger = Logger.getLogger(AuthDBServices.class);
 
     @Override
     public User authenticateUser(int userId, String password) throws AuthorizationException {

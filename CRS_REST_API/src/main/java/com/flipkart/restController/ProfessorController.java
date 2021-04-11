@@ -22,27 +22,46 @@ public class ProfessorController {
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewAllCourses() {
-        System.out.println("In professor");
-        List<Course> courses = new ArrayList<>();
-        courses = professorServices.viewCourses();
-        return Response.status(200).entity(courses).build();
+        try {
+            System.out.println("In professor");
+            List<Course> courses = new ArrayList<>();
+            courses = professorServices.viewCourses();
+            return Response.status(200).entity(courses).build();
+        }
+        catch(Exception ex)
+        {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
     }
 
     @GET
     @Path("/viewEnrolledStudents/{courseId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewEnrolledStudents(@PathParam("courseId") int courseId){
-        List<Student> studentList = professorServices.getEnrolledStudents(courseId);
-        return Response.status(200).entity(studentList).build();
+        try {
+            System.out.println("In professor");
+            List<Student> studentList = professorServices.getEnrolledStudents(courseId);
+            return Response.status(200).entity(studentList).build();
+        }
+        catch(Exception ex)
+        {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
     }
 
     @GET
     @Path("/viewSelectedCourses/{professorId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewSelectedCourses(@PathParam("professorId") int professorId) {
-        System.out.println("In professor");
-        List<Course> courses = new ArrayList<>();
-        courses = professorServices.viewEnrolledCourses(professorId);
-        return Response.status(200).entity(courses).build();
+        try {
+            System.out.println("In professor");
+            List<Course> courses = new ArrayList<>();
+            courses = professorServices.viewEnrolledCourses(professorId);
+            return Response.status(200).entity(courses).build();
+        }
+        catch(Exception ex)
+        {
+            return Response.status(500).entity( "Something went wrong, Please Try Again ! ").build();
+        }
     }
 }

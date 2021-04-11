@@ -5,7 +5,7 @@ import com.flipkart.dao.CourseCatalogDB;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class CourseCatalogServices implements CourseCatalogInterface{
 
@@ -15,7 +15,7 @@ public class CourseCatalogServices implements CourseCatalogInterface{
         this.catalogOperations = new CourseCatalogDB();
     }
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(CourseCatalogServices.class));
+    private static final Logger logger = Logger.getLogger(CourseCatalogServices.class);
 
     @Override
     public Boolean updateCourseList(Course newCourse) {

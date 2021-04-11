@@ -13,13 +13,13 @@ import com.flipkart.requestPojo.PaymentRequest;
 
 import java.util.Set;
 import java.util.UUID;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class PaymentServices implements PaymentInterface{
     private NotificationServices notificationServices = new  NotificationServices();
     private PaymentDB paymentDB = new PaymentDB();
     private CourseDB courseDB= new CourseDB();
-    private static final Logger logger = Logger.getLogger(String.valueOf(PaymentServices.class));
+    private static final Logger logger = Logger.getLogger(PaymentServices.class);
 
     public String completePayment(PaymentRequest paymentRequest) throws CRSException {
         String message = null;

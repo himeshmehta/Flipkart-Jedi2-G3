@@ -9,7 +9,7 @@ import com.flipkart.dao.CourseDB;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * The type Professor service.
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class ProfessorServices implements ProfessorInterface{
 
-      private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorServices.class));
+      private static final Logger logger = Logger.getLogger(ProfessorServices.class);
       private CourseDB courseDB;
       public ProfessorServices(CourseDB courseDB)
       {

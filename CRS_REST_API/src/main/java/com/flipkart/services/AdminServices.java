@@ -9,7 +9,7 @@ import com.flipkart.helper.UserValidator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 
 public class AdminServices implements AdminInterface{
@@ -21,7 +21,7 @@ public class AdminServices implements AdminInterface{
     }
 
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(AdminServices.class));
+    private static final Logger logger = Logger.getLogger(AdminServices.class);
 
     @Override
     public Boolean addUser(User user,String password) throws CRSException, InvalidDataException {

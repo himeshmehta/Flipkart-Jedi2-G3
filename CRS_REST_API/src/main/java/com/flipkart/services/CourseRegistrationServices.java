@@ -10,7 +10,7 @@ import com.flipkart.dao.CourseDB;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 
 public class CourseRegistrationServices implements CourseRegistrationInterface{
@@ -20,7 +20,7 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
         this.courseDBOperations = new CourseDB();
     }
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(CourseRegistrationServices.class));
+    private static final Logger logger = Logger.getLogger(CourseRegistrationServices.class);
 
     @Override
     public Boolean registerCourse(User student, Integer courseId) throws CourseRegistrationException {
