@@ -3,6 +3,7 @@ package com.flipkart.dao;
 import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
+import com.flipkart.bean.Course;
 import com.flipkart.bean.User;
 
 public interface AuthDBInterface {
@@ -20,15 +21,15 @@ public interface AuthDBInterface {
      * This method is used by admin to add new user(student or professor).
      * @Param user :- User object.
      * @Param password :- password of user.
-     * @Throws AuthorizationException
-     * @return Boolean
+     * @Throws CRSException
+     * @return User object
      */
-    public Boolean addNewUser(User user,String password) throws CRSException;
+    public User addNewUser(User user,String password) throws CRSException;
 
     /**
      * This method is used by admin to remove existing user(student or professor).
      * @Param userId :- id of user.
-     * @Throws AuthorizationException
+     * @Throws CRSException
      * @return Boolean
      */
     public void removeExistingUser(int userId) throws CRSException;
@@ -36,7 +37,7 @@ public interface AuthDBInterface {
     /**
      * This method is used by admin to approve registration of student.
      * @Param studentId :- studentId.
-     * @Throws AuthorizationException
+     * @Throws CRSException
      * @return Boolean
      */
     public void approveStudent(int studentId) throws CRSException;
@@ -47,17 +48,16 @@ public interface AuthDBInterface {
      * @Param name :- name of new student
      * @Param password :- name of new student
      * @Throws Nothing
-     * @returns Boolean
+     * @returns User object
      */
-    public Boolean selfRegisterStudent(String email, String name,String password);
+    public User selfRegisterStudent(String email, String name,String password);
 
     /**
      * This method is used to get user details except password.
      * @Param userId :- userId.
-     * @Throws AuthorizationException
+     * @Throws InvalidDataException, CRSException
      * @return Boolean
      */
     public User getUserDetails(int userId) throws InvalidDataException, CRSException;
 
-    public void addNewCourse(String description, String courseName, Long courseFee) throws CRSException;
 }

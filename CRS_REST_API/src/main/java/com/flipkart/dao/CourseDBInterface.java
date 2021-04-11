@@ -91,7 +91,15 @@ public interface CourseDBInterface {
 
     public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException;
 
-    Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
+    public Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
 
-    int getFee(Set<Integer> courseIds) throws CRSException;
+    public int getFee(Set<Integer> courseIds) throws CRSException;
+
+    /**
+     * This method is used to add new course in database.
+     * @Param description, courseName, courseFee
+     * @Throws CRSException
+     * @return Course object
+     */
+    public Course addNewCourse(String description, String courseName, Long courseFee) throws CRSException;
 }

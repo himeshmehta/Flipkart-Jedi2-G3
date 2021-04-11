@@ -25,7 +25,8 @@ public class AdminDashboard {
         User newUser = new User(name,email,role);
         Boolean isUserAdded = Boolean.FALSE;
         try {
-            isUserAdded = adminService.addUser(newUser,password);
+            adminService.addUser(newUser,password);
+            isUserAdded = Boolean.TRUE;
         } catch (CRSException | InvalidDataException e) {
             System.out.println(e.getMessage());
             logger.info(e.getMessage());

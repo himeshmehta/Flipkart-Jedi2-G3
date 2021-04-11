@@ -3,8 +3,10 @@ package com.flipkart.services;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.Exception.NotificationException;
+import com.flipkart.bean.Course;
 import com.flipkart.bean.User;
 import com.flipkart.dao.AuthDB;
+import com.flipkart.dao.CourseDB;
 import com.flipkart.helper.UserValidator;
 
 import java.util.ArrayList;
@@ -14,21 +16,23 @@ import java.util.logging.Logger;
 
 public class AdminServices implements AdminInterface{
     private AuthDB authDBOperations;
-    NotificationServices notificationServices ;
+    private NotificationServices notificationServices ;
+    private CourseDB courseDB;
     public AdminServices(){
         this.notificationServices = new NotificationServices();
         this.authDBOperations = new AuthDB();
+        this.courseDB = new CourseDB();
     }
 
 
     private static final Logger logger = Logger.getLogger(String.valueOf(AdminServices.class));
 
     @Override
-    public Boolean addUser(User user,String password) throws CRSException, InvalidDataException {
+    public User addUser(User user,String password) throws CRSException, InvalidDataException {
         UserValidator.newUsedValidator(user.getEmail(),password);
-        Boolean isUserAdded = authDBOperations.addNewUser(user,password);
+        User newUser = authDBOperations.addNewUser(user,password);
         logger.info("Adding User to the DB");
-        return isUserAdded;
+        return newUser;
     }
 
     @Override
@@ -57,9 +61,10 @@ public class AdminServices implements AdminInterface{
     }
 
     @Override
-    public void addNewCourse(String description, String courseName, long fee) throws CRSException {
+    public Course addNewCourse(String description, String courseName, long fee) throws CRSException {
 
         logger.info("Adding new course");
-        authDBOperations.addNewCourse(description,courseName,fee);
+        Course course = courseDB.addNewCourse(description,courseName,fee);
+        return course;
     }
 }

@@ -38,7 +38,7 @@ public class CreateTable {
 
     public static String courseTable = "create table if not exists course(\n" +
             "courseId INT PRIMARY KEY AUTO_INCREMENT,\n" +
-            "coursename VARCHAR(20) NOT NULL,\n" +
+            "coursename VARCHAR(255) NOT NULL,\n" +
             "description VARCHAR(100) NOT NULL,\n" +
             "userId INT,\n" +
             "isValid Boolean,\n" +
