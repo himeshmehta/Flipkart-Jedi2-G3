@@ -4,6 +4,7 @@ import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
+import com.flipkart.bean.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    Boolean registerCourse(Student student, Integer courseId) throws CourseRegistrationException;
+    Boolean registerCourse(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
@@ -27,7 +28,7 @@ public interface CourseRegistrationInterface {
      @Throws - CourseRegistrationException
      @returns - Boolean
      **/
-    Boolean removeCourse(Student student, Integer courseId) throws CourseRegistrationException;
+    Boolean removeCourse(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
