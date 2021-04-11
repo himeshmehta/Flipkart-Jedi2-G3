@@ -6,7 +6,7 @@ import com.flipkart.bean.GradeCard;
 import com.flipkart.dao.CourseDB;
 import com.flipkart.dao.GradeCardDB;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class GradeCardServices implements GradeCardInterface{
 
@@ -16,7 +16,7 @@ public class GradeCardServices implements GradeCardInterface{
         this.courseDB = new CourseDB();
         this.gradeCardDB = new GradeCardDB();
     }
-    private static final Logger logger = Logger.getLogger(String.valueOf(GradeCardServices.class));
+    private static final Logger logger = Logger.getLogger(GradeCardServices.class);
     @Override
     public GradeCard viewGradeCard(Integer studentId) throws GradeCardNotFoundException {
         GradeCard gradeCard = gradeCardDB.viewGradeCard(studentId);
