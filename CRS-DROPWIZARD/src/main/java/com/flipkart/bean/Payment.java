@@ -2,12 +2,16 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.PaymentMode;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * The type payment
  */
 public class Payment {
 
+    @NotNull
     private String referenceId;
+    @NotNull
     private int amount;
     private String paymentDescription;
     private int userId;

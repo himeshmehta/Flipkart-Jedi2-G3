@@ -1,7 +1,11 @@
 package com.flipkart.bean;
 
+import javax.validation.constraints.NotNull;
+
 public class ErrorResponse {
+    @NotNull
     private String message;
+    @NotNull
     private String executionStatus;
 
     public ErrorResponse(String message, String executionStatus) {

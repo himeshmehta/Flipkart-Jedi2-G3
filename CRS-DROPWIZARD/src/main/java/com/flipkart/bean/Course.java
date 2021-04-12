@@ -1,5 +1,7 @@
 package com.flipkart.bean;
-// import javax.validation.constraints.NotNull;
+
+
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 /**
@@ -7,9 +9,12 @@ import java.util.*;
  */
 public class Course {
 
+    @NotNull
     private String CourseName;
+    @NotNull
     private int CourseId;
     private int ProfessorId;
+    @NotNull
     private Long fee;
 
     /**
