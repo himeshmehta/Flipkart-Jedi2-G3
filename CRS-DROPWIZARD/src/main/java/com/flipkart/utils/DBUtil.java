@@ -31,7 +31,7 @@ public class DBUtil {
                 String driver = "com.mysql.jdbc.Driver";//prop.getProperty("driver");
                 String url = "jdbc:mysql://localhost:3306/test"; //prop.getProperty("url");
                 String user = "root";///prop.getProperty("user");
-                String password = "12345"; //prop.getProperty("password");
+                String password = "password"; //prop.getProperty("password");
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
             } catch (ClassNotFoundException e) {

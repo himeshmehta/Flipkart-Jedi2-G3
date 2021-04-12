@@ -1,4 +1,5 @@
 package com.flipkart.bean;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 /**
@@ -6,6 +7,7 @@ import java.util.*;
  */
 public class GradeCard {
 
+    @NotNull
     private Student studentDetails;
     private Map<Integer,Integer>courseMarks;
 
