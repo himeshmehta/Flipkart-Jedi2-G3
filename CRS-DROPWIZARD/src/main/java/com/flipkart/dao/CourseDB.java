@@ -61,6 +61,7 @@ public class CourseDB implements CourseDBInterface{
         return Boolean.FALSE;
     }
 
+    @Override
     public  List<Course> viewCourses (){
         List<Course> courseList = new ArrayList<>();
         try{
@@ -82,6 +83,7 @@ public class CourseDB implements CourseDBInterface{
         return courseList;
     }
 
+    @Override
     public List<Course> viewEnrolledCourses(int professorId) {
         List<Course> courseList = new ArrayList<>();
         try{
@@ -108,6 +110,8 @@ public class CourseDB implements CourseDBInterface{
         return new ArrayList<>();
     }
 
+
+    @Override
     public  Boolean setProfessor(Integer courseId , Professor professor) throws CRSException {
         try{
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_PROFESSOR);
@@ -135,6 +139,7 @@ public class CourseDB implements CourseDBInterface{
         return null;
     }
 
+    @Override
     public List<Student> getListOfStudents(Integer courseId) {
         List<Student> studentList = new ArrayList<Student>();
         try{
