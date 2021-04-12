@@ -71,7 +71,7 @@ public class CreateTable {
             ");";
 
     public static List<String> getQueries() {
-        List<String> queries = new ArrayList<>();
+        List<String> queries = new ArrayList<String>();
         queries.add(userTable);
         queries.add(studentTable);
         queries.add(profTable);

@@ -9,6 +9,7 @@ import com.flipkart.requestPojo.NewCoursePOJO;
 import com.flipkart.requestPojo.NewUser;
 import com.flipkart.services.AdminServices;
 
+import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,6 +20,13 @@ import java.util.List;
 public class AdminController {
 
     private static AdminServices adminServices = new AdminServices();
+
+    private final Validator validator;
+
+    public AdminController(Validator validator) {
+        this.validator = validator;
+    }
+
 
     @GET
     @Path("/notApprovedStudents")

@@ -9,6 +9,7 @@ import com.flipkart.requestPojo.SelectCourseToTeach;
 import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.ProfessorServices;
 
+import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,6 +21,13 @@ public class ProfessorController {
 
     private static ProfessorServices professorServices = new ProfessorServices(new CourseDB());
     private static GradeCardServices gradeCardServices = new GradeCardServices();
+
+    private final Validator validator;
+
+    public ProfessorController(Validator validator) {
+        this.validator = validator;
+    }
+
     @GET
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
