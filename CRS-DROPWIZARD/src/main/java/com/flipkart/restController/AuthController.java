@@ -7,6 +7,7 @@ import com.flipkart.requestPojo.LoginPojo;
 import com.flipkart.requestPojo.SelfRegistrationPOJO;
 import com.flipkart.services.AuthDBServices;
 
+import javax.validation.Validator;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,6 +19,12 @@ import javax.ws.rs.core.Response;
 public class AuthController {
 
     private static  AuthDBServices authDBServices = new AuthDBServices();
+
+    private final Validator validator;
+
+    public AuthController(Validator validator) {
+        this.validator = validator;
+    }
 
     @GET
     @Path("/login")
