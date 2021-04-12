@@ -35,6 +35,7 @@ public class AuthDB implements AuthDBInterface{
             ResultSet rs = sqlQuery.executeQuery();
 
             if(!rs.next()){
+                // if result set does not have any row
                 throw new AuthorizationException("user id does not exists.");
             }
             else
@@ -82,7 +83,7 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.setString(1,user.getEmail());
             sqlQuery.setString(2,user.getName());
             sqlQuery.setString(3,password);
-            sqlQuery.setBoolean(4,true);
+            sqlQuery.setBoolean(4,true); // setting isApproved state to true, because admin is adding this user
             sqlQuery.setInt(5, getIndexFromRole(user.getRole()));
             sqlQuery.executeUpdate();
 
@@ -112,6 +113,12 @@ public class AuthDB implements AuthDBInterface{
         return newUser;
     }
 
+    /**
+     * This methode is used to get index from Role enum to store role in database.
+     * @Param role : Role enum.
+     * @Throws Nothing
+     * @Return Integer : index for roles.
+     * */
     private Integer getIndexFromRole(Role role) {
         Integer index = 0;
         switch (role){
@@ -128,6 +135,12 @@ public class AuthDB implements AuthDBInterface{
         return index;
     }
 
+    /**
+     * This methode is used to get sql query for adding information in individual table based on role of user.
+     * @Param role : Role enum.
+     * @Throws Nothing
+     * @Return String : sql query to add row in table.
+     * */
     private String getAddIndividual(Role role) {
         String query = null;
         switch(role){
@@ -165,6 +178,12 @@ public class AuthDB implements AuthDBInterface{
         }
     }
 
+    /**
+     * This methode is used to get sql query for removing information from individual table based on role of user.
+     * @Param role : Role enum.
+     * @Throws Nothing
+     * @Return String : sql query to remove row in table.
+     * */
     private String getRemoveQueryFromRole(Role role) {
         String removeUser = null;
         switch(role){
@@ -196,7 +215,7 @@ public class AuthDB implements AuthDBInterface{
 
 
     @Override
-    public User selfRegisterStudent(String email, String name, String password) {
+    public User selfRegisterStudent(String email, String name, String password) throws CRSException {
         User user  = null;
         try{
             // add details in student table
@@ -205,7 +224,7 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.setString(2,name);
             sqlQuery.setString(3,password);
             sqlQuery.setBoolean(4,Boolean.FALSE);
-            sqlQuery.setString(5,"Student");
+            sqlQuery.setString(5,"Student"); // only student can self register
 
             sqlQuery.executeUpdate();
 
@@ -228,11 +247,10 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.setString(2,name);
             sqlQuery.executeUpdate();
             return user;
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
+        } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
         }
 
-        return null;
     }
 
     @Override
@@ -256,7 +274,12 @@ public class AuthDB implements AuthDBInterface{
         return user;
     }
 
-
+    /**
+     * This method is used to get Role enum from text
+     * @Param roleFromDB : string return from database
+     * @Throws Nothing
+     * @Return Role
+     * */
     private Role getRoleFromText(String roleFromDB) {
         Role role = null;
         switch (roleFromDB) {
@@ -273,29 +296,11 @@ public class AuthDB implements AuthDBInterface{
         return role;
     }
 
-    private Role getRoleFromIndex(int roleIndex) {
-        Role role = null;
-        switch (roleIndex) {
-            case 1:
-                role = Role.STUDENT;
-                break;
-            case 2:
-                role = Role.ADMIN;
-                break;
-            case 3:
-                role = Role.PROFESSOR;
-                break;
-        }
-        return role;
-    }
-
-
+    @Override
     public List<Integer> getNotApprovedStudent() throws CRSException {
         List<Integer> result = new ArrayList<>();
         try{
-            System.out.println("in auth DB");
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.NOT_APPROVED_QUERY);
-            // sqlQuery.setString(1,"Student");
             ResultSet rs = sqlQuery.executeQuery();
 
             while(rs.next()){
