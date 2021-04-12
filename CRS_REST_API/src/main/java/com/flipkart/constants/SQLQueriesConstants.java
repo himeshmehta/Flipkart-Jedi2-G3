@@ -60,7 +60,7 @@ public class SQLQueriesConstants {
     public static final String ADD_PROFESSOR = "insert into professor (email,name) values(?,?)";
     public static final String DELETE_PROFESSOR = "delete from professor where email = ?";
     public static final String ADD_GRADES = "insert into gradeCard values(?,?,?)";
-    public static final String UPDATE_GRADES = "update gradeCard set grades = ? where studentId = ? and courseId = ?";
+    public static final String UPDATE_GRADES = "update gradeCard set grade = ? where studentId = ? and courseId = ?";
 
     // Authenticate Query
     public static final String AUTHORISE_USER = "select * from user where userId = ?";

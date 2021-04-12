@@ -29,6 +29,7 @@
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/services/StudentInterface.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/Exception/CRSException.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/services/PaymentInterface.java
+/Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/requestPojo/PaymentRequest.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/Exception/NotificationException.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/dao/CourseCatalogDB.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/dao/StudentDBInterface.java
@@ -57,7 +58,9 @@
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/services/AuthDBInterface.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/bean/Payment.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/helper/AdminValidator.java
+/Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/requestPojo/NewUser.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/client/StudentDashboard.java
+/Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/bean/ErrorResponse.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/services/CourseInterface.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/bean/User.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/constants/Bank.java
@@ -77,6 +80,7 @@
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/Exception/InvalidInputException.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/services/CourseServices.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/services/GradeCardServices.java
+/Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/requestPojo/NewCoursePOJO.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/client/AdminDashboard.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/dao/CourseDB.java
 /Users/himesh.mehta/Desktop/Bootcamp/Flipkart-Jedi2-G3/CRS_REST_API/src/main/java/com/flipkart/bean/Notification.java

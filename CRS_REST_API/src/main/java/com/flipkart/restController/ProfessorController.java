@@ -2,13 +2,14 @@ package com.flipkart.restController;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
+import com.flipkart.bean.User;
 import com.flipkart.dao.CourseDB;
+import com.flipkart.requestPojo.AddGradeRequest;
+import com.flipkart.requestPojo.SelectCourseToTeach;
+import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.ProfessorServices;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 public class ProfessorController {
 
     private static ProfessorServices professorServices = new ProfessorServices(new CourseDB());
+    private static GradeCardServices gradeCardServices = new GradeCardServices();
     @GET
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,5 +46,34 @@ public class ProfessorController {
         List<Course> courses = new ArrayList<>();
         courses = professorServices.viewEnrolledCourses(professorId);
         return Response.status(200).entity(courses).build();
+    }
+
+    @POST
+    @Path("/selectCourseToTeach")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes("application/json")
+    public Response SelectCourseToTeach(SelectCourseToTeach request){
+        try {
+            professorServices.selectCourseToTeach(request.getCourseId(),request.getProfessor());
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Course Registration Failed. Reason :- " + ex.getMessage()).build();
+        }
+        return Response.status(200).entity( "Registration Successful").build();
+    }
+
+    @POST
+    @Path("addGrade")
+    @Consumes("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response gradeStudent( AddGradeRequest request ) {
+        try {
+            gradeCardServices.addGrade(request.getProfessorId(),request.getCourseId(), request.getGrades(),request.getStudentId());
+            return Response.status(201).entity("Grades added successfully.").build();
+        }
+        catch(Exception ex)
+        {
+            return Response.status(500).entity("couldn't add grades. Reason :- " + ex.getMessage()).build();
+        }
+
     }
 }

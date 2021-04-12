@@ -19,6 +19,7 @@ com/flipkart/dao/PaymentDB.class
 com/flipkart/dao/GradeCardDB.class
 com/flipkart/services/CourseRegistrationInterface.class
 com/flipkart/client/StudentDashboard.class
+com/flipkart/requestPojo/NewUser.class
 com/flipkart/bean/GradeCard.class
 com/flipkart/dao/PaymentDBInterface.class
 com/flipkart/restController/LoginController.class
@@ -51,6 +52,7 @@ com/flipkart/services/AuthDBServices.class
 com/flipkart/constants/Bank.class
 com/flipkart/Exception/ApprovalFailedException.class
 com/flipkart/dao/CourseDBInterface.class
+com/flipkart/requestPojo/PaymentRequest.class
 com/flipkart/restController/ProfessorController.class
 com/flipkart/helper/PaymentValidator.class
 com/flipkart/Exception/InvalidDataException.class
@@ -78,7 +80,9 @@ com/flipkart/bean/Online.class
 com/flipkart/dao/GradeCardDBInterface.class
 com/flipkart/services/GradeCardServices.class
 com/flipkart/helper/AdminValidator.class
+com/flipkart/bean/ErrorResponse.class
 com/flipkart/dao/StudentDBInterface.class
 com/flipkart/utils/CreateTableScript.class
 com/flipkart/Exception/AuthorizationException.class
 com/flipkart/Exception/PaymentException.class
+com/flipkart/requestPojo/NewCoursePOJO.class

@@ -61,7 +61,7 @@ public interface CourseDBInterface {
      * @Throws CourseRegistrationException
      * @return Boolean
      */
-    public  Boolean setProfessor(Integer courseId , Professor professor);
+    public  Boolean setProfessor(Integer courseId , Professor professor) throws CRSException;
 
     /**
      * This method is used to set the availability of course.

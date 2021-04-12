@@ -108,12 +108,12 @@ public class CourseDB implements CourseDBInterface{
         return new ArrayList<>();
     }
 
-    public  Boolean setProfessor(Integer courseId , Professor professor) {
+    public  Boolean setProfessor(Integer courseId , Professor professor) throws CRSException {
         try{
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_PROFESSOR);
             sqlQuery.setInt(1,courseId);
             ResultSet resultSet = sqlQuery.executeQuery();
-            if (!resultSet.next() || resultSet.getInt("userId") != 0) throw new SQLException("Professor already added");
+            if (!resultSet.next() || resultSet.getInt("userId") != 0) throw new SQLException("Professor already added for this course");
             else {
                 sqlQuery = conn.prepareStatement(SQLQueriesConstants.SET_PROFESSOR);
                 sqlQuery.setInt(1,professor.getUserId());
@@ -123,9 +123,8 @@ public class CourseDB implements CourseDBInterface{
             sqlQuery.close();
             return Boolean.TRUE;
         } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
+            throw new CRSException(sqlEx.getMessage());
         }
-        return Boolean.FALSE;
     }
 
     public  Boolean setAvailability(Course course) {

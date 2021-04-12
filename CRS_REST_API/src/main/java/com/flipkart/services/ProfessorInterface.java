@@ -1,5 +1,6 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
@@ -33,7 +34,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - Course
      **/
-    public Boolean selectCourseToTeach(Integer courseId , Professor professor);
+    public Boolean selectCourseToTeach(Integer courseId , Professor professor) throws CRSException;
 
     /**
      *

@@ -18,6 +18,10 @@ public class Professor extends User{
     public Professor(User user){
         super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
     }
+
+    public Professor(){
+        super();
+    }
     /**
      * Gets the list of courses taught by professor
      * @return list of courses

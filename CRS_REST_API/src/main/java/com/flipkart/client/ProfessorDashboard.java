@@ -1,5 +1,6 @@
 package com.flipkart.client;
 
+import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
@@ -26,8 +27,7 @@ public class ProfessorDashboard {
         professorServices = new ProfessorServices(new CourseDB());
     }
 
-    public Boolean selectCourseToTeach(int courseId)
-    {
+    public Boolean selectCourseToTeach(int courseId) throws CRSException {
 
         return professorServices.selectCourseToTeach(courseId , professor);
 
@@ -80,7 +80,11 @@ public class ProfessorDashboard {
                 case 1:
                     System.out.println("Enter Course ID");
                     int courseId = inputReader.nextInt();
-                    result=selectCourseToTeach(courseId);
+                    try {
+                        result=selectCourseToTeach(courseId);
+                    } catch (CRSException e) {
+                        result = false;
+                    }
                     String message = result ? "Course selected successfully" : "Either course not present or Course not available to select";
                     logger.info(message);
                     break;
