@@ -55,10 +55,10 @@ public interface CourseDBInterface {
     public  List<Student> getListOfRegisteredStudents(Course course);
 
     /**
-     * This method is used to set the professor for teaching.
-     * @Param course :- Course object.
+     * This method is used by the professor to select a course for teaching.
+     * @Param courseId
      * @Param professor :- professor object.
-     * @Throws CourseRegistrationException
+     * @Throws CRSException
      * @return Boolean
      */
     public  Boolean setProfessor(Integer courseId, Professor professor) throws CRSException;
@@ -80,17 +80,25 @@ public interface CourseDBInterface {
     public  Course getCourseDetails(Integer courseID);
 
     /**
-     * This method is used to get the list of student.
+     * This method is used to get the list of student enrolled for a particular course.
      * @Param courseId :- id of course.
-     * @Throws CourseRegistrationException
+     * @Throws Nothing
      * @return List<Student> :- List of student registered for this course.
      */
+
     public  List<Student> getListOfStudents(Integer courseId);
 
     public HashMap<Integer,Integer> getNotpaidCourseList(int studemtId) throws CRSException;
 
     public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException;
 
+    /**
+     * This method is used to get the list of student enrolled for a particular course.
+     * @Param courseId :- id of course.
+     * @Param profId :- id of Professor.
+     * @Throws CRSException
+     * @return Boolean.
+     */
     public Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
 
     public int getFee(Set<Integer> courseIds) throws CRSException;
