@@ -4,6 +4,7 @@ import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.Course;
+import com.flipkart.bean.User;
 import com.flipkart.requestPojo.NewCoursePOJO;
 import com.flipkart.requestPojo.NewUser;
 import com.flipkart.services.AdminServices;
@@ -33,21 +34,24 @@ public class AdminController {
 
     @POST
     @Path(("/addNewUser"))
-    public Response addNewUSer(NewUser newUserRequest) throws InvalidDataException, CRSException {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addNewUSer(NewUser newUserRequest) {
         try {
-            Boolean isUserAdded = adminServices.addUser(newUserRequest.getUser(), newUserRequest.getPassword());
-            return Response.status(200).entity(isUserAdded ? "user added successfully." : "user not added.").build();
+            User user = adminServices.addUser(newUserRequest.getUser(), newUserRequest.getPassword());
+            return Response.status(200).entity(user).build();
         } catch (Exception ex) {
-            return Response.status(500).entity( "User Addition Failed, Please Try Again ! ").build();
+            return Response.status(500).entity("Can not add user. Reason :- " + ex.getMessage()).build();
         }
     }
 
     @POST
     @Path(("/addNewCourse"))
-    public Response addNewCourse(NewCoursePOJO newCoursePOJO) throws InvalidDataException, CRSException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addNewCourse(NewCoursePOJO newCoursePOJO) {
         try {
-            adminServices.addNewCourse(newCoursePOJO.getDescription(), newCoursePOJO.getCourseName(), newCoursePOJO.getFee());
-            return Response.status(200).entity("New Course added successfully").build();
+            Course course = adminServices.addNewCourse(newCoursePOJO.getDescription(), newCoursePOJO.getCourseName(), newCoursePOJO.getFee());
+            return Response.status(200).entity(course).build();
         } catch (Exception ex) {
             return Response.status(500).entity( "Course Addition Failed, Please Try Again ! ").build();
         }
@@ -55,6 +59,7 @@ public class AdminController {
 
     @DELETE
     @Path("/removeUser/{userId}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response removeUser(@PathParam("userId") int userId) throws CRSException {
         try {
             adminServices.removeUser(userId);
@@ -66,6 +71,7 @@ public class AdminController {
 
     @PUT
     @Path("/approveStudent/{studentId}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response approveStudents(@PathParam("studentId") int studentIds) throws CRSException {
         try {
             adminServices.approveStudent(studentIds);

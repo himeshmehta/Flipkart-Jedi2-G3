@@ -232,5 +232,35 @@ public class CourseDB implements CourseDBInterface{
         return amount;
     }
 
+    public Course addNewCourse(String description, String courseName, Long courseFee) throws CRSException {
+        Course course = null;
+        try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE,Statement.RETURN_GENERATED_KEYS);
+            sqlQuery.setString(1,courseName);
+            sqlQuery.setString(2,description);
+            sqlQuery.setLong(3,courseFee);
+            sqlQuery.executeUpdate();
+
+            // newCourse object
+            course = new Course();
+            course.setCourseName(courseName);
+            course.setFee(courseFee);
+            course.setProfessorId(-1); // new course so professor not assigned
+
+            // get newly generated course id
+            ResultSet rs = sqlQuery.getGeneratedKeys();
+            if(rs.next()){
+                System.out.println(rs.getInt(1) + " Course id");
+                course.setCourseId(rs.getInt(1));
+            }
+            sqlQuery.close();
+
+        } catch (SQLException ex) {
+            course = null;
+            throw new CRSException(ex.getMessage());
+        }
+        return course;
+    }
+
 
 }

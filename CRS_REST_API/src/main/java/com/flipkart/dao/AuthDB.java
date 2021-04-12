@@ -3,16 +3,14 @@ package com.flipkart.dao;
 import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
+import com.flipkart.bean.Course;
 import com.flipkart.bean.User;
 import com.flipkart.client.AdminDashboard;
 import com.flipkart.constants.Role;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -77,16 +75,27 @@ public class AuthDB implements AuthDBInterface{
         return user;
     }
 
-    public  Boolean addNewUser(User user,String password) throws CRSException {
-        Boolean isUserAdded = false;
+    public  User addNewUser(User user,String password) throws CRSException {
+        User newUser = null;
         try{
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY,Statement.RETURN_GENERATED_KEYS);
             sqlQuery.setString(1,user.getEmail());
             sqlQuery.setString(2,user.getName());
             sqlQuery.setString(3,password);
             sqlQuery.setBoolean(4,true);
             sqlQuery.setInt(5, getIndexFromRole(user.getRole()));
             sqlQuery.executeUpdate();
+
+            newUser = new User();
+            newUser.setName(user.getName());
+            newUser.setEmail(user.getEmail());
+            newUser.setRole(user.getRole());
+
+            ResultSet rs = sqlQuery.getGeneratedKeys();
+            if(rs.next()){
+                newUser.setUserId(rs.getInt(1));
+            }
+
             sqlQuery.close();
 
             // now add user in respective database
@@ -96,12 +105,11 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.executeUpdate();
             sqlQuery.close();
 
-            isUserAdded = Boolean.TRUE;
         } catch (SQLException e) {
-            isUserAdded = false;
+            newUser = null;
             throw new CRSException(e.getMessage());
         }
-        return isUserAdded;
+        return newUser;
     }
 
     private Integer getIndexFromRole(Role role) {
@@ -188,11 +196,11 @@ public class AuthDB implements AuthDBInterface{
 
 
     @Override
-    public Boolean selfRegisterStudent(String email, String name, String password) {
-        Boolean isRegistered = Boolean.FALSE;
+    public User selfRegisterStudent(String email, String name, String password) {
+        User user  = null;
         try{
             // add details in student table
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.SELF_REGISTER_QUERY);
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.SELF_REGISTER_QUERY, Statement.RETURN_GENERATED_KEYS);
             sqlQuery.setString(1,email);
             sqlQuery.setString(2,name);
             sqlQuery.setString(3,password);
@@ -200,6 +208,18 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.setString(5,"Student");
 
             sqlQuery.executeUpdate();
+
+            // create a user object to return
+            user = new User();
+            user.setEmail(email);
+            user.setName(name);
+            user.setRole(Role.STUDENT);
+
+            ResultSet rs = sqlQuery.getGeneratedKeys();
+            while(rs.next()){
+                System.out.println(rs.getInt(1));
+                user.setUserId(rs.getInt(1));
+            }
             sqlQuery.close();
 
             // add details in student table
@@ -207,12 +227,12 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.setString(1,email);
             sqlQuery.setString(2,name);
             sqlQuery.executeUpdate();
-            return Boolean.TRUE;
+            return user;
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         }
 
-        return isRegistered;
+        return null;
     }
 
     @Override
@@ -236,19 +256,6 @@ public class AuthDB implements AuthDBInterface{
         return user;
     }
 
-    @Override
-    public void addNewCourse(String description, String courseName, Long courseFee) throws CRSException {
-        try{
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE);
-            sqlQuery.setString(1,courseName);
-            sqlQuery.setString(2,description);
-            sqlQuery.setLong(3,courseFee);
-            int rs = sqlQuery.executeUpdate();
-            sqlQuery.close();
-        } catch (SQLException ex) {
-            throw new CRSException(ex.getMessage());
-        }
-    }
 
     private Role getRoleFromText(String roleFromDB) {
         Role role = null;

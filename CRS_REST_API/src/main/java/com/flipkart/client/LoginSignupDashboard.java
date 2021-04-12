@@ -61,7 +61,7 @@ public class LoginSignupDashboard {
         Scanner inputReader = new Scanner(System.in);
 
         try {
-            Boolean isSignUpComplete = false; // Initially assume sign is not completed
+            User user = null;
 
             System.out.println("Sign up is only available for students. Do you want proceed further? Enter YES or NO");
 
@@ -69,7 +69,7 @@ public class LoginSignupDashboard {
 
             if ("YES".equals(operation)){
 
-                while(!isSignUpComplete){
+                while(user == null){
                     System.out.println("Enter your email.");
                     String email = inputReader.nextLine();
 
@@ -83,13 +83,13 @@ public class LoginSignupDashboard {
                     String confirmPassword = inputReader.nextLine();
 
                     try {
-                        isSignUpComplete = authServices.selfRegisterStudent(email,name,password,confirmPassword);
+                        user = authServices.selfRegisterStudent(email,name,password,confirmPassword);
                     } catch (Exception e){
-                        isSignUpComplete = false;
+                        user = null;
                         System.out.println(e.getMessage());
                     }
 
-                    if(!isSignUpComplete){
+                    if(user == null){
                         System.out.println("Signup failed. Do you want to try again? Enter YES or NO.");
                         String op = inputReader.nextLine();
                         if("NO".equals(op)){
@@ -98,7 +98,7 @@ public class LoginSignupDashboard {
                     }
                 }
             }
-            if (!isSignUpComplete) {
+            if (user == null) {
                 throw new CRSException("SignUp is not completed");
             }
             else {
