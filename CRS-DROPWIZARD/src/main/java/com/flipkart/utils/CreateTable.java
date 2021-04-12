@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class is used to create/drop all tables related to this project.
+ */
+
 class CreateTableScript {
     public static void main(String[] args) {
 
@@ -26,35 +30,6 @@ class CreateTableScript {
                 stmt.executeUpdate();
                 stmt.close();
             }
-//            // user table
-//            String table = CreateTable.userTable;
-//            stmt = connection.prepareStatement(table);
-//            System.out.println(2);
-//            int rs = stmt.executeUpdate();
-//            System.out.println(3);
-//            System.out.println(rs);
-//            stmt.close();
-//
-//            table = CreateTable.studentTable;
-//            stmt = connection.prepareStatement(table);
-//            rs = stmt.executeUpdate();
-//            stmt.close();
-//
-//            table = CreateTable.adminTable;
-//            stmt = connection.prepareStatement(table);
-//            rs = stmt.executeUpdate();
-//            stmt.close();
-//
-//            table = CreateTable.profTable;
-//            stmt = connection.prepareStatement(table);
-//            rs = stmt.executeUpdate();
-//            stmt.close();
-//
-//            table = CreateTable.notificationTable;
-//            stmt = connection.prepareStatement(table);
-//            rs = stmt.executeUpdate();
-//            stmt.close();
-
             connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

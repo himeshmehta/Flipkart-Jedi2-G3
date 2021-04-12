@@ -3,6 +3,11 @@ package com.flipkart.constants;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * All database schema is present here.
+ * */
+
+
 public class CreateTable {
 
     public static String userTable = "create table if not exists user (\n" +

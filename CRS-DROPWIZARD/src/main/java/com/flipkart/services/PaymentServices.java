@@ -21,6 +21,11 @@ public class PaymentServices implements PaymentInterface{
     private CourseDB courseDB= new CourseDB();
     private static final Logger logger = Logger.getLogger(String.valueOf(PaymentServices.class));
 
+    /**
+     * This methode is used complete payment based on type of payment mode.
+     * @Param  paymentRequest : request payload.
+     * @Throws CRSException
+     * @Return String : message */
     public String completePayment(PaymentRequest paymentRequest) throws CRSException {
         String message = null;
         if(PaymentMode.OFFLINE.equals(paymentRequest.getPaymentMode())){

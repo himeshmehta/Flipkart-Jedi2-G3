@@ -35,6 +35,12 @@ public class PaymentDB implements PaymentDBInterface{
         }
     }
 
+    /**
+     * This methode is used to get index from payment mode.
+     * @Param mode : an enum of type of PaymentMode.
+     * @Throws Nothing
+     * @Return int : index for mode.
+     * */
     private int getIndexFromPaymentMode(PaymentMode mode) {
         int modeIndex=0;
 
