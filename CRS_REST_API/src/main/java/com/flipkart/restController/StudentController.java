@@ -9,6 +9,7 @@ import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.requestPojo.PaymentRequest;
+import com.flipkart.requestPojo.StudentCourseRequest;
 import com.flipkart.services.CourseRegistrationServices;
 import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.PaymentServices;
@@ -82,12 +83,12 @@ public class StudentController {
     }
 
     @POST
-    @Path("/registerStudent/{courseId}")
+    @Path("/registerCourse")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/json")
-    public Response registerCourse(User student , @PathParam ("courseId") int courseId){
+    public Response registerCourse(StudentCourseRequest request){
         try {
-            courseRegistrationServices.registerCourse(student, courseId);
+            courseRegistrationServices.registerCourse(request.getStudent(), request.getCourseId());
         } catch (Exception ex) {
             return Response.status(500).entity( "Course Registration Failed, Please Try Again ! ").build();
         }
@@ -95,11 +96,11 @@ public class StudentController {
     }
 
     @DELETE
-    @Path("/removeCourse/{courseId}")
+    @Path("/removeCourse")
     @Consumes("application/json")
-    public Response removeCourse(User student , @PathParam("courseId") int courseId) {
+    public Response removeCourse(StudentCourseRequest request) {
         try {
-            courseRegistrationServices.removeCourse(student, courseId);
+            courseRegistrationServices.removeCourse(request.getStudent(), request.getCourseId());
         } catch (Exception ex) {
             return Response.status(500).entity( "Course Removal Failed, Please Try Again ! ").build();
         }
