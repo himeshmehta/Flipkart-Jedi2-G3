@@ -16,7 +16,7 @@ public class Professor extends User{
      * Constructor of professor
      * @param name
      * @param email
-     * @param role
+     * @param roleEnum
      * @param userId
      */
     public Professor(String name, String email, RoleEnum roleEnum, int userId) {

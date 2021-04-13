@@ -25,7 +25,7 @@ public class Offline extends Payment{
 
     /**
      * Gets the bank name
-     * @return
+     * @return BankEnum
      */
     public BankEnum getBank() {
         return bankEnum;

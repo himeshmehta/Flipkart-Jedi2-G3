@@ -33,7 +33,7 @@ public class Online extends Payment{
 
     /**
      * Gets the card number
-     * @return
+     * @return String
      */
     public String getCard_number() {
         return card_number;
@@ -49,7 +49,7 @@ public class Online extends Payment{
 
     /**
      * Gets name on card
-     * @return
+     * @return String
      */
     public String getName_on_card() {
         return name_on_card;
@@ -65,7 +65,7 @@ public class Online extends Payment{
 
     /**
      * Gets the cvv
-     * @return
+     * @return String
      */
     public String getCVV() {
         return CVV;

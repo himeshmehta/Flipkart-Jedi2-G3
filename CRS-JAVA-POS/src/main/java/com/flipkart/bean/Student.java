@@ -21,7 +21,7 @@ public class Student extends User{
      * Constructor of student
      * @param name
      * @param email
-     * @param role
+     * @param roleEnum
      * @param userId
      */
     public Student(String name, String email, RoleEnum roleEnum, int userId) {

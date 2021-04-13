@@ -15,74 +15,71 @@ public interface CourseDBInterface {
 
     /**
      * This method is used by student to register for course.
-     * @Param course :- Course object.
-     * @Param student :- Student object
-     * @Throws CourseRegistrationException
+     * @param courseId :- Course object.
+     * @param student :- Student object
+     * @throws CourseRegistrationException
      * @return Boolean
      */
     public  Boolean registerStudent(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used for revert the registration of course.
-     * @Param course :- Course object.
-     * @Param student :- Student object.
-     * @Throws CourseRegistrationException
+     * @param courseId :- Course object.
+     * @param student :- Student object.
+     * @throws CourseRegistrationException
      * @return Boolean
      */
     public  Boolean removeStudent(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used for viewing course.
-     * @Param  Nothing
-     * @Throws CourseRegistrationException
+     * @throws CourseRegistrationException
      * @return List of Courses
      */
     public  List<Course> viewCourses() throws CourseRegistrationException;
 
     /**
      * This method is used for viewing enrolled course.
-     * @Param  Professor
-     * @Throws Nothing
+     * @param  professor
      * @return List of Courses
      */
     public List<Course> viewEnrolledCourses(int professor) throws CRSException;
     /**
      * This method is used to get list of registered student for a course.
-     * @Param course :- Course object.
-     * @Throws CourseRegistrationException
+     * @param course :- Course object.
+     * @throws CourseRegistrationException
      * @return List<Student>: list of student
      */
     public  List<Student> getListOfRegisteredStudents(Course course);
 
     /**
      * This method is used by the professor to select a course for teaching.
-     * @Param courseId
-     * @Param professor :- professor object.
-     * @Throws CRSException
+     * @param courseId
+     * @param professor :- professor object.
+     * @throws CRSException
      * @return Boolean
      */
     public  Boolean setProfessor(Integer courseId, Professor professor) throws CRSException;
 
     /**
      * This method is used to set the availability of course.
-     * @Param course :- Course object.
-     * @Throws CourseRegistrationException
+     * @param course :- Course object.
+     * @throws CourseRegistrationException
      * @return Boolean
      */
     public  Boolean setAvailability(Course course);
 
     /**
      * This method is used to get the details of course.
-     * @Param course :- Course object.
-     * @Throws CourseRegistrationException
+     * @param courseId :- Course object.
+     * @throws CourseRegistrationException
      * @return Boolean
      */
-    public  Course getCourseDetails(Integer courseID);
+    public  Course getCourseDetails(Integer courseId);
 
     /**
      * This method is used to get the list of student enrolled for a particular course.
-     * @Param courseId :- id of course.
-     * @Throws Nothing
+     * @param courseId :- id of course.
      * @return List<Student> :- List of student registered for this course.
      */
 
@@ -91,7 +88,7 @@ public interface CourseDBInterface {
     /**
      * This method is used to get the list of not paid courses
      * @param studemtId
-     * @return
+     * @return HashMap
      * @throws CRSException
      */
     public HashMap<Integer,Integer> getNotpaidCourseList(int studemtId) throws CRSException;
@@ -106,9 +103,9 @@ public interface CourseDBInterface {
 
     /**
      * This method is used to get the list of student enrolled for a particular course.
-     * @Param courseId :- id of course.
-     * @Param profId :- id of Professor.
-     * @Throws CRSException
+     * @param courseId :- id of course.
+     * @param profId :- id of Professor.
+     * @throws CRSException
      * @return Boolean.
      */
     public Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
@@ -116,15 +113,14 @@ public interface CourseDBInterface {
     /**
      * This method is used to get the fee of course
      * @param courseIds
-     * @return
      * @throws CRSException
      */
     public int getFee(Set<Integer> courseIds) throws CRSException;
 
     /**
      * This method is used to add new course in database.
-     * @Param description, courseName, courseFee
-     * @Throws CRSException
+     * @param description, courseName, courseFee
+     * @throws CRSException
      * @return Course object
      */
     public Course addNewCourse(String description, String courseName, Long courseFee) throws CRSException;

@@ -13,7 +13,7 @@ public class Course {
     /**
      * Gets the fee
      *
-     * @return
+     * @return Long
      */
     public Long getFee() {
         return fee;
@@ -31,7 +31,7 @@ public class Course {
     /**
      * Gets the course name
      *
-     * @return
+     * @return String
      */
     public String getCourseName() {
         return CourseName;
@@ -49,7 +49,7 @@ public class Course {
     /**
      * Gets the course id
      *
-     * @return
+     * @return int
      */
     public int getCourseId() {
         return CourseId;
@@ -67,7 +67,7 @@ public class Course {
     /**
      * Gets the professor id
      *
-     * @return
+     * @return int
      */
     public int getProfessorId() {
         return ProfessorId;
