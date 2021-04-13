@@ -1,5 +1,0 @@
-create table if not exists courseRegistration(
-studentId INT NOT NULL,
-courseId INT NOT NULL,
-PRIMARY KEY (studentId, courseId)
-);
