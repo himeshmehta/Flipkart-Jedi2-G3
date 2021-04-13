@@ -8,7 +8,7 @@ import com.flipkart.dao.CourseDB;
  * The type admin validator
  */
 public class AdminValidator {
-    private static CourseDB courseDB = new CourseDB();
+    private static CourseDB courseDB = CourseDB.getInstance();
 
     /**
      * This method is used to validate if course is already added or not

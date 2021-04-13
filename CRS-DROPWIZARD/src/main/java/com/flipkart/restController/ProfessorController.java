@@ -18,7 +18,7 @@ import java.util.List;
 @Path("/professor")
 public class ProfessorController {
 
-    private static ProfessorServices professorServices = new ProfessorServices(new CourseDB());
+    private static ProfessorServices professorServices = new ProfessorServices(CourseDB.getInstance());
     private static GradeCardServices gradeCardServices = new GradeCardServices();
 
     private final Validator validator;

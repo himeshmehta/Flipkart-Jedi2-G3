@@ -13,7 +13,7 @@ public class GradeCardServices implements GradeCardInterface{
     public GradeCardDB gradeCardDB;
     public CourseDB courseDB;
     public GradeCardServices(){
-        this.courseDB = new CourseDB();
+        this.courseDB = CourseDB.getInstance();
         this.gradeCardDB = new GradeCardDB();
     }
     private static final Logger logger = Logger.getLogger(String.valueOf(GradeCardServices.class));

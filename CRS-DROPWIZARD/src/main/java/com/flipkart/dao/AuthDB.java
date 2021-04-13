@@ -16,15 +16,24 @@ import java.util.logging.Logger;
 
 public class AuthDB implements AuthDBInterface{
 
+    private static volatile AuthDB instance = null;
     private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
     private Connection conn = null;
     private PreparedStatement sqlQuery;
 
-    public AuthDB(){
+    private AuthDB(){
         conn = DBUtil.getConnection();
         sqlQuery = null;
     }
 
+    public static AuthDB getInstance(){
+        if(instance == null){
+            synchronized (AuthDB.class){
+                instance = new AuthDB();
+            }
+        }
+        return instance;
+    }
     public User AuthenticateUser(int userId, String password) throws AuthorizationException {
         User user = new User();
         try{

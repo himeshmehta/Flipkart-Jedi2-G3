@@ -29,7 +29,7 @@ public class ProfessorDashboard {
     public ProfessorDashboard(Professor professor)
     {
         this.professor=professor;
-        professorServices = new ProfessorServices(new CourseDB());
+        professorServices = new ProfessorServices(CourseDB.getInstance());
     }
 
     /**

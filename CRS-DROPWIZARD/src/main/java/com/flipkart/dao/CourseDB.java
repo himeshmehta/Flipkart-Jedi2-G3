@@ -17,11 +17,21 @@ import java.util.List;
 import java.util.Set;
 
 public class CourseDB implements CourseDBInterface{
+    private static volatile CourseDB instance = null;
     private Connection conn = null;
     private PreparedStatement sqlQuery;
-    public CourseDB() {
+    private CourseDB() {
         conn = DBUtil.getConnection();
         sqlQuery = null;
+    }
+
+    public static CourseDB getInstance(){
+        if(instance == null){
+            synchronized (CourseDB.class){
+                instance = new CourseDB();
+            }
+        }
+        return instance;
     }
     public  Boolean registerStudent(User student , Integer courseId) throws CourseRegistrationException {
         try {

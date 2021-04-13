@@ -14,7 +14,7 @@ public class AuthDBServices implements AuthDBInterface{
     private AuthDB authDBOperations;
 
     public AuthDBServices(){
-        this.authDBOperations = new AuthDB();
+        this.authDBOperations = AuthDB.getInstance();
     }
     private static final Logger logger = Logger.getLogger(String.valueOf(AuthDBServices.class));
 

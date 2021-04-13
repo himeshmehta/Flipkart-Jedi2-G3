@@ -12,7 +12,7 @@ public class DBSchema {
 
     public static String userTable = "create table if not exists user (\n" +
             "userId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n" +
-            "email VARCHAR(100) NOT NULL,\n" +
+            "email VARCHAR(100) NOT NULL UNIQUE,\n" +
             "name VARCHAR(100) NOT NULL,\n" +
             "password VARCHAR(100) NOT NULL,\n" +
             "isApproved BOOLEAN,\n" +
@@ -46,7 +46,6 @@ public class DBSchema {
             "coursename VARCHAR(255) NOT NULL,\n" +
             "description VARCHAR(100) NOT NULL,\n" +
             "userId INT,\n" +
-            "isValid Boolean,\n" +
             "fee INT NOT NULL,\n" +
             "FOREIGN KEY (userId) REFERENCES user(userId)\n" +
             ");";
@@ -70,9 +69,7 @@ public class DBSchema {
             "studentId INT NOT NULL,\n" +
             "courseId INT NOT NULL,\n" +
             "grade INT ,\n" +
-            "PRIMARY KEY (studentId, courseId),\n" +
-            "FOREIGN KEY (studentId) REFERENCES user(userId),\n" +
-            "FOREIGN KEY (courseId) REFERENCES course(courseId)\n" +
+            "PRIMARY KEY (studentId, courseId)\n" +
             ");";
 
     /**

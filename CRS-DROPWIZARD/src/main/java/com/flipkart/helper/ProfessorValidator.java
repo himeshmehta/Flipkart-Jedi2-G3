@@ -10,7 +10,7 @@ import com.flipkart.dao.CourseDB;
  */
 public class ProfessorValidator {
 
-    private static CourseDB courseDB = new CourseDB();
+    private static CourseDB courseDB = CourseDB.getInstance();
 
     /**
      * This method is used to validate professor for course

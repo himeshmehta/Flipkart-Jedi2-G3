@@ -29,7 +29,7 @@ public class DBUtil {
                 InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
                 // prop.load(inputStream);
                 String driver = "com.mysql.jdbc.Driver";//prop.getProperty("driver");
-                String url = "jdbc:mysql://localhost:3306/test"; //prop.getProperty("url");
+                String url = "jdbc:mysql://localhost:3306/CRS-DATABASE"; //prop.getProperty("url");
                 String user = "root";///prop.getProperty("user");
                 String password = "12345"; //prop.getProperty("password");
                 Class.forName(driver);

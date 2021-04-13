@@ -96,7 +96,7 @@ public class AdminController {
             adminServices.removeUser(userId);
             return Response.status(200).entity("User removed successfully").build();
         } catch (Exception ex) {
-            return Response.status(500).entity( "Course removal Failed, Please Try Again ! ").build();
+            return Response.status(500).entity( "User removal Failed, Please Try Again ! ").build();
         }
     }
 

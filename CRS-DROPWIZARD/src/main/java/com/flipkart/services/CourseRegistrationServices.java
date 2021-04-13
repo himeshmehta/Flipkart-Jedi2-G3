@@ -17,7 +17,7 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
     private CourseDB courseDBOperations;
 
     public CourseRegistrationServices(){
-        this.courseDBOperations = new CourseDB();
+        this.courseDBOperations = CourseDB.getInstance();
     }
 
     private static final Logger logger = Logger.getLogger(String.valueOf(CourseRegistrationServices.class));

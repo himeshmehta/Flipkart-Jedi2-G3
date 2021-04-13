@@ -17,11 +17,10 @@ import java.util.logging.Logger;
 public class AdminServices implements AdminInterface{
     private AuthDB authDBOperations;
     private NotificationServices notificationServices ;
-    private CourseDB courseDB;
+    private CourseDB courseDB = CourseDB.getInstance();
     public AdminServices(){
         this.notificationServices = new NotificationServices();
-        this.authDBOperations = new AuthDB();
-        this.courseDB = new CourseDB();
+        this.authDBOperations = AuthDB.getInstance();
     }
 
 

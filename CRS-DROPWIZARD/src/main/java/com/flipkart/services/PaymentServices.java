@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class PaymentServices implements PaymentInterface{
     private NotificationServices notificationServices = new  NotificationServices();
     private PaymentDB paymentDB = new PaymentDB();
-    private CourseDB courseDB= new CourseDB();
+    private CourseDB courseDB= CourseDB.getInstance();
     private static final Logger logger = Logger.getLogger(String.valueOf(PaymentServices.class));
 
    @Override
