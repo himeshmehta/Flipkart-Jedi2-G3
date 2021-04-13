@@ -10,7 +10,7 @@ import com.flipkart.services.AdminServices;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * The type admin dashboard
@@ -34,7 +34,7 @@ public class AdminDashboard {
      * This method is used to add user
      * @param email
      * @param password
-     * @param role
+     * @param roleEnum
      * @param name
      * @return boolean
      */

@@ -1,5 +1,6 @@
 package com.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flipkart.constants.RoleEnum;
 
 import javax.validation.constraints.NotNull;
@@ -12,8 +13,7 @@ public class User {
     private String name;
     @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     private String email;
-    private RoleEnum roleEnum;
-    @NotNull
+    private RoleEnum role;
     private int userId;
 
     /**
@@ -44,7 +44,7 @@ public class User {
      * @return the user roleEnum
      */
     public RoleEnum getRole() {
-        return roleEnum;
+        return role;
     }
 
     /**
@@ -52,7 +52,7 @@ public class User {
      * @param roleEnum the user roleEnum
      */
     public void setRole(RoleEnum roleEnum) {
-        this.roleEnum = roleEnum;
+        this.role = roleEnum;
     }
 
 
@@ -60,13 +60,13 @@ public class User {
      * Constructor of user
      * @param name
      * @param email
-     * @param role
+     * @param roleEnum
      */
 
     public User(String name, String email, RoleEnum roleEnum){
         this.email = email;
         this.name = name;
-        this.roleEnum = roleEnum;
+        this.role = roleEnum;
     }
 
 
@@ -74,7 +74,7 @@ public class User {
      * Constructor of user
      * @param name
      * @param email
-     * @param role
+     * @param roleEnum
      * @param userId
      */
 
@@ -82,7 +82,7 @@ public class User {
 
         this.email = email;
         this.name = name;
-        this.roleEnum = roleEnum;
+        this.role = roleEnum;
         this.userId = userId;
     }
 
