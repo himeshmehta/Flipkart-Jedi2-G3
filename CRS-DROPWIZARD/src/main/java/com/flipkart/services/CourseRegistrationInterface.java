@@ -39,7 +39,20 @@ public interface CourseRegistrationInterface {
      **/
     List<Course> viewCourses() throws CourseRegistrationException;
 
+    /**
+     * This method is used to get the list of not paid courses
+     * @param studentId
+     * @return hashMap of courseId and fee
+     * @throws CRSException
+     */
+
     public HashMap<Integer,Integer> getNotPaidCourseList(int studentId) throws CRSException;
 
+    /**
+     * This method is used to update the fee payment of courses selected by student
+     * @param studentId
+     * @param selectedCourses
+     * @throws CRSException
+     */
     public void setPaidFee(int studentId, Set<Integer> selectedCourses) throws CRSException;
 }

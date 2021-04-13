@@ -23,4 +23,12 @@ public interface PaymentInterface {
      @returns - String : message
      **/
     public String makeOfflinePayment(String paymentDescription, Bank bank, int userId, Set<Integer> selectedCourses) throws CRSException;
+
+    /**
+     * This methode is used complete payment based on type of payment mode.
+     * @param paymentRequest
+     * @return String message
+     * @throws CRSException
+     */
+    public String completePayment(PaymentRequest paymentRequest) throws CRSException
 }
