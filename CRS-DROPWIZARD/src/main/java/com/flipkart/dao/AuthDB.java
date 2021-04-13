@@ -3,10 +3,9 @@ package com.flipkart.dao;
 import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
-import com.flipkart.bean.Course;
 import com.flipkart.bean.User;
-import com.flipkart.client.AdminDashboard;
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
+import com.flipkart.dashboard.AdminDashboard;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
@@ -58,13 +57,13 @@ public class AuthDB implements AuthDBInterface{
 
                 switch (role){
                     case "Student":
-                        user.setRole(Role.STUDENT);
+                        user.setRole(RoleEnum.STUDENT);
                         break;
                     case "Admin":
-                        user.setRole(Role.ADMIN);
+                        user.setRole(RoleEnum.ADMIN);
                         break;
                     case "Professor":
-                        user.setRole(Role.PROFESSOR);
+                        user.setRole(RoleEnum.PROFESSOR);
                         break;
                 }
             }
@@ -114,14 +113,14 @@ public class AuthDB implements AuthDBInterface{
     }
 
     /**
-     * This methode is used to get index from Role enum to store role in database.
-     * @Param role : Role enum.
+     * This methode is used to get index from RoleEnum enum to store roleEnum in database.
+     * @Param roleEnum : RoleEnum enum.
      * @Throws Nothing
      * @Return Integer : index for roles.
      * */
-    private Integer getIndexFromRole(Role role) {
+    private Integer getIndexFromRole(RoleEnum roleEnum) {
         Integer index = 0;
-        switch (role){
+        switch (roleEnum){
             case STUDENT:
                 index = 1;
                 break;
@@ -136,14 +135,14 @@ public class AuthDB implements AuthDBInterface{
     }
 
     /**
-     * This methode is used to get sql query for adding information in individual table based on role of user.
-     * @Param role : Role enum.
+     * This methode is used to get sql query for adding information in individual table based on roleEnum of user.
+     * @Param roleEnum : RoleEnum enum.
      * @Throws Nothing
      * @Return String : sql query to add row in table.
      * */
-    private String getAddIndividual(Role role) {
+    private String getAddIndividual(RoleEnum roleEnum) {
         String query = null;
-        switch(role){
+        switch(roleEnum){
             case ADMIN:
                 query =  SQLQueriesConstants.ADD_ADMIN;
                 break;
@@ -183,14 +182,14 @@ public class AuthDB implements AuthDBInterface{
     }
 
     /**
-     * This methode is used to get sql query for removing information from individual table based on role of user.
-     * @Param role : Role enum.
+     * This methode is used to get sql query for removing information from individual table based on roleEnum of user.
+     * @Param roleEnum : RoleEnum enum.
      * @Throws Nothing
      * @Return String : sql query to remove row in table.
      * */
-    private String getRemoveQueryFromRole(Role role) {
+    private String getRemoveQueryFromRole(RoleEnum roleEnum) {
         String removeUser = null;
-        switch(role){
+        switch(roleEnum){
             case ADMIN:
                 removeUser =  SQLQueriesConstants.DELETE_ADMIN;
                 break;
@@ -244,7 +243,7 @@ public class AuthDB implements AuthDBInterface{
             user = new User();
             user.setEmail(email);
             user.setName(name);
-            user.setRole(Role.STUDENT);
+            user.setRole(RoleEnum.STUDENT);
 
             rs = sqlQuery.getGeneratedKeys();
             while(rs.next()){
@@ -287,25 +286,25 @@ public class AuthDB implements AuthDBInterface{
     }
 
     /**
-     * This method is used to get Role enum from text
+     * This method is used to get RoleEnum enum from text
      * @Param roleFromDB : string return from database
      * @Throws Nothing
-     * @Return Role
+     * @Return RoleEnum
      * */
-    private Role getRoleFromText(String roleFromDB) {
-        Role role = null;
+    private RoleEnum getRoleFromText(String roleFromDB) {
+        RoleEnum roleEnum = null;
         switch (roleFromDB) {
             case "Student":
-                role = Role.STUDENT;
+                roleEnum = RoleEnum.STUDENT;
                 break;
             case "Admin":
-                role = Role.ADMIN;
+                roleEnum = RoleEnum.ADMIN;
                 break;
             case "Professor":
-                role = Role.PROFESSOR;
+                roleEnum = RoleEnum.PROFESSOR;
                 break;
         }
-        return role;
+        return roleEnum;
     }
 
     @Override

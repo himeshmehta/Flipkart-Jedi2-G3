@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -12,7 +12,7 @@ public class User {
     private String name;
     @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     private String email;
-    private Role role;
+    private RoleEnum roleEnum;
     @NotNull
     private int userId;
 
@@ -37,31 +37,31 @@ public class User {
     }
 
     /**
-     * Gets the user role
-     * @return the user role
+     * Gets the user roleEnum
+     * @return the user roleEnum
      */
-    public Role getRole() {
-        return role;
+    public RoleEnum getRole() {
+        return roleEnum;
     }
 
     /**
-     * Sets the user role
-     * @param role the user role
+     * Sets the user roleEnum
+     * @param roleEnum the user roleEnum
      */
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole(RoleEnum roleEnum) {
+        this.roleEnum = roleEnum;
     }
 
-    public User(String name,String email,Role role){
+    public User(String name, String email, RoleEnum roleEnum){
         this.email = email;
         this.name = name;
-        this.role = role;
+        this.roleEnum = roleEnum;
     }
 
-    public User(String name,String email,Role role,int userId){
+    public User(String name, String email, RoleEnum roleEnum, int userId){
         this.email = email;
         this.name = name;
-        this.role = role;
+        this.roleEnum = roleEnum;
         this.userId = userId;
     }
 

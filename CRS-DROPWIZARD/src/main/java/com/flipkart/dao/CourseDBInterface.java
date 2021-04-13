@@ -88,8 +88,20 @@ public interface CourseDBInterface {
 
     public  List<Student> getListOfStudents(Integer courseId) throws CRSException;
 
+    /**
+     * This method is used to get the list of not paid courses
+     * @param studemtId
+     * @return
+     * @throws CRSException
+     */
     public HashMap<Integer,Integer> getNotpaidCourseList(int studemtId) throws CRSException;
 
+    /**
+     * This method is used to update the fee paid for courses selected by student
+     * @param studentId
+     * @param selectedCourses
+     * @throws CRSException
+     */
     public void setPaidFeeToTRUE(int studentId, Set<Integer> selectedCourses) throws CRSException;
 
     /**
@@ -101,6 +113,12 @@ public interface CourseDBInterface {
      */
     public Boolean IsCourseTeachByProf(Integer courseId, int profId) throws CRSException;
 
+    /**
+     * This method is used to get the fee of course
+     * @param courseIds
+     * @return
+     * @throws CRSException
+     */
     public int getFee(Set<Integer> courseIds) throws CRSException;
 
     /**
