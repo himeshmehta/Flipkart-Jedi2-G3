@@ -16,6 +16,17 @@ public class Online extends Payment{
     @NotNull
     private String CVV;
 
+    /**
+     * Constructor of online
+     * @param refId
+     * @param amount
+     * @param paymentDescription
+     * @param card_number
+     * @param name_on_card
+     * @param CVV
+     * @param mode
+     * @param userId
+     */
     public Online(String refId, int amount, String paymentDescription, String card_number,String name_on_card,String CVV,PaymentMode mode,int userId) {
         super(refId, amount, paymentDescription,userId,mode);
         this.card_number = card_number;

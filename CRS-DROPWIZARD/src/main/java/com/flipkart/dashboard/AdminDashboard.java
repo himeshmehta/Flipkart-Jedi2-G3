@@ -12,15 +12,32 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+/**
+ * The type admin dashboard
+ */
 public class AdminDashboard {
     Admin admin;
     AdminServices adminService;
     private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
+
+    /**
+     * Constructor of adminaDashboard
+     * @param admin
+     */
     public AdminDashboard(Admin admin){
         this.admin = admin;
         adminService = new AdminServices();
     }
 
+
+    /**
+     * This method is used to add user
+     * @param email
+     * @param password
+     * @param role
+     * @param name
+     * @return boolean
+     */
     public Boolean addUser(String email, String password, RoleEnum roleEnum, String name){
         User newUser = new User(name,email, roleEnum);
         Boolean isUserAdded = Boolean.FALSE;
@@ -28,54 +45,70 @@ public class AdminDashboard {
             adminService.addUser(newUser,password);
             isUserAdded = Boolean.TRUE;
         } catch (CRSException | InvalidDataException e) {
-            System.out.println(e.getMessage());
-            logger.info(e.getMessage());
+            logger.error(e.getMessage());
         }
         return isUserAdded;
     }
 
+    /**
+     * This method is used to remove user
+     * @param userId
+     * @return
+     */
     public  Boolean removeUser(int userId){
         Boolean isUserRemoved = Boolean.FALSE;
         try {
             adminService.removeUser(userId);
             isUserRemoved = Boolean.TRUE;
         } catch (CRSException e) {
-            System.out.println(e.getMessage());
-            logger.info(e.getMessage());
+            logger.error(e.getMessage());
         }
         return isUserRemoved;
     }
 
+    /**
+     * This method is used to add new new course
+     * @param description
+     * @param courseName
+     * @param fee
+     * @return
+     */
     public Boolean addNewCourse(String description , String courseName , Long fee){
         Boolean newCourseAdded = Boolean.FALSE;
         try {
             adminService.addNewCourse(description,courseName,fee);
             newCourseAdded = Boolean.TRUE;
         } catch (Exception ex){
-            logger.info(ex.getMessage());
-            System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
         }
         return newCourseAdded;
     }
 
+    /**
+     * This method is used to get the list of registered but not approved students
+     */
     public void getListOfSelfRegisteredStudent(){
         try {
             List<Integer> userIds = adminService.getNotApprovedStudents();
             if(userIds != null && userIds.size() > 0){
-                System.out.println("Following students are not approved.");
+                logger.info("Following students are not approved.");
             } else{
-                System.out.println("All students are approved.");
+                logger.info("All students are approved.");
             }
             String users = "";
             for(int userId : userIds){
                 users = users + String.valueOf(userId) + ' ';
             }
-            System.out.println(users);
+            logger.info(users);
         } catch (Exception e){
-            System.out.println(e.getMessage());
+           logger.error(e.getMessage());
         }
     }
 
+    /**
+     * This method is used to approve registerd students
+     * @param userIds
+     */
     public void approveListOfStudent(List<Integer> userIds) {
         for(int studentId : userIds){
             try{
@@ -87,6 +120,10 @@ public class AdminDashboard {
         }
     }
 
+    /**
+     * This method is used to perform admin operations
+     * @param inputReader
+     */
     public void helper(Scanner inputReader)
     {
         // Scanner inputReader = new Scanner(System.in);
@@ -182,6 +219,9 @@ public class AdminDashboard {
         }
     }
 
+    /**
+     * This method is used to show the list of operations
+     */
     private void showMenu() {
         System.out.println("Select operation to perform");
         System.out.println("1. Add User");
