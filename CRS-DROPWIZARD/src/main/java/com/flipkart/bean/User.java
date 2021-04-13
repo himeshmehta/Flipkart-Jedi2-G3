@@ -16,6 +16,9 @@ public class User {
     @NotNull
     private int userId;
 
+    /**
+     * Constructor of user
+     */
     public User() {
 
     }
@@ -52,13 +55,31 @@ public class User {
         this.roleEnum = roleEnum;
     }
 
+
+    /**
+     * Constructor of user
+     * @param name
+     * @param email
+     * @param role
+     */
+
     public User(String name, String email, RoleEnum roleEnum){
         this.email = email;
         this.name = name;
         this.roleEnum = roleEnum;
     }
 
+
+    /**
+     * Constructor of user
+     * @param name
+     * @param email
+     * @param role
+     * @param userId
+     */
+
     public User(String name, String email, RoleEnum roleEnum, int userId){
+
         this.email = email;
         this.name = name;
         this.roleEnum = roleEnum;

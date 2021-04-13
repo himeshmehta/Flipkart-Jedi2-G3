@@ -10,13 +10,21 @@ import com.flipkart.constants.PaymentMode;
 public class Offline extends Payment{
     private BankEnum bankEnum;
 
+    /**
+     * Constructor of offline
+     * @param refId
+     * @param amount
+     * @param paymentDescription
+     * @param bankEnum
+     * @param userId
+     */
     public Offline(String refId, int amount, String paymentDescription, BankEnum bankEnum, int userId){
         super(refId,amount,paymentDescription,userId, PaymentMode.OFFLINE);
         this.bankEnum = bankEnum;
     }
 
     /**
-     * Gets the bank
+     * Gets the bank name
      * @return
      */
     public BankEnum getBank() {
@@ -24,7 +32,7 @@ public class Offline extends Payment{
     }
 
     /**
-     * Sets the bank
+     * Sets the bank name
      * @param bankEnum
      */
     public void setBank(BankEnum bankEnum) {

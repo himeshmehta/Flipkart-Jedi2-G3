@@ -2,7 +2,18 @@ package com.flipkart.helper;
 
 import com.flipkart.Exception.PaymentException;
 
+/**
+ * The type payment validator
+ */
 public class PaymentValidator {
+    /**
+     * This method is used to validate online payment
+     * @param amount
+     * @param card_name
+     * @param card_no
+     * @param cvv
+     * @throws PaymentException
+     */
     public static void onlinePaymentValidator(long amount,String card_name,String card_no,String cvv) throws PaymentException {
         String exceptionMessage = null;
         if (amount < 0){

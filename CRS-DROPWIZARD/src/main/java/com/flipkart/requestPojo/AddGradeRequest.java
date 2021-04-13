@@ -1,5 +1,4 @@
 package com.flipkart.requestPojo;
-
 public class AddGradeRequest {
     private int professorId;
     private int studentId;

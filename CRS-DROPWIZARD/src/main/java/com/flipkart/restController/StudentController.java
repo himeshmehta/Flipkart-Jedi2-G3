@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The type student controller
+ */
 @Path("/student")
 public class StudentController {
 
@@ -36,6 +39,11 @@ public class StudentController {
         this.validator = validator;
     }
 
+    /**
+     * Gets the list of all courses
+     * @return
+     * @throws CourseRegistrationException
+     */
     @GET
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
@@ -51,6 +59,11 @@ public class StudentController {
     }
 
 
+    /**
+     * Gets the list of enrolled courses
+     * @param studentId
+     * @return
+     */
     @GET
     @Path("/viewEnrolledCourses/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -66,6 +79,12 @@ public class StudentController {
         }
     }
 
+    /**
+     * Gets the grade card of student
+     * @param studentId
+     * @return
+     * @throws GradeCardNotFoundException
+     */
     @GET
     @Path("/gradeCard/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -78,6 +97,12 @@ public class StudentController {
         }
     }
 
+    /**
+     * Gets the list of courses for which payment is not done
+     * @param studentId
+     * @return
+     * @throws CRSException
+     */
     @GET
     @Path("/feeRemaining/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -90,6 +115,11 @@ public class StudentController {
         }
     }
 
+    /**
+     * Register for course
+     * @param request
+     * @return
+     */
     @POST
     @Path("/registerCourse")
     @Produces(MediaType.APPLICATION_JSON)
@@ -103,6 +133,11 @@ public class StudentController {
         return Response.status(200).entity( "Registration Successful").build();
     }
 
+    /**
+     * Remove course
+     * @param request
+     * @return
+     */
     @DELETE
     @Path("/removeCourse")
     @Consumes("application/json")
@@ -115,6 +150,12 @@ public class StudentController {
         return Response.status(200).entity("Removal Successful").build();
     }
 
+    /**
+     * Pay fee for selected courses
+     * @param request
+     * @return
+     * @throws CRSException
+     */
     @PUT
     @Path("/payFee")
     @Consumes("application/json")

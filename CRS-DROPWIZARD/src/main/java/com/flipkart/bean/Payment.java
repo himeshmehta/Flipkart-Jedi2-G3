@@ -17,6 +17,14 @@ public class Payment {
     private int userId;
     private PaymentMode mode;
 
+    /**
+     * Constructor of Payment
+     * @param refId
+     * @param amount
+     * @param paymentDescription
+     * @param userId
+     * @param mode
+     */
     public Payment(String refId, int amount, String paymentDescription, int userId, PaymentMode mode) {
         this.referenceId = refId;
         this.amount = amount;
@@ -89,10 +97,18 @@ public class Payment {
         this.amount = amount;
     }
 
+    /**
+     * Gets the payment mode
+     * @return
+     */
     public PaymentMode getMode() {
         return mode;
     }
 
+    /**
+     * Sets the payment mode
+     * @param mode
+     */
     public void setMode(PaymentMode mode) {
         this.mode = mode;
     }

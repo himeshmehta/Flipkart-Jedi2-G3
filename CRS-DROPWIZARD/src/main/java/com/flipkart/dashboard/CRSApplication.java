@@ -5,6 +5,9 @@ import com.flipkart.Exception.CRSException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+/**
+ * Entry point of crs application
+ */
 public class CRSApplication {
     private static final Logger logger = Logger.getLogger(String.valueOf(CRSApplication.class));
     public static void main(String[] args) {
