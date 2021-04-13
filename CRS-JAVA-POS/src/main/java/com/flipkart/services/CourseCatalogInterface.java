@@ -9,9 +9,9 @@ public interface CourseCatalogInterface {
     /**
      *
      This method is used to update the CourseCatalog Database.
-     @Param - Course
-     @Throws - Nothing
-     @returns - Boolean
+     @param - Course
+     @throws - Nothing
+     @return - Boolean
 
      **/
     public Boolean updateCourseList(Course newCourse);
@@ -19,9 +19,9 @@ public interface CourseCatalogInterface {
     /**
      *
      This method is used to get the List of Courses.
-     @Param - None
-     @Throws - Nothing
-     @returns - List of Courses from CourseCatalog
+     @param - None
+     @throws - Nothing
+     @return - List of Courses from CourseCatalog
 
      **/
     public List<Course> viewCourseList();

@@ -13,9 +13,9 @@ public interface AdminInterface {
     /**
      *
      This method is used to Add the User to the Database.
-     @Param - User , password
-     @Throws - UserAlreadyAddedException,CRSException,InvalidDataException
-     @returns - User object
+     @param - User , password
+     @throws - UserAlreadyAddedException,CRSException,InvalidDataException
+     @return - User object
 
      **/
     public User addUser(User user, String password) throws CRSException, InvalidDataException;
@@ -23,9 +23,9 @@ public interface AdminInterface {
     /**
      *
      This method is used to removes the User to the Database.
-     @Param - UserId
-     @Throws - CRSException
-     @returns - Boolean
+     @param  - UserId
+     @throws - CRSException
+     @return - Boolean
 
      **/
     public void removeUser(int userId) throws CRSException;
@@ -33,9 +33,9 @@ public interface AdminInterface {
     /**
      *
      This method is used to approve the Student.
-     @Param - studentId
-     @Throws - ApprovalFailedException,CRSException
-     @returns - Boolean
+     @param - studentId
+     @throws - ApprovalFailedException,CRSException
+     @return - Boolean
 
      **/
     public void approveStudent(final int studentId) throws ApprovalFailedException, CRSException;
@@ -43,9 +43,9 @@ public interface AdminInterface {
     /**
      *
      This method is used to get list of students who are not approved yet.
-     @Param - User , password
-     @Throws - CRSException
-     @returns - List of studentId
+     @param - User , password
+     @throws - CRSException
+     @return - List of studentId
 
      **/
     public List<Integer> getNotApprovedStudents() throws CRSException;
@@ -53,9 +53,9 @@ public interface AdminInterface {
     /**
      *
      This method is used to Add new course in system
-     @Param - course_description , courseName, courseFee
-     @Throws - CRSException
-     @returns - Course object
+     @param - course_description , courseName, courseFee
+     @throws - CRSException
+     @return - Course object
 
      **/
     public Course addNewCourse(String description, String courseName, long fee) throws CRSException;

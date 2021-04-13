@@ -10,17 +10,17 @@ public interface PaymentInterface {
     /**
      *
      This method makes the Online Payment and send notification to user.
-     @Param - paymentDescription ,  card_number , name_on_card , cvv , mode , mode, userId, list of course for which fee need to pay.
-     @Throws - CRSException
-     @returns - String : message
+     @param - paymentDescription ,  card_number , name_on_card , cvv , mode , mode, userId, list of course for which fee need to pay.
+     @throws - CRSException
+     @return - String : message
      **/
     public String makeOnlinePayment(String paymentDescription, String card_number, String name_on_card, String cvv, PaymentMode mode, int userId, Set<Integer> selectedCourses) throws CRSException;
     /**
      *
      This method makes the offline Payment and send notification to user.
-     @Param - paymentDescription , bank , userId, list of course for which fee need to pay.
-     @Throws - CRSException
-     @returns - String : message
+     @param - paymentDescription , bank , userId, list of course for which fee need to pay.
+     @throws - CRSException
+     @return - String : message
      **/
     public String makeOfflinePayment(String paymentDescription, BankEnum bankEnum, int userId, Set<Integer> selectedCourses) throws CRSException;
 
