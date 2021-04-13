@@ -1,10 +1,9 @@
 package com.flipkart.restController;
 
-import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.User;
-import com.flipkart.requestPojo.LoginPojo;
-import com.flipkart.requestPojo.SelfRegistrationPOJO;
+import com.flipkart.requestPojo.LoginRequest;
+import com.flipkart.requestPojo.SelfRegistrationRequest;
 import com.flipkart.services.AuthDBServices;
 
 import javax.validation.Validator;
@@ -37,7 +36,7 @@ public class AuthController {
     @GET
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(LoginPojo loginDetails){
+    public Response login(LoginRequest loginDetails){
         try {
             User user =  authDBServices.authenticateUser(loginDetails.getUserId(),loginDetails.getPassword());
             return Response.status(200).entity(user).build();
@@ -54,7 +53,7 @@ public class AuthController {
     @POST
     @Path("/selfRegistration")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response selfRegistration(SelfRegistrationPOJO request){
+    public Response selfRegistration(SelfRegistrationRequest request){
         try{
             User user = authDBServices.selfRegisterStudent(request.getEmail(), request.getName(), request.getPassword(), request.getConfirmPassword());
             return Response.status(200).entity(user).build();

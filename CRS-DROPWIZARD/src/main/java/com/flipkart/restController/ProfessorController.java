@@ -2,10 +2,9 @@ package com.flipkart.restController;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
-import com.flipkart.bean.User;
 import com.flipkart.dao.CourseDB;
 import com.flipkart.requestPojo.AddGradeRequest;
-import com.flipkart.requestPojo.SelectCourseToTeach;
+import com.flipkart.requestPojo.SelectCourseToTeachRequest;
 import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.ProfessorServices;
 
@@ -82,7 +81,7 @@ public class ProfessorController {
     @Path("/selectCourseToTeach")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/json")
-    public Response SelectCourseToTeach(SelectCourseToTeach request){
+    public Response SelectCourseToTeach(SelectCourseToTeachRequest request){
         try {
             professorServices.selectCourseToTeach(request.getCourseId(),request.getProfessor());
         } catch (Exception ex) {

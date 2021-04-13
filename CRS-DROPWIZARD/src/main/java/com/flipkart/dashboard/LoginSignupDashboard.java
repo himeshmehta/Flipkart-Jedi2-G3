@@ -1,11 +1,11 @@
-package com.flipkart.client;
+package com.flipkart.dashboard;
 
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
 import com.flipkart.services.AuthDBServices;
 
 import java.util.Scanner;
@@ -34,7 +34,7 @@ public class LoginSignupDashboard {
                 // Authenticate user
                 user = authServices.authenticateUser(userId,password);
 
-                Role roleOfUser = user.getRole();
+                RoleEnum roleOfUser = user.getRole();
                 // Now go to different dashboard according to different roles
 
                 switch (roleOfUser){

@@ -1,10 +1,10 @@
-package com.flipkart.client;
+package com.flipkart.dashboard;
 
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.User;
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
 import com.flipkart.services.AdminServices;
 
 import java.util.ArrayList;
@@ -29,6 +29,7 @@ public class AdminDashboard {
         adminService = new AdminServices();
     }
 
+
     /**
      * This method is used to add user
      * @param email
@@ -37,8 +38,8 @@ public class AdminDashboard {
      * @param name
      * @return boolean
      */
-    public Boolean addUser(String email, String password, Role role, String name){
-        User newUser = new User(name,email,role);
+    public Boolean addUser(String email, String password, RoleEnum roleEnum, String name){
+        User newUser = new User(name,email, roleEnum);
         Boolean isUserAdded = Boolean.FALSE;
         try {
             adminService.addUser(newUser,password);
@@ -146,16 +147,16 @@ public class AdminDashboard {
 
                         System.out.println("Enter role for new user\n 1 --> Student \n 2 --> Admin \n 3 --> Professor");
                         int role = inputReader.nextInt();
-                        Role rUser = null;
+                        RoleEnum rUser = null;
                         switch (role){
                             case 1:
-                                rUser = Role.STUDENT;
+                                rUser = RoleEnum.STUDENT;
                                 break;
                             case 2:
-                                rUser = Role.ADMIN;
+                                rUser = RoleEnum.ADMIN;
                                 break;
                             case 3:
-                                rUser = Role.PROFESSOR;
+                                rUser = RoleEnum.PROFESSOR;
                                 break;
                         }
                         result = addUser(email, passs, rUser, name);

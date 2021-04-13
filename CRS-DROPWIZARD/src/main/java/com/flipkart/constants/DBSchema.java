@@ -8,7 +8,7 @@ import java.util.List;
  * */
 
 
-public class CreateTable {
+public class DBSchema {
 
     public static String userTable = "create table if not exists user (\n" +
             "userId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n" +
@@ -75,6 +75,11 @@ public class CreateTable {
             "FOREIGN KEY (courseId) REFERENCES course(courseId)\n" +
             ");";
 
+    /**
+     * This method returns list of create table query for all tables.
+     * Error can generate related to foreign key if tables are not created and dropped in below fashion.
+     * To create tables :- forward direction
+     * To drop tables   :- reverse direction*/
     public static List<String> getQueries() {
         List<String> queries = new ArrayList<String>();
         queries.add(userTable);

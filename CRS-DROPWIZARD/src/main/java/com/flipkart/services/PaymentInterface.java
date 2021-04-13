@@ -1,8 +1,9 @@
 package com.flipkart.services;
 
 import com.flipkart.Exception.CRSException;
-import com.flipkart.constants.Bank;
+import com.flipkart.constants.BankEnum;
 import com.flipkart.constants.PaymentMode;
+import com.flipkart.requestPojo.PaymentRequest;
 
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public interface PaymentInterface {
      @Throws - CRSException
      @returns - String : message
      **/
-    public String makeOfflinePayment(String paymentDescription, Bank bank, int userId, Set<Integer> selectedCourses) throws CRSException;
+    public String makeOfflinePayment(String paymentDescription, BankEnum bankEnum, int userId, Set<Integer> selectedCourses) throws CRSException;
 
     /**
      * This methode is used complete payment based on type of payment mode.
@@ -30,5 +31,5 @@ public interface PaymentInterface {
      * @return String message
      * @throws CRSException
      */
-    public String completePayment(PaymentRequest paymentRequest) throws CRSException
+    public String completePayment(PaymentRequest paymentRequest) throws CRSException;
 }
