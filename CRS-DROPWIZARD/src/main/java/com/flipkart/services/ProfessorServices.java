@@ -32,7 +32,7 @@ public class ProfessorServices implements ProfessorInterface {
     }
 
     @Override
-    public List<Course> viewEnrolledCourses(int professorId) {
+    public List<Course> viewEnrolledCourses(int professorId) throws CRSException{
         return courseDB.viewEnrolledCourses(professorId);
     }
 
@@ -43,7 +43,7 @@ public class ProfessorServices implements ProfessorInterface {
 
 
     @Override
-    public List<Student> getEnrolledStudents(Integer courseId) {
+    public List<Student> getEnrolledStudents(Integer courseId) throws CRSException{
         List<Student> studentList = new ArrayList<Student>();
 
         logger.info("Fetching Enrolled Students List");
