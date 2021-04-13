@@ -16,6 +16,9 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type admin controller
+ */
 @Path("/admin")
 public class AdminController {
 
@@ -23,10 +26,16 @@ public class AdminController {
 
     private final Validator validator;
 
+
     public AdminController(Validator validator) {
         this.validator = validator;
     }
 
+    /**
+     * Gets the list of not approved students
+     * @return
+     * @throws CRSException
+     */
 
     @GET
     @Path("/notApprovedStudents")
@@ -40,6 +49,11 @@ public class AdminController {
         }
     }
 
+    /**
+     * Add new user
+     * @param newUserRequest
+     * @return
+     */
     @POST
     @Path(("/addNewUser"))
     @Produces(MediaType.APPLICATION_JSON)
@@ -52,6 +66,11 @@ public class AdminController {
         }
     }
 
+    /**
+     * Add new course
+     * @param newCoursePOJO
+     * @return
+     */
     @POST
     @Path(("/addNewCourse"))
     @Consumes(MediaType.APPLICATION_JSON)
@@ -65,6 +84,12 @@ public class AdminController {
         }
     }
 
+    /**
+     * Remove user
+     * @param userId
+     * @return
+     * @throws CRSException
+     */
     @DELETE
     @Path("/removeUser/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -77,6 +102,12 @@ public class AdminController {
         }
     }
 
+    /**
+     * Approve student registration
+     * @param studentIds
+     * @return
+     * @throws CRSException
+     */
     @PUT
     @Path("/approveStudent/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)

@@ -15,6 +15,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * The type authorization controller
+ */
 @Path("/auth")
 public class AuthController {
 
@@ -26,6 +29,11 @@ public class AuthController {
         this.validator = validator;
     }
 
+    /**
+     * Login of user
+     * @param loginDetails
+     * @return
+     */
     @GET
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
@@ -38,6 +46,11 @@ public class AuthController {
         }
     }
 
+    /**
+     * Self Registeration of user
+     * @param request
+     * @return
+     */
     @POST
     @Path("/selfRegistration")
     @Produces(MediaType.APPLICATION_JSON)

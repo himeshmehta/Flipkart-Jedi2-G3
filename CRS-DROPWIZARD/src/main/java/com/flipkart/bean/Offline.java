@@ -10,13 +10,21 @@ import com.flipkart.constants.PaymentMode;
 public class Offline extends Payment{
     private Bank bank;
 
+    /**
+     * Constructor of offline
+     * @param refId
+     * @param amount
+     * @param paymentDescription
+     * @param bank
+     * @param userId
+     */
     public Offline(String refId,int amount, String paymentDescription,Bank bank,int userId){
         super(refId,amount,paymentDescription,userId, PaymentMode.OFFLINE);
         this.bank = bank;
     }
 
     /**
-     * Gets the bank
+     * Gets the bank name
      * @return
      */
     public Bank getBank() {
@@ -24,7 +32,7 @@ public class Offline extends Payment{
     }
 
     /**
-     * Sets the bank
+     * Sets the bank name
      * @param bank
      */
     public void setBank(Bank bank) {

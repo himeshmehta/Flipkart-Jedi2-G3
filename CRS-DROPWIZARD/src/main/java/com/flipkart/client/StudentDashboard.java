@@ -14,6 +14,9 @@ import com.flipkart.services.PaymentServices;
 import java.util.*;
 import java.util.logging.Logger;
 
+/**
+ * The type studentDashboard
+ */
 public class StudentDashboard {
     Student student;
     CourseRegistrationServices courseRegistrationServices;
@@ -22,6 +25,10 @@ public class StudentDashboard {
     GradeCardServices gradeCardServices;
     private static final Logger logger = Logger.getLogger(String.valueOf(StudentDashboard.class));
 
+    /**
+     * Constructor of studentDashboard
+     * @param student
+     */
     public StudentDashboard(Student student) {
         this.student = student;
         courseRegistrationServices = new CourseRegistrationServices();
@@ -30,6 +37,11 @@ public class StudentDashboard {
         this.gradeCardServices = new GradeCardServices();
     }
 
+    /**
+     * This method is used for course registration
+     * @param courseId
+     * @return boolean
+     */
     public Boolean registerCourse(Integer courseId) {
         try {
             return courseRegistrationServices.registerCourse(student, courseId);
@@ -39,6 +51,10 @@ public class StudentDashboard {
         }
     }
 
+    /**
+     * This method is used to get the list of courses
+     * @return
+     */
     public List<Course> viewCourses() {
         try {
             return courseRegistrationServices.viewCourses();
@@ -48,6 +64,11 @@ public class StudentDashboard {
         }
     }
 
+    /**
+     * This method is used to remove  course for student
+     * @param courseId
+     * @return
+     */
     public Boolean removeCourse(Integer courseId) {
         try {
             return courseRegistrationServices.removeCourse(student, courseId);
@@ -57,10 +78,19 @@ public class StudentDashboard {
         }
     }
 
+    /**
+     * This method is used to get the list of registered courses
+     * @return list of courses
+     */
     public List<Course> getRegisteredCourses() {
         return studentDB.registeredCourses(student);
     }
 
+    /**
+     * This method is to view the list of courses for which payment is not done
+     * @param studentId
+     * @param inputReader
+     */
     private void getPaymentRemainingCourse(int studentId,Scanner inputReader) {
         try {
             HashMap<Integer,Integer> courseToFee = courseRegistrationServices.getNotPaidCourseList(studentId);
@@ -137,6 +167,11 @@ public class StudentDashboard {
         }
     }
 
+    /**
+     * This method is used to get the bank name
+     * @param bankIndex
+     * @return
+     */
     private Bank getBankNameFromIndex(int bankIndex) {
         Bank bankName = null;
         switch (bankIndex){
@@ -153,6 +188,11 @@ public class StudentDashboard {
         return bankName;
     }
 
+    /**
+     * This method is used to get the payment mode
+     * @param paymentMode
+     * @return
+     */
     private PaymentMode getPaymentModeFromIndex(int paymentMode) {
         PaymentMode mode = null;
         switch (paymentMode){
@@ -169,6 +209,9 @@ public class StudentDashboard {
         return mode;
     }
 
+    /**
+     * This method is used to perform student operations
+     */
     public void helper() {
 
 
@@ -241,6 +284,10 @@ public class StudentDashboard {
         }
     }
 
+    /**
+     * This method is used to view grade card
+     * @param studentId
+     */
     private void viewGradeCard(int studentId) {
         try {
             GradeCard gradeCard = gradeCardServices.viewGradeCard(studentId);
@@ -262,6 +309,9 @@ public class StudentDashboard {
         }
     }
 
+    /**
+     * This method is used to show the list of operations
+     */
     private void showMenu() {
         System.out.println("Menu for student dashboard :- ");
         System.out.println("1. Register for Course.");

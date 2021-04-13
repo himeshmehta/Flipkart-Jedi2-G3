@@ -14,25 +14,41 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-
+/**
+ * The type professorDashboard
+ */
 public class ProfessorDashboard {
 
     private Professor professor;
     private ProfessorServices professorServices;
     private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorDashboard.class));
 
+    /**
+     * Constructor of professorDashboard
+     * @param professor
+     */
     public ProfessorDashboard(Professor professor)
     {
         this.professor=professor;
         professorServices = new ProfessorServices(new CourseDB());
     }
 
+    /**
+     * This method is used to select course to teach
+     * @param courseId
+     * @return
+     * @throws CRSException
+     */
     public Boolean selectCourseToTeach(int courseId) throws CRSException {
 
         return professorServices.selectCourseToTeach(courseId , professor);
 
     }
 
+    /**
+     * This method is used to view all courses
+     * @return
+     */
     public List<Course> viewAllCourses() {
         try {
             return professorServices.viewCourses();
@@ -42,6 +58,10 @@ public class ProfessorDashboard {
         }
     }
 
+    /**
+     * This method is used to view selected courses by professor
+     * @return
+     */
     public List<Course> viewSelectedCourses() {
         try {
             return professorServices.viewEnrolledCourses(professor.getUserId());
@@ -51,18 +71,33 @@ public class ProfessorDashboard {
         }
     }
 
+    /**
+     * This method is used to get the list of enrolled students for particular course
+     * @param courseId
+     * @return
+     */
     public List<Student> getEnrolledStudents(int courseId)
     {
         List<Student> studentList=professorServices.getEnrolledStudents(courseId);
         return studentList;
     }
 
+    /**
+     * This method is used to add grades
+     * @param courseId
+     * @param marks
+     * @param studentId
+     * @throws Exception
+     */
     public void addGrades(Integer courseId,Integer marks,Integer studentId) throws Exception {
         GradeCardServices gradeCardServices = new GradeCardServices();
         // add grades
         gradeCardServices.addGrade(professor.getUserId(),courseId,marks,studentId);
     }
 
+    /**
+     * This method is used to perform professor operations
+     */
     public void helper()
     {
 
@@ -135,7 +170,9 @@ public class ProfessorDashboard {
             }
         }
     }
-
+    /**
+     * This method is used to show the list of operations
+     */
     private void showMenu() {
         System.out.println("Select operation to perform");
         System.out.println("1. Select course to teach");
@@ -146,6 +183,10 @@ public class ProfessorDashboard {
         System.out.println("6. Exit\n");
     }
 
+    /**
+     * This method is used to handle add grades method
+     * @param inputReader
+     */
     private void addGradesHandler(Scanner inputReader) {
         try{
             System.out.println("Enter course id for which you want to add grades.");

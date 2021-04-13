@@ -11,10 +11,21 @@ public class Professor extends User{
 
     private List<Course> teachingCourses;
 
+    /**
+     * Constructor of professor
+     * @param name
+     * @param email
+     * @param role
+     * @param userId
+     */
     public Professor(String name, String email, Role role,int userId) {
         super(name, email, role, userId);
     }
 
+    /**
+     * Constructor of professor
+     * @param user
+     */
     public Professor(User user){
         super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
     }

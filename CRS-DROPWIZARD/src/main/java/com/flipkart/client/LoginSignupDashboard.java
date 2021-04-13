@@ -10,9 +10,16 @@ import com.flipkart.services.AuthDBServices;
 
 import java.util.Scanner;
 
+/**
+ * The type login and signup dashboard
+ */
 public class LoginSignupDashboard {
     private static AuthDBServices authServices = new AuthDBServices();
 
+    /**
+     * This method is used for user login
+     * @throws CRSException
+     */
     public static void LoginUser() throws CRSException {
         User user = null;
         Scanner inputReader = new Scanner(System.in);
@@ -57,6 +64,10 @@ public class LoginSignupDashboard {
         inputReader.close();
     }
 
+    /**
+     * This method is used for user registration
+     * @throws CRSException
+     */
     public static void SignUpUser() throws CRSException {
         Scanner inputReader = new Scanner(System.in);
 

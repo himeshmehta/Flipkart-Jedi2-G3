@@ -16,6 +16,9 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type professor controller
+ */
 @Path("/professor")
 public class ProfessorController {
 
@@ -28,6 +31,10 @@ public class ProfessorController {
         this.validator = validator;
     }
 
+    /**
+     * Gets the list of all courses
+     * @return
+     */
     @GET
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
@@ -38,6 +45,11 @@ public class ProfessorController {
         return Response.status(200).entity(courses).build();
     }
 
+    /**
+     * Gets the list of enrolled students for course
+     * @param courseId
+     * @return
+     */
     @GET
     @Path("/viewEnrolledStudents/{courseId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,6 +58,11 @@ public class ProfessorController {
         return Response.status(200).entity(studentList).build();
     }
 
+    /**
+     * Gets the list of all courses taught by professor
+     * @param professorId
+     * @return
+     */
     @GET
     @Path("/viewSelectedCourses/{professorId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -56,6 +73,11 @@ public class ProfessorController {
         return Response.status(200).entity(courses).build();
     }
 
+    /**
+     * Professor register to teach course
+     * @param request
+     * @return
+     */
     @POST
     @Path("/selectCourseToTeach")
     @Produces(MediaType.APPLICATION_JSON)
@@ -69,6 +91,11 @@ public class ProfessorController {
         return Response.status(200).entity( "Registration Successful").build();
     }
 
+    /**
+     * Professor add grade for student
+     * @param request
+     * @return
+     */
     @POST
     @Path("addGrade")
     @Consumes("application/json")
