@@ -13,7 +13,6 @@ import com.flipkart.services.CourseRegistrationServices;
 import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.PaymentServices;
 
-import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,10 +31,9 @@ public class StudentController {
     private static GradeCardServices gradeCardServices = new GradeCardServices();
     private static PaymentServices paymentServices = new PaymentServices();
 
-    private final Validator validator;
 
-    public StudentController(Validator validator) {
-        this.validator = validator;
+    public StudentController() {
+
     }
 
     /**

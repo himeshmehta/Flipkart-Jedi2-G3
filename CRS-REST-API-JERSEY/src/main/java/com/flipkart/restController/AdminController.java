@@ -7,7 +7,6 @@ import com.flipkart.requestPojo.NewCourseRequest;
 import com.flipkart.requestPojo.NewUserRequest;
 import com.flipkart.services.AdminServices;
 
-import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,11 +20,8 @@ public class AdminController {
 
     private static AdminServices adminServices = new AdminServices();
 
-    private final Validator validator;
+    public AdminController() {
 
-
-    public AdminController(Validator validator) {
-        this.validator = validator;
     }
 
     /**
@@ -65,7 +61,7 @@ public class AdminController {
 
     /**
      * Add new course
-     * @param newCoursePOJO
+     * @param newCourseRequest
      * @return
      */
     @POST

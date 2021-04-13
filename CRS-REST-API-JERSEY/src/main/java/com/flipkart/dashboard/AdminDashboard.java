@@ -10,7 +10,7 @@ import com.flipkart.services.AdminServices;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * The type admin dashboard

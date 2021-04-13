@@ -3,17 +3,13 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.PaymentMode;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * The type online
  */
 public class Online extends Payment{
-    @NotNull
     private String card_number;
-    @NotNull
     private String name_on_card;
-    @NotNull
     private String CVV;
 
     /**

@@ -6,7 +6,6 @@ import com.flipkart.requestPojo.LoginRequest;
 import com.flipkart.requestPojo.SelfRegistrationRequest;
 import com.flipkart.services.AuthDBServices;
 
-import javax.validation.Validator;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -22,10 +21,10 @@ public class AuthController {
 
     private static  AuthDBServices authDBServices = new AuthDBServices();
 
-    private final Validator validator;
 
-    public AuthController(Validator validator) {
-        this.validator = validator;
+
+    public AuthController() {
+
     }
 
     /**
