@@ -15,9 +15,6 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The type professor controller
- */
 @Path("/professor")
 public class ProfessorController {
 
@@ -31,52 +28,67 @@ public class ProfessorController {
     }
 
     /**
-     * Gets the list of all courses
-     * @return
-     */
+     * This method is used to view all the courses available.
+     * @Param : Nothing
+     * @Throws : Nothing
+     * @returns : Response
+     * */
     @GET
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewAllCourses() {
-        System.out.println("In professor");
-        List<Course> courses = new ArrayList<>();
-        courses = professorServices.viewCourses();
-        return Response.status(200).entity(courses).build();
+        try {
+            List<Course> courses = new ArrayList<>();
+            courses = professorServices.viewCourses();
+            return Response.status(200).entity(courses).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Operation Failed :- " + ex.getMessage()).build();
+        }
     }
 
     /**
-     * Gets the list of enrolled students for course
-     * @param courseId
-     * @return
-     */
+     * This method is used to view enrolled Students for a particular course
+     * @Param : CourseId
+     * @Throws : Nothing
+     * @returns : Response
+     * */
     @GET
     @Path("/viewEnrolledStudents/{courseId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewEnrolledStudents(@PathParam("courseId") int courseId){
-        List<Student> studentList = professorServices.getEnrolledStudents(courseId);
-        return Response.status(200).entity(studentList).build();
+        try {
+            List<Student> studentList = professorServices.getEnrolledStudents(courseId);
+            return Response.status(200).entity(studentList).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Operation Failed :- " + ex.getMessage()).build();
+        }
     }
 
     /**
-     * Gets the list of all courses taught by professor
-     * @param professorId
-     * @return
-     */
+     * This method is used to view selected course by the professor
+     * @Param : ProfessorId
+     * @Throws : Nothing
+     * @returns : Response
+     * */
     @GET
     @Path("/viewSelectedCourses/{professorId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response viewSelectedCourses(@PathParam("professorId") int professorId) {
-        System.out.println("In professor");
-        List<Course> courses = new ArrayList<>();
-        courses = professorServices.viewEnrolledCourses(professorId);
-        return Response.status(200).entity(courses).build();
+    public Response viewSelectedCourses(@PathParam("professorId") int professorId){
+        try {
+            List<Course> courses = new ArrayList<>();
+            courses = professorServices.viewEnrolledCourses(professorId);
+            return Response.status(200).entity(courses).build();
+        } catch (Exception ex) {
+            return Response.status(500).entity( "Operation Failed :- " + ex.getMessage()).build();
+        }
     }
 
     /**
-     * Professor register to teach course
-     * @param request
-     * @return
-     */
+     * This method is used to select the course to teach.
+     * @Param : SelectCourseToTeach Object
+     * @Throws : Nothing
+     * @returns : Response
+     * */
     @POST
     @Path("/selectCourseToTeach")
     @Produces(MediaType.APPLICATION_JSON)
@@ -91,10 +103,11 @@ public class ProfessorController {
     }
 
     /**
-     * Professor add grade for student
-     * @param request
-     * @return
-     */
+     * This method is used to add grade for students.
+     * @Param : AddGradeRequest Object
+     * @Throws : Nothing
+     * @returns : Response
+     * */
     @POST
     @Path("addGrade")
     @Consumes("application/json")

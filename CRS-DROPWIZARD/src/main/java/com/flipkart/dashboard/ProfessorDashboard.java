@@ -75,7 +75,8 @@ public class ProfessorDashboard {
      * @param courseId
      * @return
      */
-    public List<Student> getEnrolledStudents(int courseId)
+    public List<Student> getEnrolledStudents(int courseId) throws CRSException
+
     {
         List<Student> studentList=professorServices.getEnrolledStudents(courseId);
         return studentList;
@@ -126,16 +127,20 @@ public class ProfessorDashboard {
                 case 2:
                     System.out.println("Enter Course ID");
                     courseId = inputReader.nextInt();
-                    List<Student> studentList=getEnrolledStudents(courseId);
-                    result=studentList.isEmpty()?false:true;
-                    message = result ? "List of Students fetched successfully" : "Something Wrong";
-                    System.out.println("Names of enrolled Students");
-                    for (Student student : studentList) {
-                        System.out.println( student.getUserId() + "  " +student.getName());
+                    try {
+                        List<Student> studentList=getEnrolledStudents(courseId);
+                        result=studentList.isEmpty()?false:true;
+                        message = result ? "List of Students fetched successfully" : "Something Wrong";
+                        System.out.println("Names of enrolled Students");
+                        for (Student student : studentList) {
+                            System.out.println( student.getUserId() + "  " +student.getName());
+                        }
+                        System.out.println("\n");
+                        logger.info(message);
+                        break;
+                    } catch (Exception ex) {
+                        System.out.printf("Invalid Operation");
                     }
-                    System.out.println("\n");
-                    logger.info(message);
-                    break;
 
                 case 3:
                     addGradesHandler(inputReader);
