@@ -25,5 +25,5 @@ public interface AuthDBInterface  {
      * @Throws Nothing
      * @returns User object
      * */
-    public User selfRegisterStudent(String email,String name,String password,String confirmPassword) throws CRSException;
+    public User selfRegisterStudent(String email, String name, String password, String confirmPassword) throws CRSException;
 }

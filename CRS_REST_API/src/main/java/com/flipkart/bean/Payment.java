@@ -2,17 +2,29 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.PaymentMode;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * The type payment
  */
 public class Payment {
 
+    @NotNull
     private String referenceId;
+    @NotNull
     private int amount;
     private String paymentDescription;
     private int userId;
     private PaymentMode mode;
 
+    /**
+     * Constructor of Payment
+     * @param refId
+     * @param amount
+     * @param paymentDescription
+     * @param userId
+     * @param mode
+     */
     public Payment(String refId, int amount, String paymentDescription, int userId, PaymentMode mode) {
         this.referenceId = refId;
         this.amount = amount;
@@ -85,10 +97,18 @@ public class Payment {
         this.amount = amount;
     }
 
+    /**
+     * Gets the payment mode
+     * @return
+     */
     public PaymentMode getMode() {
         return mode;
     }
 
+    /**
+     * Sets the payment mode
+     * @param mode
+     */
     public void setMode(PaymentMode mode) {
         this.mode = mode;
     }

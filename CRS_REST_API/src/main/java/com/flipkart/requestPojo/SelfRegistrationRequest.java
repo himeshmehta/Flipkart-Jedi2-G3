@@ -1,6 +1,6 @@
 package com.flipkart.requestPojo;
 
-public class SelfRegistrationPOJO {
+public class SelfRegistrationRequest {
     private String email;
     private String name;
     private String password;

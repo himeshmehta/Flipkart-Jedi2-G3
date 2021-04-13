@@ -4,7 +4,7 @@ import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.NotificationException;
 import com.flipkart.Exception.PaymentException;
 import com.flipkart.bean.Payment;
-import com.flipkart.constants.Bank;
+import com.flipkart.constants.BankEnum;
 import com.flipkart.constants.PaymentMode;
 import com.flipkart.dao.CourseDB;
 import com.flipkart.dao.PaymentDB;
@@ -21,6 +21,7 @@ public class PaymentServices implements PaymentInterface{
     private CourseDB courseDB= new CourseDB();
     private static final Logger logger = Logger.getLogger(String.valueOf(PaymentServices.class));
 
+   @Override
     public String completePayment(PaymentRequest paymentRequest) throws CRSException {
         String message = null;
         if(PaymentMode.OFFLINE.equals(paymentRequest.getPaymentMode())){
@@ -76,7 +77,7 @@ public class PaymentServices implements PaymentInterface{
     }
 
     @Override
-    public String makeOfflinePayment(String paymentDescription,  Bank bank, int userId, Set<Integer> selectedCourses ) throws CRSException {
+    public String makeOfflinePayment(String paymentDescription, BankEnum bankEnum, int userId, Set<Integer> selectedCourses ) throws CRSException {
         try {
             logger.info("Offline Payment Initiated");
           int amount =   courseDB.getFee(selectedCourses);

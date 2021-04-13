@@ -1,6 +1,6 @@
 package com.flipkart.requestPojo;
 
-import com.flipkart.constants.Bank;
+import com.flipkart.constants.BankEnum;
 import com.flipkart.constants.PaymentMode;
 
 import java.util.Set;
@@ -13,7 +13,7 @@ public class PaymentRequest {
     PaymentMode paymentMode;
     int userId;
     Set<Integer> selectedCourses;
-    Bank bank;
+    BankEnum bank;
 
     public String getPaymentDescription() {
         return paymentDescription;
@@ -71,11 +71,11 @@ public class PaymentRequest {
         this.selectedCourses = selectedCourses;
     }
 
-    public Bank getBank() {
+    public BankEnum getBank() {
         return bank;
     }
 
-    public void setBank(Bank bank) {
-        this.bank = bank;
+    public void setBank(BankEnum bankEnum) {
+        this.bank = bankEnum;
     }
 }

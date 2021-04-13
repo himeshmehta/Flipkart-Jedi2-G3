@@ -1,5 +1,6 @@
 package com.flipkart.bean;
-import java.util.*;
+
+import java.util.List;
 
 /**
  * The type course catalog

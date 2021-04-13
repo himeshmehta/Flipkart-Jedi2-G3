@@ -2,7 +2,7 @@ package com.flipkart.requestPojo;
 
 import com.flipkart.bean.Professor;
 
-public class SelectCourseToTeach {
+public class SelectCourseToTeachRequest {
     private int courseId;
     private Professor professor;
 

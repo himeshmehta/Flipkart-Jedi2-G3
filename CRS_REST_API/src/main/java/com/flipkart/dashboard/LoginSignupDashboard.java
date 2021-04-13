@@ -1,18 +1,25 @@
-package com.flipkart.client;
+package com.flipkart.dashboard;
 
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Admin;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
 import com.flipkart.services.AuthDBServices;
 
 import java.util.Scanner;
 
+/**
+ * The type login and signup dashboard
+ */
 public class LoginSignupDashboard {
     private static AuthDBServices authServices = new AuthDBServices();
 
+    /**
+     * This method is used for user login
+     * @throws CRSException
+     */
     public static void LoginUser() throws CRSException {
         User user = null;
         Scanner inputReader = new Scanner(System.in);
@@ -27,7 +34,7 @@ public class LoginSignupDashboard {
                 // Authenticate user
                 user = authServices.authenticateUser(userId,password);
 
-                Role roleOfUser = user.getRole();
+                RoleEnum roleOfUser = user.getRole();
                 // Now go to different dashboard according to different roles
 
                 switch (roleOfUser){
@@ -57,6 +64,10 @@ public class LoginSignupDashboard {
         inputReader.close();
     }
 
+    /**
+     * This method is used for user registration
+     * @throws CRSException
+     */
     public static void SignUpUser() throws CRSException {
         Scanner inputReader = new Scanner(System.in);
 

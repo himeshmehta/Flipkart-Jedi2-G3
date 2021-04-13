@@ -1,6 +1,6 @@
 package com.flipkart.requestPojo;
 
-public class LoginPojo {
+public class LoginRequest {
     private int userId;
     private String password;
 

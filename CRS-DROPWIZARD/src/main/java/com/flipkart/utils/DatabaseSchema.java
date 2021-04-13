@@ -12,7 +12,7 @@ import java.util.List;
  * This class is used to create/drop all tables related to this project.
  */
 
-class CreateTableScript {
+class DatabaseSchema {
     public static void main(String[] args) {
 
         Connection connection = null;

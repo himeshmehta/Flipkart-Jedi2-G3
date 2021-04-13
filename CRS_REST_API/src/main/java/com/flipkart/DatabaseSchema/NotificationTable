@@ -1,7 +1,0 @@
-create table if not exists notification (
-    notificationId INT PRIMARY KEY AUTO_INCREMENT,
-    description VARCHAR(255) NOT NULL,
-    receiverId INT,
-    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (receiverId) REFERENCES user(userId)
-);

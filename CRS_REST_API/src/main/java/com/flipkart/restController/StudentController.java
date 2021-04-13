@@ -6,7 +6,6 @@ import com.flipkart.Exception.GradeCardNotFoundException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Student;
-import com.flipkart.bean.User;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.requestPojo.PaymentRequest;
 import com.flipkart.requestPojo.StudentCourseRequest;
@@ -14,6 +13,7 @@ import com.flipkart.services.CourseRegistrationServices;
 import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.PaymentServices;
 
+import javax.validation.Validator;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The type student controller
+ */
 @Path("/student")
 public class StudentController {
 
@@ -28,6 +31,18 @@ public class StudentController {
     private static StudentDB studentDB = new StudentDB();
     private static GradeCardServices gradeCardServices = new GradeCardServices();
     private static PaymentServices paymentServices = new PaymentServices();
+
+    private final Validator validator;
+
+    public StudentController(Validator validator) {
+        this.validator = validator;
+    }
+
+    /**
+     * Gets the list of all courses
+     * @return
+     * @throws CourseRegistrationException
+     */
     @GET
     @Path("/viewAllCourses")
     @Produces(MediaType.APPLICATION_JSON)
@@ -43,6 +58,11 @@ public class StudentController {
     }
 
 
+    /**
+     * Gets the list of enrolled courses
+     * @param studentId
+     * @return
+     */
     @GET
     @Path("/viewEnrolledCourses/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -58,6 +78,12 @@ public class StudentController {
         }
     }
 
+    /**
+     * Gets the grade card of student
+     * @param studentId
+     * @return
+     * @throws GradeCardNotFoundException
+     */
     @GET
     @Path("/gradeCard/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -70,6 +96,12 @@ public class StudentController {
         }
     }
 
+    /**
+     * Gets the list of courses for which payment is not done
+     * @param studentId
+     * @return
+     * @throws CRSException
+     */
     @GET
     @Path("/feeRemaining/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -82,6 +114,11 @@ public class StudentController {
         }
     }
 
+    /**
+     * Register for course
+     * @param request
+     * @return
+     */
     @POST
     @Path("/registerCourse")
     @Produces(MediaType.APPLICATION_JSON)
@@ -95,6 +132,11 @@ public class StudentController {
         return Response.status(200).entity( "Registration Successful").build();
     }
 
+    /**
+     * Remove course
+     * @param request
+     * @return
+     */
     @DELETE
     @Path("/removeCourse")
     @Consumes("application/json")
@@ -107,6 +149,12 @@ public class StudentController {
         return Response.status(200).entity("Removal Successful").build();
     }
 
+    /**
+     * Pay fee for selected courses
+     * @param request
+     * @return
+     * @throws CRSException
+     */
     @PUT
     @Path("/payFee")
     @Consumes("application/json")

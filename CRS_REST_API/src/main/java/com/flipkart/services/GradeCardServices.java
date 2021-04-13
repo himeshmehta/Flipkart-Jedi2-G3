@@ -5,8 +5,7 @@ import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.GradeCard;
 import com.flipkart.dao.CourseDB;
 import com.flipkart.dao.GradeCardDB;
-
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 public class GradeCardServices implements GradeCardInterface{
 
