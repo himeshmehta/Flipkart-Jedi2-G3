@@ -20,7 +20,7 @@ public class ProfessorDashboard {
 
     private Professor professor;
     private ProfessorServices professorServices;
-    private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorDashboard.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.dashboard.ProfessorDashboard.class));
 
     /**
      * Constructor of professorDashboard

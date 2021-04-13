@@ -6,14 +6,13 @@ import com.flipkart.dao.NotificationDB;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class NotificationServices implements NotificationInterface{
 
     private NotificationDB notificationDB ;
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(NotificationServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.NotificationServices.class));
 
     public NotificationServices(){
         this.notificationDB = new NotificationDB();

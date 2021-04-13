@@ -16,7 +16,7 @@ public class AuthDBServices implements AuthDBInterface{
     public AuthDBServices(){
         this.authDBOperations = new AuthDB();
     }
-    private static final Logger logger = Logger.getLogger(String.valueOf(AuthDBServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.AuthDBServices.class));
 
     @Override
     public User authenticateUser(int userId, String password) throws AuthorizationException {

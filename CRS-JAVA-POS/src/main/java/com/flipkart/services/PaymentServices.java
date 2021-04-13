@@ -9,7 +9,6 @@ import com.flipkart.constants.PaymentMode;
 import com.flipkart.dao.CourseDB;
 import com.flipkart.dao.PaymentDB;
 import com.flipkart.helper.PaymentValidator;
-import com.flipkart.requestPojo.PaymentRequest;
 
 import java.util.Set;
 import java.util.UUID;
@@ -19,32 +18,32 @@ public class PaymentServices implements PaymentInterface{
     private NotificationServices notificationServices = new  NotificationServices();
     private PaymentDB paymentDB = new PaymentDB();
     private CourseDB courseDB= new CourseDB();
-    private static final Logger logger = Logger.getLogger(String.valueOf(PaymentServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.PaymentServices.class));
 
-   @Override
-    public String completePayment(PaymentRequest paymentRequest) throws CRSException {
-        String message = null;
-        if(PaymentMode.OFFLINE.equals(paymentRequest.getPaymentMode())){
-            message = makeOfflinePayment(
-                    paymentRequest.getPaymentDescription(),
-                    paymentRequest.getBank(),
-                    paymentRequest.getUserId(),
-                    paymentRequest.getSelectedCourses()
-            );
-        } else {
-            message = makeOnlinePayment(
-                    paymentRequest.getPaymentDescription(),
-                    paymentRequest.getCard_number(),
-                    paymentRequest.getName_on_card(),
-                    paymentRequest.getCvv(),
-                    paymentRequest.getPaymentMode(),
-                    paymentRequest.getUserId(),
-                    paymentRequest.getSelectedCourses()
-            );
-        }
-
-        return message;
-    }
+//   @Override
+//    public String completePayment(PaymentRequest paymentRequest) throws CRSException {
+//        String message = null;
+//        if(PaymentMode.OFFLINE.equals(paymentRequest.getPaymentMode())){
+//            message = makeOfflinePayment(
+//                    paymentRequest.getPaymentDescription(),
+//                    paymentRequest.getBank(),
+//                    paymentRequest.getUserId(),
+//                    paymentRequest.getSelectedCourses()
+//            );
+//        } else {
+//            message = makeOnlinePayment(
+//                    paymentRequest.getPaymentDescription(),
+//                    paymentRequest.getCard_number(),
+//                    paymentRequest.getName_on_card(),
+//                    paymentRequest.getCvv(),
+//                    paymentRequest.getPaymentMode(),
+//                    paymentRequest.getUserId(),
+//                    paymentRequest.getSelectedCourses()
+//            );
+//        }
+//
+//        return message;
+//    }
 
     @Override
     public String makeOnlinePayment(String paymentDescription, String card_number, String name_on_card, String cvv, PaymentMode onlinePaymentMode, int userId,Set<Integer> selectedCourses) throws CRSException {

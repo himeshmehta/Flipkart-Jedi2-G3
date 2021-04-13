@@ -23,7 +23,7 @@ public class StudentDashboard {
     PaymentServices paymentServices;
     StudentDB studentDB;
     GradeCardServices gradeCardServices;
-    private static final Logger logger = Logger.getLogger(String.valueOf(StudentDashboard.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.dashboard.StudentDashboard.class));
 
     /**
      * Constructor of studentDashboard

@@ -3,7 +3,6 @@ package com.flipkart.services;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
-import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.dao.CourseDB;
 
@@ -20,7 +19,7 @@ public class CourseRegistrationServices implements CourseRegistrationInterface{
         this.courseDBOperations = new CourseDB();
     }
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(CourseRegistrationServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.CourseRegistrationServices.class));
 
     @Override
     public Boolean registerCourse(User student, Integer courseId) throws CourseRegistrationException {

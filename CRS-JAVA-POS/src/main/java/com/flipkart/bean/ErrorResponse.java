@@ -1,14 +1,13 @@
 package com.flipkart.bean;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * The type ErrorResponse
  */
 public class ErrorResponse {
-    @NotNull
+
     private String message;
-    @NotNull
+
     private String executionStatus;
 
     /**

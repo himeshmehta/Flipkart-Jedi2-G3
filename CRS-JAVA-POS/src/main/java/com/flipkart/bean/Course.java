@@ -1,20 +1,13 @@
 package com.flipkart.bean;
 
-
-import javax.validation.constraints.NotNull;
-import java.util.*;
-
 /**
  * The type course
  */
 public class Course {
 
-    @NotNull
     private String CourseName;
-    @NotNull
     private int CourseId;
     private int ProfessorId;
-    @NotNull
     private Long fee;
 
     /**

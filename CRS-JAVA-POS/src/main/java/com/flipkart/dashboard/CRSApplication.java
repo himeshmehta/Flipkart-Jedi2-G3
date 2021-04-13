@@ -9,7 +9,7 @@ import java.util.logging.Logger;
  * Entry point of crs application
  */
 public class CRSApplication {
-    private static final Logger logger = Logger.getLogger(String.valueOf(CRSApplication.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.dashboard.CRSApplication.class));
     public static void main(String[] args) {
 
         Scanner inputReader = null;

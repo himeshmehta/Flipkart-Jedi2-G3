@@ -15,7 +15,7 @@ public class CourseCatalogServices implements CourseCatalogInterface{
         this.catalogOperations = new CourseCatalogDB();
     }
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(CourseCatalogServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.CourseCatalogServices.class));
 
     @Override
     public Boolean updateCourseList(Course newCourse) {

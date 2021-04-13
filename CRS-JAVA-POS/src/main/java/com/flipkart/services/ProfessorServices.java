@@ -2,11 +2,9 @@ package com.flipkart.services;
 
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Course;
-import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.logging.Logger;
 
 public class ProfessorServices implements ProfessorInterface {
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(ProfessorServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.ProfessorServices.class));
     private CourseDB courseDB;
 
     public ProfessorServices(CourseDB courseDB) {

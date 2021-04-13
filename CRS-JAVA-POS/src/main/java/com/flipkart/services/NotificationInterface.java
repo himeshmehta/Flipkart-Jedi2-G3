@@ -3,8 +3,6 @@ package com.flipkart.services;
 import com.flipkart.Exception.NotificationException;
 import com.flipkart.bean.Notification;
 
-import java.util.List;
-
 public interface NotificationInterface {
 
     /**

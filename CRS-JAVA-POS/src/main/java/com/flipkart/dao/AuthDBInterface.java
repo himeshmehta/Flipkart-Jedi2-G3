@@ -3,7 +3,6 @@ package com.flipkart.dao;
 import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
-import com.flipkart.bean.Course;
 import com.flipkart.bean.User;
 
 import java.util.List;

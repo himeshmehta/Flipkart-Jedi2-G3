@@ -2,7 +2,7 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.RoleEnum;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * The type student

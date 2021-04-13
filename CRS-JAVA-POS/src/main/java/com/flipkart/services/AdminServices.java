@@ -25,7 +25,7 @@ public class AdminServices implements AdminInterface{
     }
 
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(AdminServices.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.services.AdminServices.class));
 
     @Override
     public User addUser(User user,String password) throws CRSException, InvalidDataException {

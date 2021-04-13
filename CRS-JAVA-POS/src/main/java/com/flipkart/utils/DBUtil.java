@@ -1,7 +1,5 @@
 package com.flipkart.utils;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,12 +24,12 @@ public class DBUtil {
         else {
             try {
                 Properties prop = new Properties();
-                InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
+                InputStream inputStream = com.flipkart.utils.DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
                 // prop.load(inputStream);
                 String driver = "com.mysql.jdbc.Driver";//prop.getProperty("driver");
                 String url = "jdbc:mysql://localhost:3306/test"; //prop.getProperty("url");
                 String user = "root";///prop.getProperty("user");
-                String password = "password"; //prop.getProperty("password");
+                String password = "12345"; //prop.getProperty("password");
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
             } catch (ClassNotFoundException e) {

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class AdminDashboard {
     Admin admin;
     AdminServices adminService;
-    private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(com.flipkart.dashboard.AdminDashboard.class));
 
     /**
      * Constructor of adminaDashboard
@@ -34,7 +34,7 @@ public class AdminDashboard {
      * This method is used to add user
      * @param email
      * @param password
-     * @param role
+     * @param roleEnum
      * @param name
      * @return boolean
      */
@@ -45,7 +45,7 @@ public class AdminDashboard {
             adminService.addUser(newUser,password);
             isUserAdded = Boolean.TRUE;
         } catch (CRSException | InvalidDataException e) {
-            logger.error(e.getMessage());
+            logger.info(e.getMessage());
         }
         return isUserAdded;
     }
@@ -61,7 +61,7 @@ public class AdminDashboard {
             adminService.removeUser(userId);
             isUserRemoved = Boolean.TRUE;
         } catch (CRSException e) {
-            logger.error(e.getMessage());
+            logger.info(e.getMessage());
         }
         return isUserRemoved;
     }
@@ -79,7 +79,7 @@ public class AdminDashboard {
             adminService.addNewCourse(description,courseName,fee);
             newCourseAdded = Boolean.TRUE;
         } catch (Exception ex){
-            logger.error(ex.getMessage());
+            logger.info(ex.getMessage());
         }
         return newCourseAdded;
     }
@@ -101,7 +101,7 @@ public class AdminDashboard {
             }
             logger.info(users);
         } catch (Exception e){
-           logger.error(e.getMessage());
+           logger.info(e.getMessage());
         }
     }
 

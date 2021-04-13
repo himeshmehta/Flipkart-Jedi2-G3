@@ -3,7 +3,6 @@ package com.flipkart.services;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
-import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 
 import java.util.HashMap;

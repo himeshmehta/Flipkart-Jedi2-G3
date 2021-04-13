@@ -2,7 +2,6 @@ package com.flipkart.helper;
 
 import com.flipkart.Exception.InvalidInputException;
 import com.flipkart.bean.Course;
-import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
 
 /**
