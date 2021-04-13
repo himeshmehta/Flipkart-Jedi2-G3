@@ -1,4 +1,0 @@
-- studentId
-- courseId
-
-primary_key (studentId, courseId)

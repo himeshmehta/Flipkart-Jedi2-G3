@@ -1,6 +1,0 @@
-create table if not exists payment(
-referenceId INT PRIMARY KEY AUTO_INCREMENT,
-description VARCHAR(100),
-amount INT NOT NULL,
-method enum('DEBIT','CREDIT','OFFLINE') NOT NULL
-);
