@@ -3,18 +3,18 @@ package com.flipkart.dao;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.NotificationException;
 import com.flipkart.bean.Notification;
-import com.flipkart.client.AdminDashboard;
+import com.flipkart.dashboard.AdminDashboard;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class NotificationDB implements NotificationDBInterface{
 
-    private static final Logger logger = Logger.getLogger(AdminDashboard.class);
+    private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
     private Connection conn = null;
     private PreparedStatement sqlQuery;
 

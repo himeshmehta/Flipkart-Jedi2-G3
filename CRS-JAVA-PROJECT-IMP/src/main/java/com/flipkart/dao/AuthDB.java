@@ -4,22 +4,19 @@ import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.InvalidDataException;
 import com.flipkart.bean.User;
-import com.flipkart.client.AdminDashboard;
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
+import com.flipkart.dashboard.AdminDashboard;
 import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class AuthDB implements AuthDBInterface{
 
-    private static final Logger logger = Logger.getLogger(AdminDashboard.class);
+    private static final Logger logger = Logger.getLogger(String.valueOf(AdminDashboard.class));
     private Connection conn = null;
     private PreparedStatement sqlQuery;
 
@@ -37,6 +34,7 @@ public class AuthDB implements AuthDBInterface{
             ResultSet rs = sqlQuery.executeQuery();
 
             if(!rs.next()){
+                // if result set does not have any row
                 throw new AuthorizationException("user id does not exists.");
             }
             else
@@ -45,7 +43,7 @@ public class AuthDB implements AuthDBInterface{
                 Boolean isApproved = rs.getBoolean("isApproved");
                 String passInDB = rs.getString("password");
 
-                if(isApproved == false){
+                if(!isApproved){
                     throw new AuthorizationException("Your are not approved yet.");
                 }
                 if(!passInDB.equals(password)){
@@ -59,13 +57,13 @@ public class AuthDB implements AuthDBInterface{
 
                 switch (role){
                     case "Student":
-                        user.setRole(Role.STUDENT);
+                        user.setRole(RoleEnum.STUDENT);
                         break;
                     case "Admin":
-                        user.setRole(Role.ADMIN);
+                        user.setRole(RoleEnum.ADMIN);
                         break;
                     case "Professor":
-                        user.setRole(Role.PROFESSOR);
+                        user.setRole(RoleEnum.PROFESSOR);
                         break;
                 }
             }
@@ -77,16 +75,27 @@ public class AuthDB implements AuthDBInterface{
         return user;
     }
 
-    public  Boolean addNewUser(User user,String password) throws CRSException {
-        Boolean isUserAdded = false;
+    public  User addNewUser(User user,String password) throws CRSException {
+        User newUser = null;
         try{
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY,Statement.RETURN_GENERATED_KEYS);
             sqlQuery.setString(1,user.getEmail());
             sqlQuery.setString(2,user.getName());
             sqlQuery.setString(3,password);
-            sqlQuery.setBoolean(4,true);
+            sqlQuery.setBoolean(4,true); // setting isApproved state to true, because admin is adding this user
             sqlQuery.setInt(5, getIndexFromRole(user.getRole()));
             sqlQuery.executeUpdate();
+
+            newUser = new User();
+            newUser.setName(user.getName());
+            newUser.setEmail(user.getEmail());
+            newUser.setRole(user.getRole());
+
+            ResultSet rs = sqlQuery.getGeneratedKeys();
+            if(rs.next()){
+                newUser.setUserId(rs.getInt(1));
+            }
+
             sqlQuery.close();
 
             // now add user in respective database
@@ -96,17 +105,22 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.executeUpdate();
             sqlQuery.close();
 
-            isUserAdded = Boolean.TRUE;
         } catch (SQLException e) {
-            isUserAdded = false;
+            newUser = null;
             throw new CRSException(e.getMessage());
         }
-        return isUserAdded;
+        return newUser;
     }
 
-    private Integer getIndexFromRole(Role role) {
+    /**
+     * This methode is used to get index from RoleEnum enum to store roleEnum in database.
+     * @Param roleEnum : RoleEnum enum.
+     * @Throws Nothing
+     * @Return Integer : index for roles.
+     * */
+    private Integer getIndexFromRole(RoleEnum roleEnum) {
         Integer index = 0;
-        switch (role){
+        switch (roleEnum){
             case STUDENT:
                 index = 1;
                 break;
@@ -120,9 +134,15 @@ public class AuthDB implements AuthDBInterface{
         return index;
     }
 
-    private String getAddIndividual(Role role) {
+    /**
+     * This methode is used to get sql query for adding information in individual table based on roleEnum of user.
+     * @Param roleEnum : RoleEnum enum.
+     * @Throws Nothing
+     * @Return String : sql query to add row in table.
+     * */
+    private String getAddIndividual(RoleEnum roleEnum) {
         String query = null;
-        switch(role){
+        switch(roleEnum){
             case ADMIN:
                 query =  SQLQueriesConstants.ADD_ADMIN;
                 break;
@@ -148,6 +168,10 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.close();
 
             // now remove from user table
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USER_DETAILS);
+            sqlQuery.setInt(1,user.getUserId());
+            ResultSet rs = sqlQuery.executeQuery();
+            if (!rs.next()) throw new CRSException("User does not Exist");
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.DELETE_USER_QUERY);
             sqlQuery.setInt(1,user.getUserId());
             sqlQuery.executeUpdate();
@@ -157,9 +181,15 @@ public class AuthDB implements AuthDBInterface{
         }
     }
 
-    private String getRemoveQueryFromRole(Role role) {
+    /**
+     * This methode is used to get sql query for removing information from individual table based on roleEnum of user.
+     * @Param roleEnum : RoleEnum enum.
+     * @Throws Nothing
+     * @Return String : sql query to remove row in table.
+     * */
+    private String getRemoveQueryFromRole(RoleEnum roleEnum) {
         String removeUser = null;
-        switch(role){
+        switch(roleEnum){
             case ADMIN:
                 removeUser =  SQLQueriesConstants.DELETE_ADMIN;
                 break;
@@ -188,18 +218,38 @@ public class AuthDB implements AuthDBInterface{
 
 
     @Override
-    public Boolean selfRegisterStudent(String email, String name, String password) {
-        Boolean isRegistered = Boolean.FALSE;
+    public User selfRegisterStudent(String email, String name, String password) throws CRSException {
+        User user  = null;
         try{
+            // verifying if user already exist
+
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USER_DATA);
+            sqlQuery.setString(1,email);
+            ResultSet rs = sqlQuery.executeQuery();
+            if (rs.next()) throw new CRSException("User already Exists");
+
             // add details in student table
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.SELF_REGISTER_QUERY);
+
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.SELF_REGISTER_QUERY, Statement.RETURN_GENERATED_KEYS);
             sqlQuery.setString(1,email);
             sqlQuery.setString(2,name);
             sqlQuery.setString(3,password);
             sqlQuery.setBoolean(4,Boolean.FALSE);
-            sqlQuery.setString(5,"Student");
+            sqlQuery.setString(5,"Student"); // only student can self register
 
             sqlQuery.executeUpdate();
+
+            // create a user object to return
+            user = new User();
+            user.setEmail(email);
+            user.setName(name);
+            user.setRole(RoleEnum.STUDENT);
+
+            rs = sqlQuery.getGeneratedKeys();
+            while(rs.next()){
+                System.out.println(rs.getInt(1));
+                user.setUserId(rs.getInt(1));
+            }
             sqlQuery.close();
 
             // add details in student table
@@ -207,12 +257,11 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.setString(1,email);
             sqlQuery.setString(2,name);
             sqlQuery.executeUpdate();
-            return Boolean.TRUE;
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
+            return user;
+        } catch (SQLException ex) {
+            throw new CRSException(ex.getMessage());
         }
 
-        return isRegistered;
     }
 
     @Override
@@ -236,59 +285,33 @@ public class AuthDB implements AuthDBInterface{
         return user;
     }
 
-    @Override
-    public void addNewCourse(String description, String courseName, Long courseFee) throws CRSException {
-        try{
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.ADD_NEW_COURSE);
-            sqlQuery.setString(1,courseName);
-            sqlQuery.setString(2,description);
-            sqlQuery.setLong(3,courseFee);
-            int rs = sqlQuery.executeUpdate();
-            sqlQuery.close();
-        } catch (SQLException ex) {
-            throw new CRSException(ex.getMessage());
-        }
-    }
-
-    private Role getRoleFromText(String roleFromDB) {
-        Role role = null;
+    /**
+     * This method is used to get RoleEnum enum from text
+     * @Param roleFromDB : string return from database
+     * @Throws Nothing
+     * @Return RoleEnum
+     * */
+    private RoleEnum getRoleFromText(String roleFromDB) {
+        RoleEnum roleEnum = null;
         switch (roleFromDB) {
             case "Student":
-                role = Role.STUDENT;
+                roleEnum = RoleEnum.STUDENT;
                 break;
             case "Admin":
-                role = Role.ADMIN;
+                roleEnum = RoleEnum.ADMIN;
                 break;
             case "Professor":
-                role = Role.PROFESSOR;
+                roleEnum = RoleEnum.PROFESSOR;
                 break;
         }
-        return role;
+        return roleEnum;
     }
 
-    private Role getRoleFromIndex(int roleIndex) {
-        Role role = null;
-        switch (roleIndex) {
-            case 1:
-                role = Role.STUDENT;
-                break;
-            case 2:
-                role = Role.ADMIN;
-                break;
-            case 3:
-                role = Role.PROFESSOR;
-                break;
-        }
-        return role;
-    }
-
-
+    @Override
     public List<Integer> getNotApprovedStudent() throws CRSException {
         List<Integer> result = new ArrayList<>();
         try{
-            System.out.println("in auth DB");
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.NOT_APPROVED_QUERY);
-            // sqlQuery.setString(1,"Student");
             ResultSet rs = sqlQuery.executeQuery();
 
             while(rs.next()){

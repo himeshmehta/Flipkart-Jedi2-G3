@@ -1,9 +1,0 @@
-create table if not exists user {
-    userId INT NOT NULL AUTO_INCREMENT,
-    email VARCHAR(100) NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    password VARCHAR(100) NOT_NULL,
-    isApproved bit() NOT NULL,
-    Role enum('Student', 'Admin', 'Professor')
-    PRIMARY key(userId)
-};

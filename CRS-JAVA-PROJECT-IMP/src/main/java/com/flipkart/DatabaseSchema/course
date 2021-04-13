@@ -1,9 +1,0 @@
-create table if not exists course(
-courseId INT PRIMARY KEY AUTO_INCREMENT,
-courseName VARCHAR(20) NOT NULL,
-description VARCHAR(100) NOT NULL,
-professorId INT NOT NULL,
-isValid Boolean,
-fee INT NOT NULL,
-FOREIGN KEY (professorId) REFERENCES user(userId)
-);

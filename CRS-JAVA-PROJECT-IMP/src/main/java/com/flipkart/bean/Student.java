@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
 
 import java.util.*;
 
@@ -16,17 +16,34 @@ public class Student extends User{
 //        super(name);
 //    }
 
-    public Student(String name, String email, Role role,int userId) {
-        super(name, email, role, userId);
+
+    /**
+     * Constructor of student
+     * @param name
+     * @param email
+     * @param role
+     * @param userId
+     */
+    public Student(String name, String email, RoleEnum roleEnum, int userId) {
+        super(name, email, roleEnum, userId);
+
     }
 
+    /**
+     * Constructor of student
+     * @param user
+     */
     public Student(User user){
         super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
     }
 
+    /**
+     * Constructor of student
+     */
     public Student() {
         super();
     }
+
 
     /**
      * Gets the main course List
