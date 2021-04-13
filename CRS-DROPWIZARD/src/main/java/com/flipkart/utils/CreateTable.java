@@ -20,12 +20,10 @@ class CreateTableScript {
 
         try {
             connection = DBUtil.getConnection();
-            System.out.println(1);
             DropTables(connection,stmt);
             List<String> createTableQueries = DBSchema.getQueries();
 
             for(String s : createTableQueries){
-                // if ( s != DBSchema.paymentTable ) continue;
                 stmt = connection.prepareStatement(s);
                 stmt.executeUpdate();
                 stmt.close();
@@ -36,13 +34,15 @@ class CreateTableScript {
         }
     }
 
+    /**
+     * This method is used to drop tables.
+     * Do not changes the order of tables.
+     * This order need to follow otherwise there will be error related to foreign key.*/
     private static void DropTables(Connection conn,PreparedStatement stmt) throws SQLException {
         String drop = "DROP TABLE IF EXISTS ";
         String[] tables ={"gradeCard","registeredcourses","course","notification","user","student","admin","professor","payment"};
 
         for(String table : tables){
-            // if ( table != "payment" ) continue;
-            System.out.println("deleting " + table);
             String t = drop + table;
             stmt = conn.prepareStatement(t);
             stmt.executeUpdate();
