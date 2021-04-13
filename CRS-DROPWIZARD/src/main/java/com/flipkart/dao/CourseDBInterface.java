@@ -45,7 +45,7 @@ public interface CourseDBInterface {
      * @Throws Nothing
      * @return List of Courses
      */
-    public List<Course> viewEnrolledCourses(int professor);
+    public List<Course> viewEnrolledCourses(int professor) throws CRSException;
     /**
      * This method is used to get list of registered student for a course.
      * @Param course :- Course object.
@@ -86,7 +86,7 @@ public interface CourseDBInterface {
      * @return List<Student> :- List of student registered for this course.
      */
 
-    public  List<Student> getListOfStudents(Integer courseId);
+    public  List<Student> getListOfStudents(Integer courseId) throws CRSException;
 
     /**
      * This method is used to get the list of not paid courses

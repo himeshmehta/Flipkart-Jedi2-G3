@@ -43,7 +43,7 @@ public class AuthDB implements AuthDBInterface{
                 Boolean isApproved = rs.getBoolean("isApproved");
                 String passInDB = rs.getString("password");
 
-                if(isApproved == false){
+                if(!isApproved){
                     throw new AuthorizationException("Your are not approved yet.");
                 }
                 if(!passInDB.equals(password)){
@@ -168,6 +168,10 @@ public class AuthDB implements AuthDBInterface{
             sqlQuery.close();
 
             // now remove from user table
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USER_DETAILS);
+            sqlQuery.setInt(1,user.getUserId());
+            ResultSet rs = sqlQuery.executeQuery();
+            if (!rs.next()) throw new CRSException("User does not Exist");
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.DELETE_USER_QUERY);
             sqlQuery.setInt(1,user.getUserId());
             sqlQuery.executeUpdate();
@@ -217,7 +221,15 @@ public class AuthDB implements AuthDBInterface{
     public User selfRegisterStudent(String email, String name, String password) throws CRSException {
         User user  = null;
         try{
+            // verifying if user already exist
+
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USER_DATA);
+            sqlQuery.setString(1,email);
+            ResultSet rs = sqlQuery.executeQuery();
+            if (rs.next()) throw new CRSException("User already Exists");
+
             // add details in student table
+
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.SELF_REGISTER_QUERY, Statement.RETURN_GENERATED_KEYS);
             sqlQuery.setString(1,email);
             sqlQuery.setString(2,name);
@@ -233,7 +245,7 @@ public class AuthDB implements AuthDBInterface{
             user.setName(name);
             user.setRole(RoleEnum.STUDENT);
 
-            ResultSet rs = sqlQuery.getGeneratedKeys();
+            rs = sqlQuery.getGeneratedKeys();
             while(rs.next()){
                 System.out.println(rs.getInt(1));
                 user.setUserId(rs.getInt(1));

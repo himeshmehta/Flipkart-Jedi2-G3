@@ -25,7 +25,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - List of Courses
      **/
-    public List<Course> viewEnrolledCourses(int professor);
+    public List<Course> viewEnrolledCourses(int professor) throws CRSException;
 
     /**
      *
@@ -44,7 +44,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - List of Students
      **/
-    public List<Student> getEnrolledStudents(Integer courseId);
+    public List<Student> getEnrolledStudents(Integer courseId) throws CRSException;
 
 
 }
