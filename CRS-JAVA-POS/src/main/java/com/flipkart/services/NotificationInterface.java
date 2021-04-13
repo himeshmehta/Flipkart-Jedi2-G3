@@ -8,9 +8,9 @@ public interface NotificationInterface {
     /**
      *
      This method sends the notification to the User.
-     @Param - notification object, userId
-     @Throws - NotificationException
-     @returns - nothing
+     @param - notification object, userId
+     @throws - NotificationException
+     @return - nothing
      **/
     public void sendNotificationToUser(Notification notification, int userID) throws NotificationException;
 

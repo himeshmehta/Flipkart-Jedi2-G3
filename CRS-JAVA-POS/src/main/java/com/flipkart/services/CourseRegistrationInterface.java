@@ -14,27 +14,27 @@ public interface CourseRegistrationInterface {
     /**
      *
      This method is used to register for the Course.
-     @Param - student , course
-     @Throws - CourseRegistrationException
-     @returns - Boolean
+     @param - student , course
+     @throws - CourseRegistrationException
+     @return - Boolean
      **/
     Boolean registerCourse(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
      This method is used to remove the Course.
-     @Param - student , course
-     @Throws - CourseRegistrationException
-     @returns - Boolean
+     @param - student , course
+     @throws - CourseRegistrationException
+     @return - Boolean
      **/
     Boolean removeCourse(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      *
      This method is used to add the the Course.
-     @Param - student , course
-     @Throws - CourseRegistrationException
-     @returns - Boolean
+     @param - student , course
+     @throws - CourseRegistrationException
+     @return - Boolean
      **/
     List<Course> viewCourses() throws CourseRegistrationException;
 

@@ -5,6 +5,7 @@ public class AddGradeRequest {
     private int courseId;
     private int grades;
 
+
     public int getProfessorId() {
         return professorId;
     }

@@ -12,27 +12,27 @@ public interface ProfessorInterface {
     /**
      *
      This method returns all the course.
-     @Param - Nothing
-     @Throws - Nothing
-     @returns - List of Courses
+     @param - Nothing
+     @throws - Nothing
+     @return - List of Courses
      **/
     public List<Course> viewCourses();
 
     /**
      *
      This method returns all the enrolled course for the Professor.
-     @Param - professor
-     @Throws - Nothing
-     @returns - List of Courses
+     @param - professor
+     @throws - Nothing
+     @return - List of Courses
      **/
     public List<Course> viewEnrolledCourses(int professor) throws CRSException;
 
     /**
      *
      This method selects the course which will be taught by the Professor.
-     @Param - courseId , professor
-     @Throws - CRSException
-     @returns - Boolean
+     @param - courseId , professor
+     @throws - CRSException
+     @return - Boolean
      **/
     public Boolean selectCourseToTeach(Integer courseId, Professor professor) throws CRSException;
 
@@ -40,9 +40,9 @@ public interface ProfessorInterface {
     /**
      *
      This method returns the list of enrolled Students.
-     @Param - courseId
-     @Throws - Nothing
-     @returns - List of Students
+     @param - courseId
+     @throws - Nothing
+     @return - List of Students
      **/
     public List<Student> getEnrolledStudents(Integer courseId) throws CRSException;
 

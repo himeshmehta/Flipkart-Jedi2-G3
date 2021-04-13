@@ -12,9 +12,9 @@ public class DBUtil {
     /**
      *
      This method is used for the connection with the Database.
-     @Param - None
-     @Throws - Nothing
-     @returns - Connection with the server
+     @param - None
+     @throws - Nothing
+     @return - Connection with the server
      **/
 
     public static Connection getConnection() {
