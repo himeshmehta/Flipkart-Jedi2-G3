@@ -2,18 +2,14 @@ package com.flipkart.bean;
 
 import com.flipkart.constants.RoleEnum;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 /**
      The type user
  */
 public class User {
     private String name;
-    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
     private String email;
     private RoleEnum roleEnum;
-    @NotNull
     private int userId;
 
     /**

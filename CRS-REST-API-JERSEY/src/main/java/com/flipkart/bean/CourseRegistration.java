@@ -1,15 +1,12 @@
 package com.flipkart.bean;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * The type course registration
  */
 public class CourseRegistration {
 
-    @NotNull
+
     private String courseId;
-    @NotNull
     private String studentId;
 
     /**

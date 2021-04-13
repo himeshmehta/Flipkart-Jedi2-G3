@@ -1,15 +1,12 @@
 package com.flipkart.bean;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * The type Notification
  */
 public class Notification {
 
-    @NotNull
     private String notificationId;
-    @NotNull
     private String description;
     private String timeStamp;
 
