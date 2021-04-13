@@ -20,7 +20,7 @@ public class GradeCard {
     }
     /**
      * Gets the student details
-     * @return
+     * @return Student
      */
     public Student getStudentDetails() {
         return studentDetails;
@@ -36,7 +36,7 @@ public class GradeCard {
 
     /**
      * Gets the list of mark for respective courses
-     * @return
+     * @return Map
      */
     public Map<Integer, Integer> getCourseMarks() {
         return courseMarks;

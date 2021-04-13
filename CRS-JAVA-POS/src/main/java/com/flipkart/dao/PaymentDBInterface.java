@@ -6,9 +6,8 @@ import com.flipkart.bean.Payment;
 public interface PaymentDBInterface {
     /**
      * This method complete the payment.
-     * @Param onlinePayment :- an object of Payment which contains all information regarding payment.
-     * @Throws PaymentException
-     * @return Nothing
+     * @param payment :- an object of Payment which contains all information regarding payment.
+     * @throws PaymentException
      *  */
     public  void completePayment(Payment payment) throws PaymentException;
 

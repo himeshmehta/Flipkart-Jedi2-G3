@@ -22,7 +22,7 @@ public class ErrorResponse {
 
     /**
      * Gets the message
-     * @return
+     * @return String
      */
     public String getMessage() {
         return message;
@@ -38,7 +38,7 @@ public class ErrorResponse {
 
     /**
      * Gets the execution status
-     * @return
+     * @return String
      */
     public String getExecutionStatus() {
         return executionStatus;

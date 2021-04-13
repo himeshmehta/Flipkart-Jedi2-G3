@@ -11,7 +11,7 @@ public class CourseRegistration {
 
     /**
      * Gets the course id
-     * @return
+     * @return String
      */
     public String getCourseId() {
         return courseId;
@@ -27,7 +27,7 @@ public class CourseRegistration {
 
     /**
      * Gets the student id
-     * @return
+     * @return String
      */
     public String getStudentId() {
         return studentId;

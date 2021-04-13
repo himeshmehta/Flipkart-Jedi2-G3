@@ -12,7 +12,7 @@ public class Notification {
 
     /**
      * Gets the notification id
-     * @return
+     * @return String
      */
     public String getNotificationId() {
         return notificationId;
@@ -28,7 +28,7 @@ public class Notification {
 
     /**
      * Gets the description
-     * @return
+     * @return String
      */
     public String getDescription() {
         return description;
@@ -44,7 +44,7 @@ public class Notification {
 
     /**
      * Gets the time stamp
-     * @return
+     * @return String
      */
     public String getTimeStamp() {
         return timeStamp;

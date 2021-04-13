@@ -10,7 +10,7 @@ import com.flipkart.constants.RoleEnum;
              * Constructor of Admin
              * @param name
              * @param email
-             * @param role
+             * @param roleEnum
              * @param userId
              */
             public Admin(String name, String email, RoleEnum roleEnum, int userId) {

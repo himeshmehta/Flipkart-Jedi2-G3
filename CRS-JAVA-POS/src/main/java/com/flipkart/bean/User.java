@@ -56,7 +56,7 @@ public class User {
      * Constructor of user
      * @param name
      * @param email
-     * @param role
+     * @param roleEnum
      */
 
     public User(String name, String email, RoleEnum roleEnum){
@@ -70,7 +70,7 @@ public class User {
      * Constructor of user
      * @param name
      * @param email
-     * @param role
+     * @param roleEnum
      * @param userId
      */
 

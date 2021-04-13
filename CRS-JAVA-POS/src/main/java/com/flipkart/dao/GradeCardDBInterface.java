@@ -7,19 +7,18 @@ import com.flipkart.bean.GradeCard;
 public interface GradeCardDBInterface {
     /**
      * This method is used by student to view grade card.
-     * @Param studentId :- id of student.
-     * @Throws GradeCardNotFoundException
+     * @param studentId :- id of student.
+     * @throws GradeCardNotFoundException
      * @return GradeCard object
      */
     public  GradeCard viewGradeCard(Integer studentId) throws GradeCardNotFoundException;
 
     /**
      * This method is used by professor to add grade for a course in grade card of student.
-     * @Param courseId :- id of course for which professor wants to add grade.
-     * @Param grade :- grades
-     * @Param studentId :- id of student.
-     * @Throws CRSException
-     * @return Nothing
+     * @param courseId :- id of course for which professor wants to add grade.
+     * @param grade :- grades
+     * @param studentId :- id of student.
+     * @throws CRSException
      */
     public  void addGrade(Integer courseId, Integer grade, Integer studentId) throws CRSException;
 }

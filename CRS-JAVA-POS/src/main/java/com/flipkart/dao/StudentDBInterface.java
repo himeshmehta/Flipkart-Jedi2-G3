@@ -8,8 +8,7 @@ import java.util.List;
 public interface StudentDBInterface {
     /**
      * This method is used to get list of course registered by student.
-     * @Param student :- Student Object.
-     * @Throws Nothing
+     * @param student :- Student Object.
      * @return List<Course> :- list of course registered by student.
      */
     public List<Course> registeredCourses(Student student);

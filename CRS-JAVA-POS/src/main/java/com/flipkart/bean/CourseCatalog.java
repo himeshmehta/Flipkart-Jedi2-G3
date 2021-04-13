@@ -11,7 +11,7 @@ public class CourseCatalog {
 
     /**
      * Gets the list of available courses
-     * @return
+     * @return List of Courses
      */
     public List<Course> getAvailableCourses() {
         return availableCourses;

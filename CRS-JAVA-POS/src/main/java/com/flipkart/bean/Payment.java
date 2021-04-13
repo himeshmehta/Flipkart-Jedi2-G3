@@ -64,7 +64,7 @@ public class Payment {
 
     /**
      * Gets reference id
-     * @return
+     * @return String
      */
     public String getReferenceId() {
         return referenceId;
@@ -80,7 +80,7 @@ public class Payment {
 
     /**
      * Gets the amount
-     * @return
+     * @return int
      */
     public int getAmount() {
         return amount;
@@ -96,7 +96,7 @@ public class Payment {
 
     /**
      * Gets the payment mode
-     * @return
+     * @return PaymentMode
      */
     public PaymentMode getMode() {
         return mode;

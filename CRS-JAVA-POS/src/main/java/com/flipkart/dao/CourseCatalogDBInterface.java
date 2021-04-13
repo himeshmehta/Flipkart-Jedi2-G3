@@ -7,7 +7,7 @@ import java.util.List;
 public interface CourseCatalogDBInterface {
     /**
      * This method is used by admin to add new course in course catalog.
-     * @Param course :- Course object.
+     * @param course :- Course object.
      * @return Boolean
      */
     public  Boolean updateCourseCatalog(Course course);
