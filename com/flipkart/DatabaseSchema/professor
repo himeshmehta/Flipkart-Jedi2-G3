@@ -1,5 +1,0 @@
-create table if not exists professor(
-professorId INT NOT NULL;
-name VARCHAR(100) NOT NULL;
-primary key(professorId)
-);
