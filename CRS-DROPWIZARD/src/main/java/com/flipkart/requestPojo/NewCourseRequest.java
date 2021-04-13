@@ -1,6 +1,6 @@
 package com.flipkart.requestPojo;
 
-public class NewCoursePOJO {
+public class NewCourseRequest {
     String description;
     String courseName;
     Long fee;

@@ -1,6 +1,6 @@
 package com.flipkart.constants;
 
-public enum Role {
+public enum RoleEnum {
     STUDENT,
     PROFESSOR,
     ADMIN;

@@ -1,10 +1,10 @@
-package com.flipkart.client;
+package com.flipkart.dashboard;
 
 import com.flipkart.Exception.CourseRegistrationException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.GradeCard;
 import com.flipkart.bean.Student;
-import com.flipkart.constants.Bank;
+import com.flipkart.constants.BankEnum;
 import com.flipkart.constants.PaymentMode;
 import com.flipkart.dao.StudentDB;
 import com.flipkart.services.CourseRegistrationServices;
@@ -113,9 +113,9 @@ public class StudentDashboard {
                     System.out.println("Aborting Payment");
                     return ;
                 }
-                Bank bankName = getBankNameFromIndex(bankIndex);
-                String description = "payment for registered courses through " + bankName.toString() + " bank.";
-                paymentServices.makeOfflinePayment(description,bankName,studentId,payingCoursesId);
+                BankEnum bankEnumName = getBankNameFromIndex(bankIndex);
+                String description = "payment for registered courses through " + bankEnumName.toString() + " bank.";
+                paymentServices.makeOfflinePayment(description, bankEnumName,studentId,payingCoursesId);
 
             } else {
                 System.out.println("Enter card number");
@@ -137,20 +137,20 @@ public class StudentDashboard {
         }
     }
 
-    private Bank getBankNameFromIndex(int bankIndex) {
-        Bank bankName = null;
+    private BankEnum getBankNameFromIndex(int bankIndex) {
+        BankEnum bankEnumName = null;
         switch (bankIndex){
             case 1:
-                bankName = Bank.SBI;
+                bankEnumName = BankEnum.SBI;
                 break;
             case 2:
-                bankName = Bank.HDFC;
+                bankEnumName = BankEnum.HDFC;
                 break;
             default:
-                bankName = Bank.OTHER;
+                bankEnumName = BankEnum.OTHER;
                 break;
         }
-        return bankName;
+        return bankEnumName;
     }
 
     private PaymentMode getPaymentModeFromIndex(int paymentMode) {
