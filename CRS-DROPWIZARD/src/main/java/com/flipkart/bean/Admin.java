@@ -1,11 +1,11 @@
 package com.flipkart.bean;
 
-import com.flipkart.constants.Role;
+import com.flipkart.constants.RoleEnum;
 
 public class Admin extends User {
 
-    public Admin(String name, String email, Role role, int userId) {
-        super(name, email, role,userId);
+    public Admin(String name, String email, RoleEnum roleEnum, int userId) {
+        super(name, email, roleEnum,userId);
     }
 
     public Admin(User user){

@@ -2,7 +2,7 @@ package com.flipkart.requestPojo;
 
 import com.flipkart.bean.User;
 
-public class NewUser {
+public class NewUserRequest {
     User user;
     String password;
 

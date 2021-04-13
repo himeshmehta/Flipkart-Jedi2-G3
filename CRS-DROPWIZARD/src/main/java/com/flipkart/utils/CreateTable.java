@@ -1,7 +1,7 @@
 package com.flipkart.utils;
 
 
-import com.flipkart.constants.CreateTable;
+import com.flipkart.constants.DBSchema;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,10 +22,10 @@ class CreateTableScript {
             connection = DBUtil.getConnection();
             System.out.println(1);
             DropTables(connection,stmt);
-            List<String> createTableQueries = CreateTable.getQueries();
+            List<String> createTableQueries = DBSchema.getQueries();
 
             for(String s : createTableQueries){
-                // if ( s != CreateTable.paymentTable ) continue;
+                // if ( s != DBSchema.paymentTable ) continue;
                 stmt = connection.prepareStatement(s);
                 stmt.executeUpdate();
                 stmt.close();

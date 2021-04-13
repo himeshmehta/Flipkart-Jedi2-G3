@@ -1,11 +1,10 @@
-package com.flipkart.client;
+package com.flipkart.dashboard;
 
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
-import com.flipkart.services.CourseCatalogServices;
 import com.flipkart.services.GradeCardServices;
 import com.flipkart.services.ProfessorServices;
 
