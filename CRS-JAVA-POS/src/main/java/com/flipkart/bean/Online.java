@@ -14,14 +14,14 @@ public class Online extends Payment{
 
     /**
      * Constructor of online
-     * @param refId
-     * @param amount
-     * @param paymentDescription
-     * @param card_number
-     * @param name_on_card
-     * @param CVV
-     * @param mode
-     * @param userId
+     * @param refId reference id
+     * @param amount amount
+     * @param paymentDescription payment description
+     * @param card_number card number
+     * @param name_on_card name on card
+     * @param CVV cvv
+     * @param mode mode
+     * @param userId user id
      */
     public Online(String refId, int amount, String paymentDescription, String card_number,String name_on_card,String CVV,PaymentMode mode,int userId) {
         super(refId, amount, paymentDescription,userId,mode);
@@ -41,7 +41,7 @@ public class Online extends Payment{
 
     /**
      * Sets the card number
-     * @param card_number
+     * @param card_number card number
      */
     public void setCard_number(String card_number) {
         this.card_number = card_number;
@@ -57,7 +57,7 @@ public class Online extends Payment{
 
     /**
      * Sets name on card
-     * @param name_on_card
+     * @param name_on_card name on card
      */
     public void setName_on_card(String name_on_card) {
         this.name_on_card = name_on_card;
@@ -73,7 +73,7 @@ public class Online extends Payment{
 
     /**
      * Sets the cvv
-     * @param CVV
+     * @param CVV cvv code
      */
     public void setCVV(String CVV) {
         this.CVV = CVV;

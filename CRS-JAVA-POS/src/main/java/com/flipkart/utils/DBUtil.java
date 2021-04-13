@@ -12,8 +12,6 @@ public class DBUtil {
     /**
      *
      This method is used for the connection with the Database.
-     @param - None
-     @throws - Nothing
      @return - Connection with the server
      **/
 

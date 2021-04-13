@@ -12,8 +12,8 @@ public class ErrorResponse {
 
     /**
      * Constructor of ErrorResponse
-     * @param message
-     * @param executionStatus
+     * @param message message
+     * @param executionStatus execution status
      */
     public ErrorResponse(String message, String executionStatus) {
         this.message = message;
@@ -30,7 +30,7 @@ public class ErrorResponse {
 
     /**
      * Sets the message
-     * @param message
+     * @param message message
      */
     public void setMessage(String message) {
         this.message = message;
@@ -46,7 +46,7 @@ public class ErrorResponse {
 
     /**
      * Sets the execution status
-     * @param executionStatus
+     * @param executionStatus execution status
      */
     public void setExecutionStatus(String executionStatus) {
         this.executionStatus = executionStatus;

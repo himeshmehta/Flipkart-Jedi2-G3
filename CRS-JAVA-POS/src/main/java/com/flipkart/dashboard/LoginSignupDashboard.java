@@ -18,7 +18,7 @@ public class LoginSignupDashboard {
 
     /**
      * This method is used for user login
-     * @throws CRSException
+     * @throws CRSException crs exception
      */
     public static void LoginUser() throws CRSException {
         User user = null;
@@ -66,7 +66,7 @@ public class LoginSignupDashboard {
 
     /**
      * This method is used for user registration
-     * @throws CRSException
+     * @throws CRSException crs exception
      */
     public static void SignUpUser() throws CRSException {
         Scanner inputReader = new Scanner(System.in);

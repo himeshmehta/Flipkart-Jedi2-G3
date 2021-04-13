@@ -8,7 +8,7 @@ public interface GradeCardDBInterface {
     /**
      * This method is used by student to view grade card.
      * @param studentId :- id of student.
-     * @throws GradeCardNotFoundException
+     * @throws GradeCardNotFoundException grade card exception
      * @return GradeCard object
      */
     public  GradeCard viewGradeCard(Integer studentId) throws GradeCardNotFoundException;
@@ -18,7 +18,7 @@ public interface GradeCardDBInterface {
      * @param courseId :- id of course for which professor wants to add grade.
      * @param grade :- grades
      * @param studentId :- id of student.
-     * @throws CRSException
+     * @throws CRSException crs exception
      */
     public  void addGrade(Integer courseId, Integer grade, Integer studentId) throws CRSException;
 }

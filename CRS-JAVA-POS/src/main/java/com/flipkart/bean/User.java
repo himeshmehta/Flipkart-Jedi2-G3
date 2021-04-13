@@ -54,9 +54,9 @@ public class User {
 
     /**
      * Constructor of user
-     * @param name
-     * @param email
-     * @param roleEnum
+     * @param name name
+     * @param email email
+     * @param roleEnum role
      */
 
     public User(String name, String email, RoleEnum roleEnum){
@@ -68,10 +68,10 @@ public class User {
 
     /**
      * Constructor of user
-     * @param name
-     * @param email
-     * @param roleEnum
-     * @param userId
+     * @param name name
+     * @param email email
+     * @param roleEnum role
+     * @param userId user id
      */
 
     public User(String name, String email, RoleEnum roleEnum, int userId){

@@ -13,7 +13,7 @@ public interface AuthDBInterface {
      * This method is used to Authenticate User .
      * @param userId :- id of user.
      * @param password :- password of user.
-     * @throws AuthorizationException
+     * @throws AuthorizationException authorization exception
      * @return User object
      */
     public User AuthenticateUser(int userId, String password) throws AuthorizationException;
@@ -22,7 +22,7 @@ public interface AuthDBInterface {
      * This method is used by admin to add new user(student or professor or admin).
      * @param user :- User object.
      * @param password :- password of user.
-     * @throws CRSException
+     * @throws CRSException crs exception
      * @return User object
      */
     public User addNewUser(User user, String password) throws CRSException;
@@ -30,14 +30,14 @@ public interface AuthDBInterface {
     /**
      * This method is used by admin to remove existing user(student or professor).
      * @param userId :- id of user.
-     * @throws CRSException
+     * @throws CRSException crs exception
      */
     public void removeExistingUser(int userId) throws CRSException;
 
     /**
      * This method is used by admin to approve registration of student.
      * @param studentId :- studentId.
-     * @throws CRSException
+     * @throws CRSException crs exception
      */
     public void approveStudent(int studentId) throws CRSException;
 
@@ -46,7 +46,7 @@ public interface AuthDBInterface {
      * @param email :- email of new student
      * @param name :- name of new student
      * @param password :- name of new student
-     * @throws CRSException
+     * @throws CRSException crs exception
      * @return User object
      */
     public User selfRegisterStudent(String email, String name, String password) throws CRSException;
@@ -54,14 +54,15 @@ public interface AuthDBInterface {
     /**
      * This method is used to get user details except password.
      * @param userId :- userId.
-     * @throws InvalidDataException, CRSException
+     * @throws InvalidDataException invalid data exception
+     * @throws CRSException crs exception
      * @return User object containing email, name, role, userId.
      */
     public User getUserDetails(int userId) throws InvalidDataException, CRSException;
 
     /**
      * This method is used to get list of student ids which are not approved yet.
-     * @throws CRSException
+     * @throws CRSException crs exception
      * @return List of student ids
      */
     public List<Integer> getNotApprovedStudent() throws CRSException;

@@ -24,7 +24,7 @@ public class ProfessorDashboard {
 
     /**
      * Constructor of professorDashboard
-     * @param professor
+     * @param professor professor
      */
     public ProfessorDashboard(Professor professor)
     {
@@ -34,9 +34,9 @@ public class ProfessorDashboard {
 
     /**
      * This method is used to select course to teach
-     * @param courseId
-     * @return
-     * @throws CRSException
+     * @param courseId course id
+     * @return boolean
+     * @throws CRSException course exception
      */
     public Boolean selectCourseToTeach(int courseId) throws CRSException {
 
@@ -46,7 +46,7 @@ public class ProfessorDashboard {
 
     /**
      * This method is used to view all courses
-     * @return
+     * @return list
      */
     public List<Course> viewAllCourses() {
         try {
@@ -59,7 +59,7 @@ public class ProfessorDashboard {
 
     /**
      * This method is used to view selected courses by professor
-     * @return
+     * @return list
      */
     public List<Course> viewSelectedCourses() {
         try {
@@ -72,8 +72,9 @@ public class ProfessorDashboard {
 
     /**
      * This method is used to get the list of enrolled students for particular course
-     * @param courseId
-     * @return
+     * @param courseId course id
+     * @return list
+     * @throws CRSException crs exception
      */
     public List<Student> getEnrolledStudents(int courseId) throws CRSException
 
@@ -84,10 +85,10 @@ public class ProfessorDashboard {
 
     /**
      * This method is used to add grades
-     * @param courseId
-     * @param marks
-     * @param studentId
-     * @throws Exception
+     * @param courseId course id
+     * @param marks marks
+     * @param studentId student id
+     * @throws Exception exception
      */
     public void addGrades(Integer courseId,Integer marks,Integer studentId) throws Exception {
         GradeCardServices gradeCardServices = new GradeCardServices();
@@ -189,7 +190,7 @@ public class ProfessorDashboard {
 
     /**
      * This method is used to handle add grades method
-     * @param inputReader
+     * @param inputReader input reader
      */
     private void addGradesHandler(Scanner inputReader) {
         try{

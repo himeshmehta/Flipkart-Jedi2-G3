@@ -27,7 +27,7 @@ public class StudentDashboard {
 
     /**
      * Constructor of studentDashboard
-     * @param student
+     * @param student student
      */
     public StudentDashboard(Student student) {
         this.student = student;
@@ -39,7 +39,7 @@ public class StudentDashboard {
 
     /**
      * This method is used for course registration
-     * @param courseId
+     * @param courseId course id
      * @return boolean
      */
     public Boolean registerCourse(Integer courseId) {
@@ -53,7 +53,7 @@ public class StudentDashboard {
 
     /**
      * This method is used to get the list of courses
-     * @return
+     * @return list
      */
     public List<Course> viewCourses() {
         try {
@@ -66,8 +66,8 @@ public class StudentDashboard {
 
     /**
      * This method is used to remove  course for student
-     * @param courseId
-     * @return
+     * @param courseId course id
+     * @return boolean
      */
     public Boolean removeCourse(Integer courseId) {
         try {
@@ -80,7 +80,7 @@ public class StudentDashboard {
 
     /**
      * This method is used to get the list of registered courses
-     * @return list of courses
+     * @return list
      */
     public List<Course> getRegisteredCourses() {
         return studentDB.registeredCourses(student);
@@ -88,8 +88,8 @@ public class StudentDashboard {
 
     /**
      * This method is to view the list of courses for which payment is not done
-     * @param studentId
-     * @param inputReader
+     * @param studentId student id
+     * @param inputReader input reader
      */
     private void getPaymentRemainingCourse(int studentId,Scanner inputReader) {
         try {
@@ -170,7 +170,7 @@ public class StudentDashboard {
 
     /**
      * This method is used to get the bank name
-     * @param bankIndex
+     * @param bankIndex bank index
      * @return
      */
     private BankEnum getBankNameFromIndex(int bankIndex) {
@@ -191,7 +191,7 @@ public class StudentDashboard {
 
     /**
      * This method is used to get the payment mode
-     * @param paymentMode
+     * @param paymentMode payment mode
      * @return
      */
     private PaymentMode getPaymentModeFromIndex(int paymentMode) {
@@ -287,7 +287,7 @@ public class StudentDashboard {
 
     /**
      * This method is used to view grade card
-     * @param studentId
+     * @param studentId student id
      */
     private void viewGradeCard(int studentId) {
         try {

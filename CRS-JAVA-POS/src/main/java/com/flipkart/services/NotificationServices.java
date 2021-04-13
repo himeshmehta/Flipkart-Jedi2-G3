@@ -32,9 +32,10 @@ public class NotificationServices implements NotificationInterface{
 
     /**
      * This method is used to notify user about payment.
-     * @Param referenceId, amount, userId
-     * @Throws NotificationException
-     * @Return Nothing
+     * @param refId reference id
+     * @param amount amount
+     * @param userId user id
+     * @throws  NotificationException notification exception
      * */
     public void paymentNotifier(String refId,long amount,int userId) throws NotificationException {
         String description = "Payment of amount " + String.valueOf(amount) + " is completed. Reference id of transaction is " + refId;
@@ -46,9 +47,8 @@ public class NotificationServices implements NotificationInterface{
 
     /**
      * This method is used to notify student once admin approve registration request.
-     * @Param  userId
-     * @Throws NotificationException
-     * @Return Nothing
+     * @param  studentId user id
+     * @throws NotificationException notification exception
      * */
     public void approvalNotifier(int studentId) throws NotificationException {
         String description = "Admin approved your registration request.";

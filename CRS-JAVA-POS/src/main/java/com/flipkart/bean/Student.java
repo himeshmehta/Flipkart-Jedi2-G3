@@ -19,10 +19,10 @@ public class Student extends User{
 
     /**
      * Constructor of student
-     * @param name
-     * @param email
-     * @param roleEnum
-     * @param userId
+     * @param name name
+     * @param email email
+     * @param roleEnum role
+     * @param userId user id
      */
     public Student(String name, String email, RoleEnum roleEnum, int userId) {
         super(name, email, roleEnum, userId);
@@ -31,7 +31,7 @@ public class Student extends User{
 
     /**
      * Constructor of student
-     * @param user
+     * @param user user
      */
     public Student(User user){
         super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
@@ -55,7 +55,7 @@ public class Student extends User{
 
     /**
      * Sets the main course List
-     * @param mainCourseList
+     * @param mainCourseList main course list
      */
     public void setMainCourseList(List<Course> mainCourseList) {
         this.mainCourseList = mainCourseList;
@@ -71,7 +71,7 @@ public class Student extends User{
 
     /**
      * Sets the alternate course List
-     * @param alternateCourseList
+     * @param alternateCourseList alternate course list
      */
     public void setAlternateCourseList(List<String> alternateCourseList) {
         this.alternateCourseList = alternateCourseList;

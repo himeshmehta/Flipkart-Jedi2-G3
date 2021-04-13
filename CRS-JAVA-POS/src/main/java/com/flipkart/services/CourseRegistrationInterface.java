@@ -16,6 +16,7 @@ public interface CourseRegistrationInterface {
      * @param student student object
      * @param courseId course id
      * @throws CourseRegistrationException course registration exception
+     * @return  boolean
      */
     Boolean registerCourse(User student, Integer courseId) throws CourseRegistrationException;
 
@@ -24,12 +25,14 @@ public interface CourseRegistrationInterface {
      * @param student student object
      * @param courseId course id
      * @throws CourseRegistrationException course registration exception
+     * @return boolean
      */
     Boolean removeCourse(User student, Integer courseId) throws CourseRegistrationException;
 
     /**
      * This method is used to get the list of courses
      * @throws CourseRegistrationException course registration exception
+     * @return  list
      */
     List<Course> viewCourses() throws CourseRegistrationException;
 
@@ -37,6 +40,7 @@ public interface CourseRegistrationInterface {
      * This method is used to get the list of not paid courses
      * @param studentId student id
      * @throws CRSException crs exception
+     * @return map
      */
 
     public HashMap<Integer,Integer> getNotPaidCourseList(int studentId) throws CRSException;

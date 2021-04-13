@@ -1,7 +1,7 @@
 package com.flipkart.helper;
 
 
-import com.flipkart.Exception.PaymentException
+import com.flipkart.Exception.PaymentException;
 
 /**
  * The type payment validator

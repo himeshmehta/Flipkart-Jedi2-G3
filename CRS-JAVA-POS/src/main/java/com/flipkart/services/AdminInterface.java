@@ -16,6 +16,7 @@ public interface AdminInterface {
      * @param password user password
      * @throws CRSException crs exception
      * @throws InvalidDataException invalid data exception
+     * @return user
      */
     public User addUser(User user, String password) throws CRSException, InvalidDataException;
 
@@ -37,6 +38,7 @@ public interface AdminInterface {
     /**
      *  This method is used to get list of students who are not approved yet.
      * @throws CRSException crs exception
+     * @return list
      */
     public List<Integer> getNotApprovedStudents() throws CRSException;
 
@@ -46,6 +48,7 @@ public interface AdminInterface {
      * @param courseName course name
      * @param fee course fee
      * @throws CRSException crs exception
+     * @return course
      */
     public Course addNewCourse(String description, String courseName, long fee) throws CRSException;
 }

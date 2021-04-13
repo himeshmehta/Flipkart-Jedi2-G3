@@ -9,7 +9,7 @@ public interface StudentDBInterface {
     /**
      * This method is used to get list of course registered by student.
      * @param student :- Student Object.
-     * @return List<Course> :- list of course registered by student.
+     * @return list
      */
     public List<Course> registeredCourses(Student student);
 }

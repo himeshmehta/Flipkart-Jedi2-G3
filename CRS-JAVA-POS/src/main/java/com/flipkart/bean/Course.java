@@ -22,7 +22,7 @@ public class Course {
     /**
      * Sets the fee
      *
-     * @param fee
+     * @param fee fee
      */
     public void setFee(Long fee) {
         this.fee = fee;
@@ -40,7 +40,7 @@ public class Course {
     /**
      * Sets the course name
      *
-     * @param courseName
+     * @param courseName course name
      */
     public void setCourseName(String courseName) {
         CourseName = courseName;
@@ -58,7 +58,7 @@ public class Course {
     /**
      * Sets the course id
      *
-     * @param courseId
+     * @param courseId course id
      */
     public void setCourseId(int courseId) {
         CourseId = courseId;
@@ -76,7 +76,7 @@ public class Course {
     /**
      * Sets the professor id
      *
-     * @param professorId
+     * @param professorId professor id
      */
     public void setProfessorId(int professorId) {
         ProfessorId = professorId;

@@ -7,8 +7,9 @@ public interface GradeCardInterface {
     /**
      *
      This method returns the gradeCard for a particular student.
-     @param - studentId student id
-     @throws - GradeCardNotFoundException grade card not found
+     @param  studentId student id
+     @throws  GradeCardNotFoundException grade card not found
+     @return grade card
      **/
     public GradeCard viewGradeCard(Integer studentId) throws GradeCardNotFoundException;
 

@@ -9,7 +9,9 @@ public enum PaymentMode {
     OFFLINE;
 
     /**
-     * This method return payment mode in string format.*/
+     * This method return payment mode in string format
+     * @return string
+     */
     public String getPaymentMode() {
         return this.name();
     }

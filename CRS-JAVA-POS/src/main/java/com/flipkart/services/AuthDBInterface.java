@@ -11,6 +11,7 @@ public interface AuthDBInterface  {
      * @param userId user id
      * @param password user password
      * @throws AuthorizationException authorization exception
+     * @return user
      */
     public User authenticateUser(int userId, String password) throws AuthorizationException;
 
