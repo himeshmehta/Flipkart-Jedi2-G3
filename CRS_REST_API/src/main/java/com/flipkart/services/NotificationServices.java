@@ -6,7 +6,6 @@ import com.flipkart.dao.NotificationDB;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class NotificationServices implements NotificationInterface{
@@ -31,11 +30,12 @@ public class NotificationServices implements NotificationInterface{
 
     }
 
-    @Override
-    public void sendNotificationToUsers(final Notification notification, final List<String> userIDs){
-        logger.info("Sending Notification to the Users");
-    }
-
+    /**
+     * This method is used to notify user about payment.
+     * @Param referenceId, amount, userId
+     * @Throws NotificationException
+     * @Return Nothing
+     * */
     public void paymentNotifier(String refId,long amount,int userId) throws NotificationException {
         String description = "Payment of amount " + String.valueOf(amount) + " is completed. Reference id of transaction is " + refId;
         Notification notification = new Notification();
@@ -44,6 +44,12 @@ public class NotificationServices implements NotificationInterface{
         sendNotificationToUser(notification,userId);
     }
 
+    /**
+     * This method is used to notify student once admin approve registration request.
+     * @Param  userId
+     * @Throws NotificationException
+     * @Return Nothing
+     * */
     public void approvalNotifier(int studentId) throws NotificationException {
         String description = "Admin approved your registration request.";
         String currentTimeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());

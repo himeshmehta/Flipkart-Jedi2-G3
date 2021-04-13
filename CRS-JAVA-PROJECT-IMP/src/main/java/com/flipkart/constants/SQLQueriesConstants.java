@@ -4,6 +4,7 @@ public class SQLQueriesConstants {
 
     // for User
     public static final String GET_USER_DETAIL = "select * from user where userId = ?";
+    public static final String GET_USERS_DETAILS = "select * from user where userId = ? and role = ?";
 
     // for Courses
     public static final String GET_COURSE_DETAILS = "select * from course where courseId = ?";
@@ -11,6 +12,7 @@ public class SQLQueriesConstants {
     public static final String GET_COURSE_PROFESSOR = "select userId from course where courseId = ?";
     public static final String SET_PROFESSOR = "update course set userId = ? where courseId = ?";
     public static final String IS_PROF_TEACHING_COURSE = "select * from course where courseId = ? and userId = ?";
+    public static final String FETCH_FEE = "select fee from course where courseId = ?";
 
     // Course Catalog Queries
     public static final String VIEW_ALL_COURSES = "select courseid, coursename,  description from coursecatalog";
@@ -29,6 +31,7 @@ public class SQLQueriesConstants {
     public static final String SELF_REGISTER_QUERY = "insert into user (email, name, password, isApproved, role) values(?,?,?,?,?)";
     public static final String GET_STUDENT_FOR_COURSE = "select studentId from registeredcourses where courseId = ?";
     public static final String FETCH_INDIVIDUAL_COURSE_GRADE = "select grade from gradeCard where studentId = ? and courseId = ?";
+    public static final String GET_STUDENT = "select * from registeredcourses where courseid = ? and  studentid = ?";
     public static final String FETCH_GRADE_CARD = "select * from gradeCard where studentId = ?";
 
     // Professor related Queries
@@ -49,6 +52,7 @@ public class SQLQueriesConstants {
     public static final String LOGIN_USER_QUERY = "select role from user where username = ? and password = ?";
     public static final String VERIFY_USERNAME_AND_USERID = "select count(*) as c from user where username = ? OR userid = ?";
     public static final String GET_USER_DETAILS = "select email,name,role from user where userId = ?";
+    public static final String GET_USER_DATA = "select name,role from user where email = ?";
 
     // Student table Query
     public static final String ADD_STUDENT = "insert into student (email,name) values(?,?)";
@@ -59,7 +63,7 @@ public class SQLQueriesConstants {
     public static final String ADD_PROFESSOR = "insert into professor (email,name) values(?,?)";
     public static final String DELETE_PROFESSOR = "delete from professor where email = ?";
     public static final String ADD_GRADES = "insert into gradeCard values(?,?,?)";
-    public static final String UPDATE_GRADES = "update gradeCard set grades = ? where studentId = ? and courseId = ?";
+    public static final String UPDATE_GRADES = "update gradeCard set grade = ? where studentId = ? and courseId = ?";
 
     // Authenticate Query
     public static final String AUTHORISE_USER = "select * from user where userId = ?";

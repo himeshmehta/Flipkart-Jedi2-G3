@@ -5,7 +5,7 @@ import com.flipkart.dao.CourseCatalogDB;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class CourseCatalogServices implements CourseCatalogInterface{
 

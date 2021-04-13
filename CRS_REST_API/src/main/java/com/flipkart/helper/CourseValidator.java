@@ -2,13 +2,22 @@ package com.flipkart.helper;
 
 import com.flipkart.Exception.InvalidInputException;
 import com.flipkart.bean.Course;
-import com.flipkart.bean.Student;
 import com.flipkart.dao.CourseDB;
 
+/**
+ * The type course validator
+ */
 public class CourseValidator {
 
     private static CourseDB courseDB = new CourseDB();
 
+    /**
+     * This method is used used to validate student and professor for course
+     * @param courseId
+     * @param professorId
+     * @param studentId
+     * @throws InvalidInputException
+     */
     public static void studentAndProfValidation(Integer courseId,Integer professorId, Integer studentId) throws InvalidInputException {
         Course courseDetails = courseDB.getCourseDetails(courseId);
 

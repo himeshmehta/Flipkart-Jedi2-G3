@@ -8,7 +8,7 @@ public interface GradeCardInterface {
      *
      This method returns the gradeCard for a particular student.
      @Param - studentId
-     @Throws - Nothing
+     @Throws - GradeCardNotFoundException
      @returns - GradeCard
      **/
     public GradeCard viewGradeCard(Integer studentId) throws GradeCardNotFoundException;
@@ -16,9 +16,9 @@ public interface GradeCardInterface {
     /**
      *
      This method is used to addGrade for a Course.
-     @Param - courseId,grade,studentId
-     @Throws - Nothing
-     @returns - Boolean
+     @Param - professorId , courseId , grade , studentId
+     @Throws - Exception
+     @returns - Nothing
      **/
-    public void addGrade(Integer profId,Integer courseId, Integer grade,Integer studentId) throws Exception;
+    public void addGrade(Integer profId, Integer courseId, Integer grade, Integer studentId) throws Exception;
 }

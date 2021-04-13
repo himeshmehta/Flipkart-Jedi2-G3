@@ -1,8 +1,0 @@
-create table if not exists gradeCard(
-studentId INT NOT NULL,
-courseId INT NOT NULL,
-grade INT NOT NULL,
-PRIMARY KEY (studentId, courseId),
-FOREIGN KEY (studentId) REFERENCES user(userId),
-FOREIGN KEY (courseId) REFERENCES course(courseId)
-);

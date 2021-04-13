@@ -30,13 +30,18 @@ public class CourseDB implements CourseDBInterface{
 
             ResultSet resultSet = sqlQuery.executeQuery();
             if (resultSet.next()) {
+                sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_STUDENT);
+                sqlQuery.setInt(1,courseId);
+                sqlQuery.setInt(2,student.getUserId());
+                ResultSet rs = sqlQuery.executeQuery();
+                if (rs.next()) throw new CourseRegistrationException("Course Already Registered");
                 sqlQuery = conn.prepareStatement(SQLQueriesConstants.REGISTER_STUDENT_FOR_COURSE);
                 sqlQuery.setInt(1,courseId);
                 sqlQuery.setInt(2,student.getUserId());
                 sqlQuery.executeUpdate();
                 sqlQuery.close();
                 return Boolean.TRUE;
-            } else throw new CourseRegistrationException("Unable to register");
+            } else throw new CourseRegistrationException("Course not Present");
 
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
@@ -44,9 +49,18 @@ public class CourseDB implements CourseDBInterface{
         return Boolean.FALSE;
     }
 
-    public  Boolean removeStudent (User student , Integer courseId){
+    public  Boolean removeStudent (User student , Integer courseId) throws CourseRegistrationException{
         try{
             // add details in student table
+
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_STUDENT);
+            sqlQuery.setInt(1,courseId);
+            sqlQuery.setInt(2,student.getUserId());
+
+            ResultSet rs = sqlQuery.executeQuery();
+            if (!rs.next()) throw new CourseRegistrationException("Course not registered");
+
+
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.DROP_COURSE_FOR_STUDENT);
             sqlQuery.setInt(1,courseId);
             sqlQuery.setInt(2,student.getUserId());
@@ -61,6 +75,7 @@ public class CourseDB implements CourseDBInterface{
         return Boolean.FALSE;
     }
 
+    @Override
     public  List<Course> viewCourses (){
         List<Course> courseList = new ArrayList<>();
         try{
@@ -82,12 +97,18 @@ public class CourseDB implements CourseDBInterface{
         return courseList;
     }
 
-    public List<Course> viewEnrolledCourses(int professorId) {
+    @Override
+    public List<Course> viewEnrolledCourses(int professorId) throws CRSException{
         List<Course> courseList = new ArrayList<>();
         try{
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USERS_DETAILS);
+            sqlQuery.setInt(1,professorId);
+            sqlQuery.setString(2,"Professor");
+            ResultSet resultSet = sqlQuery.executeQuery();
+            if (!resultSet.next()) throw new CRSException("Professor doesn't Exist");
             sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_PROFESSOR_COURSES);
             sqlQuery.setInt(1,professorId);
-            ResultSet resultSet = sqlQuery.executeQuery();
+            resultSet = sqlQuery.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course();
                 course.setCourseId(resultSet.getInt("courseId"));
@@ -108,11 +129,17 @@ public class CourseDB implements CourseDBInterface{
         return new ArrayList<>();
     }
 
+
+    @Override
     public  Boolean setProfessor(Integer courseId , Professor professor) throws CRSException {
         try{
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_PROFESSOR);
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_DETAILS);
             sqlQuery.setInt(1,courseId);
             ResultSet resultSet = sqlQuery.executeQuery();
+            if (!resultSet.next()) throw new CRSException("Course not Present");
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_PROFESSOR);
+            sqlQuery.setInt(1,courseId);
+            resultSet = sqlQuery.executeQuery();
             if (!resultSet.next() || resultSet.getInt("userId") != 0) throw new SQLException("Professor already added for this course");
             else {
                 sqlQuery = conn.prepareStatement(SQLQueriesConstants.SET_PROFESSOR);
@@ -135,12 +162,17 @@ public class CourseDB implements CourseDBInterface{
         return null;
     }
 
-    public List<Student> getListOfStudents(Integer courseId) {
+    @Override
+    public List<Student> getListOfStudents(Integer courseId) throws CRSException{
         List<Student> studentList = new ArrayList<Student>();
         try{
-            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_STUDENT_FOR_COURSE);
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_COURSE_DETAILS);
             sqlQuery.setInt(1,courseId);
             ResultSet resultSet = sqlQuery.executeQuery();
+            if (!resultSet.next()) throw new CRSException("Course not Available");
+            sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_STUDENT_FOR_COURSE);
+            sqlQuery.setInt(1,courseId);
+            resultSet = sqlQuery.executeQuery();
             while (resultSet.next()) {
                 sqlQuery = conn.prepareStatement(SQLQueriesConstants.GET_USER_DETAIL);
                 sqlQuery.setInt(1,resultSet.getInt("studentId"));

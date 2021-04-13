@@ -1,5 +1,6 @@
 package com.flipkart.services;
 
+import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
@@ -10,7 +11,7 @@ public interface ProfessorInterface {
 
     /**
      *
-     This method selects the course which will be taught by the Professor.
+     This method returns all the course.
      @Param - Nothing
      @Throws - Nothing
      @returns - List of Courses
@@ -19,30 +20,22 @@ public interface ProfessorInterface {
 
     /**
      *
-     This method selects the course which will be taught by the Professor.
+     This method returns all the enrolled course for the Professor.
      @Param - professor
      @Throws - Nothing
      @returns - List of Courses
      **/
-    public List<Course> viewEnrolledCourses(Professor professor);
+    public List<Course> viewEnrolledCourses(int professor) throws CRSException;
 
     /**
      *
      This method selects the course which will be taught by the Professor.
-     @Param - courseId
-     @Throws - Nothing
-     @returns - Course
+     @Param - courseId , professor
+     @Throws - CRSException
+     @returns - Boolean
      **/
-    public Boolean selectCourseToTeach(Integer courseId , Professor professor);
+    public Boolean selectCourseToTeach(Integer courseId, Professor professor) throws CRSException;
 
-    /**
-     *
-     This method adds the grade for the student.
-     @Param - courseId,marks,studentId
-     @Throws - Nothing
-     @returns - Nothing
-     **/
-    public void addGrades(Integer courseId,long marks,Integer studentId);
 
     /**
      *
@@ -51,7 +44,7 @@ public interface ProfessorInterface {
      @Throws - Nothing
      @returns - List of Students
      **/
-    public List<Student> getEnrolledStudents(Integer courseId);
+    public List<Student> getEnrolledStudents(Integer courseId) throws CRSException;
 
 
 }

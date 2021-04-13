@@ -1,4 +1,7 @@
 package com.flipkart.bean;
+
+
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 /**
@@ -6,15 +9,17 @@ import java.util.*;
  */
 public class Course {
 
-   private String CourseName;
-   private int CourseId;
-   private int ProfessorId ;
-   private Boolean IsAvailable;
-   private List<Student> StudentList ;
-   private Long fee;
+    @NotNull
+    private String CourseName;
+    @NotNull
+    private int CourseId;
+    private int ProfessorId;
+    @NotNull
+    private Long fee;
 
     /**
      * Gets the fee
+     *
      * @return
      */
     public Long getFee() {
@@ -23,6 +28,7 @@ public class Course {
 
     /**
      * Sets the fee
+     *
      * @param fee
      */
     public void setFee(Long fee) {
@@ -31,6 +37,7 @@ public class Course {
 
     /**
      * Gets the course name
+     *
      * @return
      */
     public String getCourseName() {
@@ -39,6 +46,7 @@ public class Course {
 
     /**
      * Sets the course name
+     *
      * @param courseName
      */
     public void setCourseName(String courseName) {
@@ -47,6 +55,7 @@ public class Course {
 
     /**
      * Gets the course id
+     *
      * @return
      */
     public int getCourseId() {
@@ -55,6 +64,7 @@ public class Course {
 
     /**
      * Sets the course id
+     *
      * @param courseId
      */
     public void setCourseId(int courseId) {
@@ -63,6 +73,7 @@ public class Course {
 
     /**
      * Gets the professor id
+     *
      * @return
      */
     public int getProfessorId() {
@@ -71,41 +82,11 @@ public class Course {
 
     /**
      * Sets the professor id
+     *
      * @param professorId
      */
     public void setProfessorId(int professorId) {
         ProfessorId = professorId;
     }
 
-    /**
-     * Gets the course availability
-     * @return
-     */
-    public Boolean getAvailable() {
-        return IsAvailable;
-    }
-
-    /**
-     * Sets the course availability
-     * @param available
-     */
-    public void setAvailable(Boolean available) {
-        IsAvailable = available;
-    }
-
-    /**
-     * Gets the list of students
-     * @return
-     */
-    public List<Student> getStudentList() {
-        return StudentList;
-    }
-
-    /**
-     * Sets the list of students
-     * @param studentList
-     */
-    public void setStudentList(List<Student> studentList) {
-        StudentList = studentList;
-    }
 }

@@ -7,7 +7,7 @@ import com.flipkart.bean.User;
 import com.flipkart.dao.AuthDB;
 import com.flipkart.helper.UserValidator;
 
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class AuthDBServices implements AuthDBInterface{
 
@@ -16,7 +16,7 @@ public class AuthDBServices implements AuthDBInterface{
     public AuthDBServices(){
         this.authDBOperations = new AuthDB();
     }
-    private static final Logger logger = Logger.getLogger(AuthDBServices.class);
+    private static final Logger logger = Logger.getLogger(String.valueOf(AuthDBServices.class));
 
     @Override
     public User authenticateUser(int userId, String password) throws AuthorizationException {
@@ -27,15 +27,15 @@ public class AuthDBServices implements AuthDBInterface{
     }
 
     @Override
-    public Boolean selfRegisterStudent(String email, String name, String password, String confirmPassword) throws CRSException {
-        Boolean isSignedUp = false;
+    public User selfRegisterStudent(String email, String name, String password, String confirmPassword) throws CRSException {
+        User user = null;
         try{
             UserValidator.selfRegisterValidator(email,password,confirmPassword);
-            isSignedUp = authDBOperations.selfRegisterStudent(email,name,password);
+            user = authDBOperations.selfRegisterStudent(email,name,password);
         } catch (InvalidDataException e) {
             throw new CRSException(e.getMessage());
         }
-        return isSignedUp;
+        return user;
     }
 
 }

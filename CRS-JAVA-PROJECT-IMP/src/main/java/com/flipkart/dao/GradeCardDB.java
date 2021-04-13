@@ -22,6 +22,8 @@ public class GradeCardDB implements GradeCardDBInterface{
         this.conn = DBUtil.getConnection();
         sqlQuery = null;
     }
+
+    @Override
     public  GradeCard viewGradeCard(Integer studentId) throws GradeCardNotFoundException {
         GradeCard gradeCard = null;
         try{
@@ -42,7 +44,7 @@ public class GradeCardDB implements GradeCardDBInterface{
         }
     }
 
-    // TODO :- Complete the logic of adding grades
+    @Override
     public  void addGrade(Integer courseId, Integer grade,Integer studentId) throws CRSException {
         try{
             // first check if grade is already added or not.

@@ -1,12 +1,12 @@
 package com.flipkart.restController;
 
-import com.flipkart.Exception.AuthorizationException;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.bean.User;
-import com.flipkart.requestPojo.LoginPojo;
-import com.flipkart.requestPojo.SelfRegistrationPOJO;
+import com.flipkart.requestPojo.LoginRequest;
+import com.flipkart.requestPojo.SelfRegistrationRequest;
 import com.flipkart.services.AuthDBServices;
 
+import javax.validation.Validator;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -14,15 +14,29 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * The type authorization controller
+ */
 @Path("/auth")
 public class AuthController {
 
     private static  AuthDBServices authDBServices = new AuthDBServices();
 
+    private final Validator validator;
+
+    public AuthController(Validator validator) {
+        this.validator = validator;
+    }
+
+    /**
+     * Login of user
+     * @param loginDetails
+     * @return
+     */
     @GET
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(LoginPojo loginDetails){
+    public Response login(LoginRequest loginDetails){
         try {
             User user =  authDBServices.authenticateUser(loginDetails.getUserId(),loginDetails.getPassword());
             return Response.status(200).entity(user).build();
@@ -31,10 +45,15 @@ public class AuthController {
         }
     }
 
+    /**
+     * Self Registeration of user
+     * @param request
+     * @return
+     */
     @POST
     @Path("/selfRegistration")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response selfRegistration(SelfRegistrationPOJO request){
+    public Response selfRegistration(SelfRegistrationRequest request){
         try{
             User user = authDBServices.selfRegisterStudent(request.getEmail(), request.getName(), request.getPassword(), request.getConfirmPassword());
             return Response.status(200).entity(user).build();

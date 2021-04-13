@@ -23,7 +23,7 @@ public interface AuthDBInterface  {
      * @Param password :- password enter by student
      * @Param confirmPassword :- confirm password enter by student
      * @Throws Nothing
-     * @returns Boolean
+     * @returns User object
      * */
-    public Boolean selfRegisterStudent(String email,String name,String password,String confirmPassword) throws CRSException;
+    public User selfRegisterStudent(String email, String name, String password, String confirmPassword) throws CRSException;
 }

@@ -3,8 +3,8 @@ package com.flipkart.dao;
 import com.flipkart.Exception.CRSException;
 import com.flipkart.Exception.NotificationException;
 import com.flipkart.bean.Notification;
-import com.flipkart.client.AdminDashboard;
 import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.dashboard.AdminDashboard;
 import com.flipkart.utils.DBUtil;
 
 import java.sql.Connection;

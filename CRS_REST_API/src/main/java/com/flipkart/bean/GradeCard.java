@@ -1,14 +1,21 @@
 package com.flipkart.bean;
-import java.util.*;
+
+import javax.validation.constraints.NotNull;
+import java.util.Map;
 
 /**
  * The type grade card
  */
 public class GradeCard {
 
+    @NotNull
     private Student studentDetails;
     private Map<Integer,Integer>courseMarks;
 
+    /**
+     * Constructor of gradeCard
+     * @param courseMarks
+     */
     public GradeCard(Map<Integer,Integer> courseMarks){
         this.courseMarks = courseMarks;
         this.studentDetails = new Student();
