@@ -56,6 +56,7 @@ public class AdminController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewUSer(NewUserRequest newUserRequest) {
         try {
+            System.out.println("in admin controlller");
             User user = adminServices.addUser(newUserRequest.getUser(), newUserRequest.getPassword());
             return Response.status(200).entity(user).build();
         } catch (Exception ex) {
@@ -65,7 +66,7 @@ public class AdminController {
 
     /**
      * Add new course
-     * @param newCoursePOJO
+     * @param newCourseRequest
      * @return
      */
     @POST
