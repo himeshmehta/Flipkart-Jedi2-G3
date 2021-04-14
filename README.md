@@ -10,4 +10,4 @@ Diagram Links :-
 
 
 PPT Link :- 
-1. https://docs.google.com/presentation/d/1nDA-xJjf96KzGA1oEk3A_gdghikyfw5mICAFkOWZsGQ/edit#slide=id.gd0da32d6e0_0_461
+1. https://docs.google.com/presentation/d/1nDA-xJjf96KzGA1oEk3A_gdghikyfw5mICAFkOWZsGQ/edit?usp=sharing
