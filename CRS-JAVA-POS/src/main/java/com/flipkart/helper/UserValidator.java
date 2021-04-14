@@ -9,8 +9,8 @@ public class UserValidator {
 
     /**
      * This method is used to validate email
-     * @param userId
-     * @throws InvalidDataException
+     * @param userId user id
+     * @throws InvalidDataException invalid data exception
      */
     public static void emailValidator(String userId) throws InvalidDataException {
 
@@ -23,10 +23,10 @@ public class UserValidator {
 
     /**
      * This method is used to validate user
-     * @param email
-     * @param password
-     * @param confirmPassword
-     * @throws InvalidDataException
+     * @param email email of user
+     * @param password password of user
+     * @param confirmPassword password of user
+     * @throws InvalidDataException invalid data exception
      */
     public static void selfRegisterValidator(String email, String password, String confirmPassword) throws InvalidDataException {
         emailValidator(email);
@@ -38,8 +38,8 @@ public class UserValidator {
 
     /**
      * This method is used to validate password strength
-     * @param password
-     * @throws InvalidDataException
+     * @param password password of user
+     * @throws InvalidDataException invalid data exception
      */
     public static void passwordStrengthValidator(String password) throws InvalidDataException {
         if(password == null || password.length() < 5){
@@ -49,9 +49,9 @@ public class UserValidator {
 
     /**
      * This method is used to validate user by checking email and password
-     * @param email
-     * @param password
-     * @throws InvalidDataException
+     * @param email user email
+     * @param password user password
+     * @throws InvalidDataException invalid data exception
      */
     public static void newUsedValidator(String email,String password) throws InvalidDataException {
         emailValidator(email);

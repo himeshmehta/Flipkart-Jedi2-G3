@@ -10,6 +10,7 @@ public enum BankEnum {
 
     /**
      * This method return name of bank in string format.
+     * @return string
      * */
     public String getBank() {
         return this.name();

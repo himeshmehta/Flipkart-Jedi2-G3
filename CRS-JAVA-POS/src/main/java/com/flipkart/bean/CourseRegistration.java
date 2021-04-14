@@ -19,7 +19,7 @@ public class CourseRegistration {
 
     /**
      * Sets the course id
-     * @param courseId
+     * @param courseId course id
      */
     public void setCourseId(String courseId) {
         this.courseId = courseId;
@@ -35,7 +35,7 @@ public class CourseRegistration {
 
     /**
      * Sets the student id
-     * @param studentId
+     * @param studentId student id
      */
     public void setStudentId(String studentId) {
         this.studentId = studentId;

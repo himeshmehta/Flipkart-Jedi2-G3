@@ -20,7 +20,7 @@ public class Notification {
 
     /**
      * Sets the notification id
-     * @param notificationId
+     * @param notificationId notification id
      */
     public void setNotificationId(String notificationId) {
         this.notificationId = notificationId;
@@ -36,7 +36,7 @@ public class Notification {
 
     /**
      * Sets the description
-     * @param description
+     * @param description description
      */
     public void setDescription(String description) {
         this.description = description;
@@ -52,7 +52,7 @@ public class Notification {
 
     /**
      * Sets the time stamp
-     * @param timeStamp
+     * @param timeStamp time stamp
      */
     public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;

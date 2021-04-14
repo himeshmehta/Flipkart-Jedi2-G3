@@ -76,10 +76,9 @@ public class DBSchema {
             ");";
 
     /**
-     * This method returns list of create table query for all tables.
-     * Error can generate related to foreign key if tables are not created and dropped in below fashion.
-     * To create tables :- forward direction
-     * To drop tables   :- reverse direction*/
+     * This method is used to get queries
+     * @return list
+     */
     public static List<String> getQueries() {
         List<String> queries = new ArrayList<String>();
         queries.add(userTable);

@@ -19,7 +19,7 @@ public class CourseCatalog {
 
     /**
      * Sets the list of available courses
-     * @param availableCourses
+     * @param availableCourses available courses
      */
     public void setAvailableCourses(List<Course> availableCourses) {
         this.availableCourses = availableCourses;

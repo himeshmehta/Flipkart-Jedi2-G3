@@ -22,7 +22,7 @@ public class AdminDashboard {
 
     /**
      * Constructor of adminaDashboard
-     * @param admin
+     * @param admin admin
      */
     public AdminDashboard(Admin admin){
         this.admin = admin;
@@ -32,10 +32,10 @@ public class AdminDashboard {
 
     /**
      * This method is used to add user
-     * @param email
-     * @param password
-     * @param roleEnum
-     * @param name
+     * @param email email
+     * @param password password
+     * @param roleEnum role
+     * @param name name
      * @return boolean
      */
     public Boolean addUser(String email, String password, RoleEnum roleEnum, String name){
@@ -52,8 +52,8 @@ public class AdminDashboard {
 
     /**
      * This method is used to remove user
-     * @param userId
-     * @return
+     * @param userId user id
+     * @return boolean
      */
     public  Boolean removeUser(int userId){
         Boolean isUserRemoved = Boolean.FALSE;
@@ -68,10 +68,10 @@ public class AdminDashboard {
 
     /**
      * This method is used to add new new course
-     * @param description
-     * @param courseName
-     * @param fee
-     * @return
+     * @param description description
+     * @param courseName course name
+     * @param fee feee
+     * @return boolean
      */
     public Boolean addNewCourse(String description , String courseName , Long fee){
         Boolean newCourseAdded = Boolean.FALSE;
@@ -107,7 +107,7 @@ public class AdminDashboard {
 
     /**
      * This method is used to approve registerd students
-     * @param userIds
+     * @param userIds users id
      */
     public void approveListOfStudent(List<Integer> userIds) {
         for(int studentId : userIds){
@@ -122,7 +122,7 @@ public class AdminDashboard {
 
     /**
      * This method is used to perform admin operations
-     * @param inputReader
+     * @param inputReader input reader
      */
     public void helper(Scanner inputReader)
     {

@@ -12,11 +12,11 @@ public class Offline extends Payment{
 
     /**
      * Constructor of offline
-     * @param refId
-     * @param amount
-     * @param paymentDescription
-     * @param bankEnum
-     * @param userId
+     * @param refId reference id
+     * @param amount amount
+     * @param paymentDescription payment description
+     * @param bankEnum bank name
+     * @param userId user id
      */
     public Offline(String refId, int amount, String paymentDescription, BankEnum bankEnum, int userId){
         super(refId,amount,paymentDescription,userId, PaymentMode.OFFLINE);
@@ -33,7 +33,7 @@ public class Offline extends Payment{
 
     /**
      * Sets the bank name
-     * @param bankEnum
+     * @param bankEnum bank name
      */
     public void setBank(BankEnum bankEnum) {
         this.bankEnum = bankEnum;

@@ -16,11 +16,11 @@ public class Payment {
 
     /**
      * Constructor of Payment
-     * @param refId
-     * @param amount
-     * @param paymentDescription
-     * @param userId
-     * @param mode
+     * @param refId reference id
+     * @param amount amount
+     * @param paymentDescription payment description
+     * @param userId user id
+     * @param mode mode
      */
     public Payment(String refId, int amount, String paymentDescription, int userId, PaymentMode mode) {
         this.referenceId = refId;
@@ -56,7 +56,7 @@ public class Payment {
 
     /**
      * Sets the payment description
-     * @param paymentDescription
+     * @param paymentDescription payment description
      */
     public void setPaymentDescription(String paymentDescription) {
         this.paymentDescription = paymentDescription;
@@ -72,7 +72,7 @@ public class Payment {
 
     /**
      * Sets reference id
-     * @param referenceId
+     * @param referenceId reference id
      */
     public void setReferenceId(String referenceId) {
         this.referenceId = referenceId;
@@ -88,7 +88,7 @@ public class Payment {
 
     /**
      * Sets the amount
-     * @param amount
+     * @param amount amount
      */
     public void setAmount(int amount) {
         this.amount = amount;
@@ -104,7 +104,7 @@ public class Payment {
 
     /**
      * Sets the payment mode
-     * @param mode
+     * @param mode mode
      */
     public void setMode(PaymentMode mode) {
         this.mode = mode;

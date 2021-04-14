@@ -1,7 +1,6 @@
 com/flipkart/bean/Professor.class
 com/flipkart/dashboard/LoginSignupDashboard$1.class
 com/flipkart/services/UserServices.class
-com/flipkart/helper/ProfessorValidator.class
 com/flipkart/bean/User.class
 com/flipkart/bean/Offline.class
 com/flipkart/services/PaymentServices.class
@@ -20,7 +19,6 @@ com/flipkart/dao/GradeCardDB.class
 com/flipkart/services/CourseRegistrationInterface.class
 com/flipkart/bean/GradeCard.class
 com/flipkart/dao/PaymentDBInterface.class
-com/flipkart/helper/CourseValidator.class
 com/flipkart/Exception/NotificationException.class
 com/flipkart/constants/SQLQueriesConstants.class
 com/flipkart/bean/CourseCatalog.class
@@ -56,7 +54,6 @@ com/flipkart/utils/DatabaseSchema.class
 com/flipkart/Exception/CourseAlreadyExistException.class
 com/flipkart/dao/CourseDB.class
 com/flipkart/services/NotificationServices.class
-com/flipkart/helper/StudentValidator.class
 com/flipkart/services/UserInterface.class
 com/flipkart/services/CourseServices.class
 com/flipkart/Exception/CourseRegistrationException.class
@@ -72,7 +69,6 @@ com/flipkart/Exception/InvalidInputException.class
 com/flipkart/bean/Online.class
 com/flipkart/dao/GradeCardDBInterface.class
 com/flipkart/services/GradeCardServices.class
-com/flipkart/helper/AdminValidator.class
 com/flipkart/bean/ErrorResponse.class
 com/flipkart/dao/StudentDBInterface.class
 com/flipkart/dashboard/StudentDashboard.class

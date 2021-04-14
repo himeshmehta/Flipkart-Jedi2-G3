@@ -14,10 +14,10 @@ public class Professor extends User{
 
     /**
      * Constructor of professor
-     * @param name
-     * @param email
-     * @param roleEnum
-     * @param userId
+     * @param name professor name
+     * @param email professor email
+     * @param roleEnum role
+     * @param userId user id
      */
     public Professor(String name, String email, RoleEnum roleEnum, int userId) {
         super(name, email, roleEnum, userId);
@@ -26,7 +26,7 @@ public class Professor extends User{
 
     /**
      * Constructor of professor
-     * @param user
+     * @param user user
      */
     public Professor(User user){
         super(user.getName(), user.getEmail(), user.getRole(), user.getUserId());
